@@ -35,4 +35,24 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+Route::get('/dashboardpage', function () {
+    return Inertia::render('DashboardPage');
+})->name('dashboardpage');
+
+Route::get('/profilepage', function () {
+    return Inertia::render('ProfilePage');
+})->name('profilepage');
+
+Route::get('/menupage', function () {
+    return Inertia::render('MenuPage');
+})->name('menupage');
+
+Route::get('/loginpage', function () {
+    return Inertia::render('LoginPage');
+})->name('loginpage');
+
+Route::get('/registerpage', function () {
+    return Inertia::render('RegisterPage');
+})->name('registerpage');
+
 require __DIR__.'/auth.php';
