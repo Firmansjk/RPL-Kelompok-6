@@ -1,10 +1,30 @@
-import { Link } from '@inertiajs/react';
-// import '../css/app.css';
-import sidePict from './../../../public/images/login_page.png';
-import logowhite from './../../../public/images/logo tring white.png';
+import React, { useState } from 'react';
+import { Link, usePage } from '@inertiajs/react';
+import '../App.css';
 
+import sidePict from '../image/login_page.png';
+import logowhite from '../image/logo tring white.png';
 
-function LoginPage() {
+function LoginPage(status, canResetPassword) {
+    //destruct props "errors"
+    const { errors } = usePage().props;
+
+    //define state
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+
+    //method "storeLogin"
+    const storeLogin = async (e) => {
+        e.preventDefault();
+
+        Inertia.post('/login', {
+
+            //data
+            email: email,
+            password: password,
+        });
+    }
+
   return (
     <>
     <div className="min-h-screen py-20 font-Montserrat" style={{backgroundImage: 'linear-gradient(160deg, #FFFFFF, #f5aa75'}}>
@@ -21,14 +41,14 @@ function LoginPage() {
           </div>
           <div className="w-full lg:w-1/2 py-8 px-6 md:py-16 md:px-12 lg:py-16 lg:px-12 flex flex-col justify-center">
             <h2 className="text-xl md:text-3xl lg:text-3xl mb-10 text-center text-[#F77E21] font-extrabold">Login Akun Catering</h2>
-            <form action="#">
+            <form onSubmit={storeLogin}>
               <div>
                   <label htmlFor="username" className="block mb-3 text-sm font-bold text-[#F77E21]">Username</label>
-                  <input type="username" name="username" id="username" className=" mb-5 bg-white border border-[#F77E21] text-black sm:text-sm rounded-lg block w-full p-2.5 placeholder-gray-400" placeholder="Enter Username" required=""/>
+                  <input type="username" name="username" id="username" onChange={(e) => setEmail(e.target.value)} className=" mb-5 bg-white border border-[#F77E21] text-black sm:text-sm rounded-lg block w-full p-2.5 placeholder-gray-400" placeholder="Enter Username" required=""/>
               </div>
               <div>
                   <label htmlFor="password" className="block mb-3 text-sm font-bold text-[#F77E21]">Password</label>
-                  <input type="password" name="password" id="password" placeholder="••••••••" className="mb-4 bg-white border border-[#F77E21] text-black sm:text-sm rounded-lg block w-full p-2.5 placeholder-gray-400" required=""/>
+                  <input type="password" name="password" id="password" onChange={(e) => setPassword(e.target.value)} placeholder="••••••••" className="mb-4 bg-white border border-[#F77E21] text-black sm:text-sm rounded-lg block w-full p-2.5 placeholder-gray-400" required=""/>
               </div>
               <div className="flex items-center justify-between">
                   <div className="flex items-start">
@@ -57,4 +77,4 @@ function LoginPage() {
   );
 }
 
-export default LoginPage;
+export default LoginPage;
