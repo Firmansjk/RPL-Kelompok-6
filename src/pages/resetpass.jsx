@@ -1,8 +1,7 @@
-import ButtonConfirmPass from "../components/ForConfirmPass/buttonConfirmPass";
+import ButtonConfirmNewPass from "../components/ForConfirmNewPass/ButtonConfirmNP";
 import logoOrange from "../image/logo tring.png";
-import { Link } from "react-router-dom";
 
-export default function LupaPassPage() {
+export default function ResetPassPage() {
     return (
       <>
       <div className="min-h-screen py-20 font-Montserrat" style={{backgroundImage: 'linear-gradient(160deg, #FFFFFF, #f5aa75'}}>
@@ -15,17 +14,17 @@ export default function LupaPassPage() {
                 <h2 className="text-2xl md:text-3xl mb-5 text-center text-[#F77E21] font-extrabold">Atur Ulang Password</h2>
                 <form action="#" className="flex flex-col items-center">
                     <div className="w-10/12 lg:w-8/12">
-                        <label htmlFor="text" className="block mb-2 text-xs md:text-sm font-bold text-[#F77E21]">Masukkan E-mail</label>
-                        <input type="text" name="text" id="text" className=" mb-4 bg-white border border-[#F77E21] text-black sm:text-sm rounded-lg block w-full p-2.5 placeholder-gray-400" placeholder="email@something.com" required=""/>
+                        <label htmlFor="text" className="block mb-2 text-xs md:text-sm font-bold text-[#F77E21]">Password Baru</label>
+                        <input type="password" name="password" id="password" className=" mb-4 bg-white border border-[#F77E21] text-black sm:text-sm rounded-lg block w-full p-2.5 placeholder-gray-400" placeholder="*********" required=""/>
+                    </div>
+                    <div className="w-10/12 lg:w-8/12">
+                        <label htmlFor="text" className="block mb-2 text-xs md:text-sm font-bold text-[#F77E21]">Konfirmasi Password Baru</label>
+                        <input type="password" name="password" id="password" className=" mb-4 bg-white border border-[#F77E21] text-black sm:text-sm rounded-lg block w-full p-2.5 placeholder-gray-400" placeholder="*********" required=""/>
                     </div>
                 </form>
-                <div className="flex flex-col md:flex-row justify-center">
-                    <ButtonConfirmPass/>
+                <div className="flex justify-center">
+                    <ButtonConfirmNewPass/>
                 </div>
-
-                <Link to="/" className="mt-2 flex flex-col md:flex-row justify-center">
-                    <p className="text-sm md:text-base font-medium hover:font-semibold text-[#F77E21]">Kembali ke Halaman Awal</p>
-                </Link>
             </div>
           </div>
         </div>
