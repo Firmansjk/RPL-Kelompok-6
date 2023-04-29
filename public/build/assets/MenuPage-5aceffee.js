@@ -1,4 +1,4 @@
-import{a as e,j as l,r as s,F as i}from"./app-4adcac05.js";import{a as o,S as c,H as d}from"./header-89002f91.js";function m({open:n,onClose:t,children:r}){return e("div",{onClick:t,className:`
+import{a as e,j as l,r as s,F as i}from"./app-52788aa2.js";import{a as o,S as c,H as d}from"./header-25f251e1.js";function m({open:n,onClose:t,children:r}){return e("div",{onClick:t,className:`
             fixed inset-0 flex justify-center items-center transition-colors
             ${n?"visible bg-black/20":"invisible"}
             `,children:l("div",{onClick:a=>a.stopPropagation(),className:`

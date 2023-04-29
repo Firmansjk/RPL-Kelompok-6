@@ -67,16 +67,22 @@ Route::middleware(['auth','role:admin'])->group(function () {
 
 /// Vendor Dashboard
 route::middleware(['auth','role:vendor'])->group(function() {
-    Route::get('/vendor/dashboardpage', [VendorController::class, 'VendorLogin'])->name('vendor.dashboard');
+    Route::get('/vendor/dashboard', [VendorController::class, 'VendorDashboard'])->
+        name('vendor.dashboard');
+
+    Route::get('/vendor/profilepage', [VendorController::class, 'VendorProfile'])->
+        name('vendor.profilepage');
+
+    Route::get('/vendor/menupage', [VendorController::class, 'VendorMenu'])->
+        name('vendor.menupage');
+
+    Route::post('/vendor/logout', [VendorController::class, 'VendorDestroy'])->
+        name('vendor.logout');
+
+    Route::post('/vendor/logout', [VendorController::class, 'VendorDestroy'])->
+        name('vendor.logout');
 });
 
-route::middleware(['auth','role:vendor'])->group(function() {
-    Route::get('/vendor/profilepage', [VendorController::class, 'VendorProfile'])->name('vendor.profilepage');
-});
-
-route::middleware(['auth','role:vendor'])->group(function() {
-    Route::get('/vendor/menupage', [VendorController::class, 'VendorMenu'])->name('vendor.menupage');
-});
 
 // route::middleware(['auth','role:vendor'])->group(function() {
 //     Route::get('/dashboardpage', [VendorController::class, 'VendorDashboard'])->name('vendor.menupage');
@@ -86,14 +92,14 @@ route::middleware(['auth','role:vendor'])->group(function() {
 //     Route::get('/vendor/dashboard', [VendorController::class, 'VendorDashboard']);
 // });
 
-//route index login
-Route::get('/loginpage', [LoginController::class, 'index']);
+// //route index login
+// Route::get('/loginpage', [LoginController::class, 'index']);
 
-//route store login
-Route::post('/loginpage', [LoginController::class, 'store']);
+// //route store login
+// Route::post('/loginpage', [LoginController::class, 'store']);
 
-//route logout
-Route::post('/logout', [LoginController::class, 'destroy'])->middleware('auth');
+// //route logout
+// Route::post('/logout', [LoginController::class, 'destroy'])->middleware('auth');
 
 
 

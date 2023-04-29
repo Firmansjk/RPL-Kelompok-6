@@ -29,7 +29,7 @@ const SideBar = () => {
         </div>
         <div className="mt-4 flex flex-col gap-4 relative">
           <Link
-                href= "/vendor/dashboardpage"
+                href= "/vendor/dashboard"
                 className={`
                 group flex items-center text-sm text-[#F77E21] gap-3.5 font-medium p-2 hover:bg-[#F77E21] hover:text-white rounded-md`}
               >
@@ -50,7 +50,7 @@ const SideBar = () => {
                 </h2>
           </Link>
           <Link
-                href= "/vendor/profilepage"
+                href={route('vendor.profilepage')}
                 className={`
                 group flex items-center text-sm text-[#F77E21] gap-3.5 font-medium p-2 hover:bg-[#F77E21] hover:text-white rounded-md`}
               >
