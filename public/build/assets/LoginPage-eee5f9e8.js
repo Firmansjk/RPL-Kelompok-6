@@ -1,4 +1,4 @@
-import{c as E,r as u,a as i,F as X,j as f}from"./app-52788aa2.js";/**
+import{R as E,r as u,a as i,F as X,j as f}from"./app-f3673a55.js";/**
  * @remix-run/router v1.5.0
  *
  * Copyright (c) Remix Software Inc.

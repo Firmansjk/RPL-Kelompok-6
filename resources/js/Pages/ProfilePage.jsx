@@ -3,7 +3,10 @@ import SideBar from "../components/sidebar";
 import Header from "../components/header";
 import profileImg from "./../../../public/images/profile.png";
 
+
 function ProfilePage () {
+
+
     return(
         <>
         <div className="mx-auto bg-[#FFF9EB]">
@@ -37,7 +40,8 @@ function ProfilePage () {
                                             </div>
                                             <div>
                                                 <label for="username" className="block mb-2 text-sm font-bold text-[#F77E21]">Username</label>
-                                                <input type="text" id="username" className="border border-[#F77E21] text-gray-900 text-sm rounded-lg block w-full p-2.5" placeholder="pojokdapur123"/>
+                                                <input type="text" className="border border-[#F77E21] text-gray-900 text-sm rounded-lg block w-full p-2.5" 
+                                                />
                                             </div>
                                             <div>
                                                 <label for="email" className="block mb-2 text-sm font-bold text-[#F77E21]">E-mail</label>

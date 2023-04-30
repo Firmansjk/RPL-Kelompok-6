@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 use Illuminate\Support\Facades\Auth;
+use App\Models\User;
 
 class VendorController extends Controller
 {
@@ -13,7 +14,11 @@ class VendorController extends Controller
     }
 
     public function VendorProfile(){
-        return Inertia::render('ProfilePage');
+
+        $id = Auth::user()->id;
+        $vendorData = User::find($id);
+
+        return Inertia::render('ProfilePage', compact('vendorData'));
     }
 
     public function VendorProfil(){
@@ -22,6 +27,10 @@ class VendorController extends Controller
 
     public function VendorMenu(){
         return Inertia::render('MenuPage');
+    }
+
+    public function VendorLogin(){
+        return Inertia::render('loginpage');
     }
 
     public function VendorDestroy(Request $request): RedirectResponse

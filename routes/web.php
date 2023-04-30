@@ -60,6 +60,10 @@ Route::get('/registerpage', function () {
     return Inertia::render('RegisterPage');
 })->name('registerpage');
 
+Route::get('/loginpage', function () {
+    return Inertia::render('LoginPage');
+})->name('loginpage');
+
 Route::middleware(['auth','role:admin'])->group(function () {
     Route::get('/admin/dashboard', [AdminController::class, 'AdminDashboard'])->name('admin.dashboard');
 });
@@ -83,6 +87,9 @@ route::middleware(['auth','role:vendor'])->group(function() {
         name('vendor.logout');
 });
 
+// //route index login
+// Route::get('/loginpage', [VendorController::class, 'VendorLogin'])
+//     ->name('vendor.login');
 
 // route::middleware(['auth','role:vendor'])->group(function() {
 //     Route::get('/dashboardpage', [VendorController::class, 'VendorDashboard'])->name('vendor.menupage');
@@ -91,9 +98,6 @@ route::middleware(['auth','role:vendor'])->group(function() {
 // route::middleware(['auth','role:vendor'])->group(function() {
 //     Route::get('/vendor/dashboard', [VendorController::class, 'VendorDashboard']);
 // });
-
-// //route index login
-// Route::get('/loginpage', [LoginController::class, 'index']);
 
 // //route store login
 // Route::post('/loginpage', [LoginController::class, 'store']);

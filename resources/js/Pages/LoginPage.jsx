@@ -1,10 +1,26 @@
 import React, {useStatev} from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useForm } from '@inertiajs/react';
 import '../App.css';
 import sidePict from '../image/login_page.png';
 import logowhite from '../image/logo tring white.png';
 
+
 function LoginPage() {
+  const { data, setData, post, processing, errors, reset } = useForm({
+    email: '',
+    password: '',
+    remember: '',
+});
+
+  const handleOnChange = (event) => {
+    setData(event.target.name, event.target.type === 'checkbox' ? event.target.checked : event.target.value);
+  };
+
+  const submit = (e) => {
+    e.preventDefault();
+
+    post(route('login'));
+  };
   return (
     <>
     <div className="min-h-screen py-20 font-Montserrat" style={{backgroundImage: 'linear-gradient(160deg, #FFFFFF, #f5aa75'}}>
@@ -21,19 +37,27 @@ function LoginPage() {
           </div>
           <div className="w-full lg:w-1/2 py-8 px-6 md:py-16 md:px-12 lg:py-16 lg:px-12 flex flex-col justify-center">
             <h2 className="text-xl md:text-3xl lg:text-3xl mb-10 text-center text-[#F77E21] font-extrabold">Login Akun Catering</h2>
-            <form action="#">
+            <form onSubmit={submit}>
               <div>
-                  <label htmlFor="username" className="block mb-3 text-sm font-bold text-[#F77E21]">Username</label>
-                  <input type="username" name="username" id="username" className=" mb-5 bg-white border border-[#F77E21] text-black sm:text-sm rounded-lg block w-full p-2.5 placeholder-gray-400" placeholder="Enter Username" required=""/>
+                  <label htmlFor="email" className="block mb-3 text-sm font-bold text-[#F77E21]">Email</label>
+                  <input type="email" name="email" id="email" value={data.email} autoComplete="username"
+                  onChange={handleOnChange} 
+                  className=" mb-5 bg-white border border-[#F77E21] text-black sm:text-sm rounded-lg block w-full p-2.5 placeholder-gray-400" 
+                  />
+
               </div>
               <div>
                   <label htmlFor="password" className="block mb-3 text-sm font-bold text-[#F77E21]">Password</label>
-                  <input type="password" name="password" id="password" placeholder="••••••••" className="mb-4 bg-white border border-[#F77E21] text-black sm:text-sm rounded-lg block w-full p-2.5 placeholder-gray-400" required=""/>
+                  <input type="password" name="password" autoComplete="current-password" id="password" value={data.password} 
+                  onChange={handleOnChange}
+                  className="mb-4 bg-white border border-[#F77E21] text-black sm:text-sm rounded-lg block w-full p-2.5 placeholder-gray-400" 
+                  />
+
               </div>
               <div className="flex items-center justify-between">
                   <div className="flex items-start">
                       <div className="flex items-center h-5">
-                        <input id="remember" aria-describedby="remember" type="checkbox" className="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-primary-300"/>
+                        <input id="remember"  value={data.remember} onChange={handleOnChange} aria-describedby="remember" type="checkbox" className="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-primary-300"/>
                       </div>
                       <div className="ml-3 text-xs md:text-sm lg:text-sm">
                         <label htmlFor="remember" className="text-[#F77E21] font-semibold">Remember me</label>
@@ -44,9 +68,9 @@ function LoginPage() {
                   </Link>
               </div>
               <div className="mt-10 flex justify-center">
-                <Link to="/dashboard">
-                  <button className="w-20 bg-[#F77E21] py-2 font-semibold rounded-lg text-center text-white transition-all hover:font-bold" type="button">Login</button>
-                </Link>
+                  <button 
+                  className="w-20 bg-[#F77E21] py-2 font-semibold rounded-lg text-center text-white transition-all hover:font-bold" type="submit">
+                    Login</button>
               </div>
             </form>
           </div>
