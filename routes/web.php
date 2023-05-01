@@ -85,6 +85,9 @@ route::middleware(['auth','role:vendor'])->group(function() {
 
     Route::post('/vendor/logout', [VendorController::class, 'VendorDestroy'])->
         name('vendor.logout');
+
+    Route::patch('/vendor/profilepage', [VendorController::class, 'VendorUpdate'])
+    ->name('profile.change');
 });
 
 // //route index login

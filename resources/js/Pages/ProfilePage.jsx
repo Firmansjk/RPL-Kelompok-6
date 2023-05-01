@@ -2,10 +2,25 @@ import React from "react";
 import SideBar from "../components/sidebar";
 import Header from "../components/header";
 import profileImg from "./../../../public/images/profile.png";
-
+import { Link, useForm, usePage } from '@inertiajs/react';
 
 function ProfilePage () {
+    const { user } = usePage().props;
+    const { data, setData, patch, processing, errors, reset } = useForm({
+ 
+        email: user.email,
+        username: user.username,
+        address: user.address,
 
+    });
+
+      // Handle form input change
+      const submit = (e) => {
+        e.preventDefault();
+        patch(route('profile.change'));
+    };
+
+    
 
     return(
         <>
@@ -32,7 +47,7 @@ function ProfilePage () {
                                         <div className="font-bold text-xl text-[#F77E21]">PROFIL AKUN</div>
                                     </div>
 
-                                    <form>
+                                    <form onSubmit={submit}>
                                         <div className="grid gap-6 mb-6 md:grid-cols-2 mx-6 my-5">
                                             <div>
                                                 <label for="cateringname" className="block mb-2 text-sm font-bold text-[#F77E21]">Nama Katering</label>
@@ -40,16 +55,19 @@ function ProfilePage () {
                                             </div>
                                             <div>
                                                 <label for="username" className="block mb-2 text-sm font-bold text-[#F77E21]">Username</label>
-                                                <input type="text" className="border border-[#F77E21] text-gray-900 text-sm rounded-lg block w-full p-2.5" 
+                                                <input type="text" id="username" name="username" value={data.username} onChange={(e) => setData('username', e.target.value)}
+                                                className="border border-[#F77E21] text-gray-900 text-sm rounded-lg block w-full p-2.5" 
                                                 />
                                             </div>
                                             <div>
                                                 <label for="email" className="block mb-2 text-sm font-bold text-[#F77E21]">E-mail</label>
-                                                <input type="email" id="email" className="border border-[#F77E21] text-gray-900 text-sm rounded-lg block w-full p-2.5" placeholder="pojokdapur@gmail.com"/>
+                                                <input type="email" id="email" name="email" value={data.email} onChange={(e) => setData('email', e.target.value)}
+                                                className="border border-[#F77E21] text-gray-900 text-sm rounded-lg block w-full p-2.5" placeholder="pojokdapur@gmail.com"/>
                                             </div>  
                                             <div>
                                                 <label for="address" className="block mb-2 text-sm font-bold text-[#F77E21]">Alamat Katering</label>
-                                                <input type="text" id="address" className="border border-[#F77E21] text-gray-900 text-sm rounded-lg block w-full p-2.5" placeholder="Jl. Pajjaiang"/>
+                                                <input type="text" id="address" name="address" value={data.address} onChange={(e) => setData('address', e.target.value)}
+                                                className="border border-[#F77E21] text-gray-900 text-sm rounded-lg block w-full p-2.5" placeholder="Jl. Pajjaiang"/>
                                             </div>
                                             <div>
                                                 <label for="number" className="block mb-2 text-sm font-bold text-[#F77E21]">No. Telepon</label>
@@ -64,8 +82,8 @@ function ProfilePage () {
                                                 <textarea className="border border-[#F77E21] rounded-lg w-full h-24 p-3 text-sm" style={{resize: "none"}} placeholder="Enter some text"></textarea>
                                             </div>
                                             <div className="flex flex-row justify-center md:justify-end md:content-center mt-2 md:mt-14 lg:mt-14 gap-2">
-                                                <button type="submit" className="text-white bg-blue-600 hover:bg-blue-800 focus:ring-2 focus:outline-none focus:ring-red-200 font-medium rounded-lg text-sm w-full h-10 sm:w-auto px-5 py-1 text-center">Edit Data</button>
-                                                <button type="submit" className="text-white bg-green-600 hover:bg-green-800 focus:ring-2 focus:outline-none focus:ring-red-200 font-medium rounded-lg text-sm w-full h-10 sm:w-auto px-5 py-1 text-center">Simpan Data</button>
+                                                <button className="text-white bg-blue-600 hover:bg-blue-800 focus:ring-2 focus:outline-none focus:ring-red-200 font-medium rounded-lg text-sm w-full h-10 sm:w-auto px-5 py-1 text-center">Edit Data</button>
+                                                <button className="text-white bg-green-600 hover:bg-green-800 focus:ring-2 focus:outline-none focus:ring-red-200 font-medium rounded-lg text-sm w-full h-10 sm:w-auto px-5 py-1 text-center">Simpan Data</button>
                                             </div>
                                         </div>
                                     </form>

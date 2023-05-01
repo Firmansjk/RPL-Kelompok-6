@@ -15,11 +15,43 @@ class VendorController extends Controller
 
     public function VendorProfile(){
 
-        $id = Auth::user()->id;
-        $vendorData = User::find($id);
+        // $id = Auth::user()->id;
+        // $vendorData = User::find($id);
+        // $vendorData = Auth::user();
+        $user = Auth::user();
 
-        return Inertia::render('ProfilePage', compact('vendorData'));
+        return Inertia::render('ProfilePage', compact('user'));
     }
+
+    
+    public function VendorUpdate(Request $request)
+    {
+        $user = Auth::user();
+        
+        // $user->name = $request->name;
+        $user->email = $request->email;
+        $user->username = $request->username;
+        // $user->phone_number = $request->phone_number;
+        $user->address = $request->address;
+        // $user->description = $request->description;
+
+        // if ($request->file('photo')) {
+        //     $file = $request->file('photo');
+        //     $filename = date('Ymdhi').$file->getClientOriginalName();
+        //     $file->move(public_path('images'),$filename);
+        // }
+
+        if ($request->hasFile('profile_photo')) {
+            $path = $request->file('images')->store('public/images');
+            $user->profile_photo_path = Storage::url($path);
+        }
+
+
+        $user->save();
+        
+        return redirect()->back()->with('success', 'Profile updated successfully!');
+    }
+
 
     public function VendorProfil(){
         return Inertia::render('Profil');
