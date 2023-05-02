@@ -5,6 +5,7 @@ import RegisterPage from './pages/registerpage';
 import ProfilePage from './pages/profile';
 import MenuPage from './pages/menupage';
 import LupaPassPage from './pages/lupaPass';
+import ResetPassPage from './pages/resetpass';
 
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
             <Route exact path='/' element={<LoginPage />} />
             <Route path='/register' element={<RegisterPage/>} />
             <Route path='/resetpassword' element={<LupaPassPage/>}/>
+            <Route path='/resetpw' element={<ResetPassPage/>}/>
 
             <Route path='/profile' element={<ProfilePage/>}/>
             <Route path='/menu' element={<MenuPage/>}/>

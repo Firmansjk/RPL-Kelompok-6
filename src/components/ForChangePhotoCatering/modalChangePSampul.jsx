@@ -1,4 +1,4 @@
-export default function ModalPhoto ({open, onClose, children}) {
+export default function ModalChangePSampul ({open, onClose, children}) {
     return(
         <div
         onClick={onClose}
@@ -6,7 +6,7 @@ export default function ModalPhoto ({open, onClose, children}) {
         fixed inset-0 flex justify-center items-center transition-colors
         ${open ? "visible bg-black/20 z-10" : "invisible"}
         `}
-        >   
+        >  
             <div
                 onClick={(e) => e.stopPropagation()}
                 className={`

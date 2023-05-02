@@ -32,12 +32,12 @@ export default function ButtonTambahPK() {
                     <label for="message" className="block mb-2 text-sm font-bold text-[#F77E21] text-start">DAFTAR MENU</label>
                     <textarea id="message" style={{resize: "none"}} className="block p-2.5 w-full h-28 text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-400" placeholder="Daftar Menu"></textarea>
                 </div>
-            </form>
 
-            <div className="flex gap-4 mt-8">
-                <button className="btn bg-green-600 text-white text-xs md:text-sm font-semibold py-2 rounded-lg w-full">Tambah Paket Menu</button>
-                <button className="btn bg-red-600 text-white text-xs md:text-sm font-semibold py-2 rounded-lg w-full" onClick={() => setOpen(false)}>Batalkan</button>
-            </div>
+                <div className="flex gap-4 mt-8">
+                    <button className="btn bg-green-600 text-white text-xs md:text-sm font-semibold py-2 rounded-lg w-full">Tambah Paket Menu</button>
+                    <button className="btn bg-red-600 text-white text-xs md:text-sm font-semibold py-2 rounded-lg w-full" onClick={() => setOpen(false)}>Batalkan</button>
+                </div>
+            </form>
         </ModalTambahPK>
         </div>
     )

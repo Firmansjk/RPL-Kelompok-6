@@ -27,12 +27,12 @@ export default function ButtonTambahMenu() {
                         id="formFile" />
                         <p className="text-sm font-medium text-[#F77E21] mt-3 text-start">Klik "Pilih File" untuk menambah gambar</p>
                     </div>
+                    
+                    <div className="flex gap-4 mt-8">
+                        <button className="btn bg-green-600 text-white text-xs md:text-sm font-semibold py-2 rounded-lg w-full">Tambah Menu</button>
+                        <button className="btn bg-red-600 text-white text-xs md:text-sm font-semibold py-2 rounded-lg w-full" onClick={() => setOpen(false)}>Batalkan</button>
+                    </div>
                 </form>
-
-                <div className="flex gap-4 mt-8">
-                    <button className="btn bg-green-600 text-white text-xs md:text-sm font-semibold py-2 rounded-lg w-full">Tambah Menu</button>
-                    <button className="btn bg-red-600 text-white text-xs md:text-sm font-semibold py-2 rounded-lg w-full" onClick={() => setOpen(false)}>Batalkan</button>
-                </div>
             </ModalTambahMenu>
         </div>
     )
