@@ -6,13 +6,14 @@ import ButtonEP from "../components/ForPaketMenu/buttonEditPaket";
 import ButtonHapusMenu from "../components/ForMenuKatering/buttonHapusMenu";
 import ButtonEditMenu from "../components/ForMenuKatering/buttonEditMenu";
 
-function MenuPage(){
+export default function MenuPage(props){
 
     const [toggleState, setToggleState] = useState(1);
 
         const toggleTab  = (index) =>{
             setToggleState(index)
         }
+    const menus = props.posts
 
     return(
         <>
@@ -74,24 +75,23 @@ function MenuPage(){
                                                     </tr>
                                                 </thead>
                                                 <tbody className="text-black">
+                                                    {menus.map((menu =>
                                                     <tr className="bg-white border-b">
                                                         <th scope="row" className="px-6 py-4 font-medium whitespace-nowrap border-r-2">
-                                                            1.
+                                                            {menu.id}
                                                         </th>
                                                         <td className="px-6 py-4 font-bold border-r-2">
-                                                            PAKET MENU 3
+                                                            {menu.product_name}
                                                         </td>
                                                         <td className="px-6 py-4 border-r-2">
-                                                            <p>Nasi Kuning</p>
-                                                            <p>Nasi Kuning</p>
-                                                            <p>Nasi Kuning</p>
-                                                            <p>Nasi Kuning</p>
+                                                            <p>{menu.product_desc}</p>
                                                         </td>
                                                         <td className="px-6 py-4 flex flex-col md:flex-row lg:flex-row gap-2 content-center">
                                                             <ButtonHapusPK/>
                                                             <ButtonEP/>
                                                         </td>
                                                     </tr>
+                                                    ))}
                                                 </tbody>
                                             </table>                                
                                         </div>
@@ -169,4 +169,4 @@ function MenuPage(){
     )
 }
 
-export default MenuPage
+// export default MenuPage

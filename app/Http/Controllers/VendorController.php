@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Inertia\Inertia;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
+use App\Models\VendorMenu;
 
 class VendorController extends Controller
 {
@@ -58,8 +59,51 @@ class VendorController extends Controller
     }
 
     public function VendorMenu(){
-        return Inertia::render('MenuPage');
+        // return Inertia::render('MenuPage');
+        //get all posts from database
+        $posts = VendorMenu::all();
+
+        //render with data "posts"
+        return Inertia::render('MenuPage', [
+            'posts' => $posts->toArray()
+        ]);
     }
+
+     /**
+     * create
+     *
+     * @return void
+     */
+    public function CreateVendorMenu()
+    {
+        return Inertia::render('CreateMenuPage');
+    }
+    
+    /**
+     * store
+     *
+     * @param  mixed $request
+     * @return void
+     */
+    public function StoreVendorMenu(Request $request)
+    {
+        //set validation
+        $request->validate([
+            'product_name' => 'required',
+            'product_desc' => 'required',
+        ]);
+
+        //create post
+        $post = Post::create([
+            'product_name'  => $request->product_name,
+            'product_desc'  => $request->product_desc
+        ]);
+
+        if($post) {
+            return Redirect::route('posts.VendorMenu')->with('message', 'Data Berhasil Disimpan!');
+        }
+    }
+
 
     public function VendorLogin(){
         return Inertia::render('loginpage');
