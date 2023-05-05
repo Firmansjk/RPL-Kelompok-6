@@ -11,15 +11,17 @@ export default function ButtonHapus (){
             <ModalDelPK open={open} onClose={() => setOpen(false)}>
                 <HiTrash size={56} className="mx-auto text-[#F77E21]"/>
                 
-                <div className="mx-auto my-4 w-40 md:w-60">
-                    <p className="text-lg font-bold text-black mb-4">Hapus</p>
-                    <p className="text-sm md:text-sm">Apakah anda yakin mau menghapus Paket Menu ini?</p>
-                </div>
+                <form>
+                    <div className="mx-auto my-4 w-40 md:w-60">
+                        <p className="text-lg font-bold text-black mb-4">Hapus</p>
+                        <p className="text-sm md:text-sm">Apakah anda yakin mau menghapus Paket Menu ini?</p>
+                    </div>
 
-                <div className="flex gap-4 mt-8">
-                    <button className="btn bg-red-500 text-white font-semibold py-2 rounded-lg w-full">Hapus</button>
-                    <button className="btn bg-[#F77E21] text-white font-semibold py-2 rounded-lg w-full" onClick={() => setOpen(false)}>Batalkan</button>
-                </div>
+                    <div className="flex gap-4 mt-8">
+                        <button className="btn bg-red-500 text-white font-semibold py-2 rounded-lg w-full">Hapus</button>
+                        <button className="btn bg-[#F77E21] text-white font-semibold py-2 rounded-lg w-full" onClick={() => setOpen(false)}>Batalkan</button>
+                    </div>
+                </form>
             </ModalDelPK>
         </div>
     )

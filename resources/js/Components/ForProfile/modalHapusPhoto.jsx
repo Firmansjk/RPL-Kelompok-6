@@ -1,4 +1,4 @@
-export default function ModalDelPK({open, onClose, children}){
+export default function ModalDelPhoto({open, onClose, children}){
     return(
         <div
             onClick={onClose}

@@ -1,16 +1,16 @@
-export default function ModalDelPK({open, onClose, children}){
+export default function ModalChangePSampul ({open, onClose, children}) {
     return(
         <div
-            onClick={onClose}
-            className={`
-            fixed inset-0 flex justify-center items-center transition-colors
-            ${open ? "visible bg-black/20 z-10" : "invisible"}
-            `}
-        >   
+        onClick={onClose}
+        className={`
+        fixed inset-0 flex justify-center items-center transition-colors
+        ${open ? "visible bg-black/20 z-10" : "invisible"}
+        `}
+        >  
             <div
                 onClick={(e) => e.stopPropagation()}
                 className={`
-                bg-white rounded-xl justify-center shadow p-6 transition-all text-center w-56 md:w-80
+                bg-white rounded-xl justify-center shadow p-6 transition-all text-center w-72 md:w-[30em]
                 ${open ? "scale-100 opacity-100" : "scale-125 opacity-0"}
                 `}
             >

@@ -24,6 +24,7 @@ class UserFactory extends Factory
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
             'phone' => $this->faker->phoneNumber,
             'address' => $this->faker->address,
+            'vendor_info' => $this->faker->text,
             'photo' => $this->faker->imageUrl('60','60'),
             'role' => $this->faker->randomElement(['admin','vendor','user']),
             'remember_token' => Str::random(10),

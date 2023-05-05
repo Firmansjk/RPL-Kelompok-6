@@ -29,12 +29,12 @@ class VendorController extends Controller
     {
         $user = Auth::user();
         
-        // $user->name = $request->name;
+        $user->name = $request->name;
         $user->email = $request->email;
         $user->username = $request->username;
-        // $user->phone_number = $request->phone_number;
+        $user->phone_number = $request->phone_number;
         $user->address = $request->address;
-        // $user->description = $request->description;
+        $user->description = $request->description;
 
         // if ($request->file('photo')) {
         //     $file = $request->file('photo');
