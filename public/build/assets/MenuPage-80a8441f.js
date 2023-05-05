@@ -1,4 +1,4 @@
-import{a as e,j as t,r as o,F as c}from"./app-d540c00d.js";import{H as s,S as m}from"./sidebar-379f1112.js";import{H as u}from"./header-3f60c7c9.js";import"./logo tring white-ff470b45.js";function b({open:r,onClose:l,children:a}){return e("div",{onClick:l,className:`
+import{a as e,j as t,r as o,F as c}from"./app-538690b0.js";import{H as s,S as m}from"./sidebar-264029f4.js";import{H as u}from"./header-1c993b87.js";import"./logo tring white-ff470b45.js";function b({open:r,onClose:l,children:a}){return e("div",{onClick:l,className:`
             fixed inset-0 flex justify-center items-center transition-colors
             ${r?"visible bg-black/20 z-10":"invisible"}
             `,children:t("div",{onClick:n=>n.stopPropagation(),className:`

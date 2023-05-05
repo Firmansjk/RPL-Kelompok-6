@@ -14,7 +14,7 @@ function RegisterPage(){
             <div>
               <p className="text-white font-bold text-[1.5em]">Sudah Punya Akun?</p>
             </div>
-            <Link to="/" className="bg-white mt-10 mb-6 px-6 py-2 rounded-lg text-[#F77E21] font-semibold transition-all hover:bg-[#e4e1e1]">
+            <Link href={route('loginpage')} className="bg-white mt-10 mb-6 px-6 py-2 rounded-lg text-[#F77E21] font-semibold transition-all hover:bg-[#e4e1e1]">
               <button type="button">Login Akun</button>
             </Link>
           </div>

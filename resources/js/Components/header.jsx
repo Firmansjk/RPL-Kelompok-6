@@ -66,7 +66,7 @@ function Header(){
                                 <HiMenu/>Menu
                             </Link>
                             <li><hr className="border-t mx-2 border-grey-light"/></li>
-                            <Link thref={route('logout')} method="post"  className="block py-2 pl-3 my-2 pr-4 text-white hover:bg-white hover:text-[#F77E21] rounded">
+                            <Link href={route('logout')} method="post"  className="block py-2 pl-3 my-2 pr-4 text-white hover:bg-white hover:text-[#F77E21] rounded">
                                 Logout
                             </Link>
                         </li>

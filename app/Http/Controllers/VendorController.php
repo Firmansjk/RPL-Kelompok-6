@@ -32,21 +32,71 @@ class VendorController extends Controller
         $user->name = $request->name;
         $user->email = $request->email;
         $user->username = $request->username;
-        $user->phone_number = $request->phone_number;
+        $user->phone = $request->phone;
         $user->address = $request->address;
-        $user->description = $request->description;
+        $user->vendor_info = $request->vendor_info;
+        $user->photo = $request->photo;
+
+        // // Menyimpan nama asli file foto yang diunggah
+        // $filename = $request->file('photo')->getClientOriginalName();
+
+        // // Menyimpan file foto ke direktori 'public/uploads/vendor_images'
+        // $request->file('photo')->move(public_path('uploads/vendor_images'), $filename);
+
+        // // Menyimpan nama file foto ke kolom 'photo' pada user yang bersangkutan di database
+        // $user->photo = $filename;
 
         // if ($request->file('photo')) {
         //     $file = $request->file('photo');
         //     $filename = date('Ymdhi').$file->getClientOriginalName();
-        //     $file->move(public_path('images'),$filename);
+        //     $file->move(public_path('upload/vendor_images'),$filename);
+        //     $user['photo'] = $filename;
         // }
 
-        if ($request->hasFile('profile_photo')) {
-            $path = $request->file('images')->store('public/images');
-            $user->profile_photo_path = Storage::url($path);
-        }
+        // if ($request->hasFile('profile_photo')) {
+        //     $path = $request->file('images')->store('public/upload/vendor_images');
+        //     $user->profile_photo_path = Storage::url($path);
+        // }
 
+        // if ($request->hasFile('photo')) {
+        //     // Get uploaded file
+        //     $file = $request->file('photo');
+    
+        //     // Generate unique filename
+        //     $filename = time() . '_' . $file->getClientOriginalName();
+    
+        //     // Store file to storage/app/public directory
+        //     $path = $file->storeAs('public', $filename);
+    
+        //     // Set photo path to user data
+        //     $user->photo = $filename;
+        // }
+
+        // $validatedData = $request->validate([
+        //     'photo' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        // ]);
+    
+        // $fileName = time() . '.' . $request->photo->extension();
+    
+        // $request->photo->storeAs('public/upload/vendor_images', $fileName);
+    
+        // $user->photo = $fileName;
+
+        $request->validate([
+            'photo' => 'required|image|max:2048'
+        ]);
+
+        // Mengambil file foto dari request
+    $photoFile = $request->file('photo');
+
+    // Membuat nama file dengan timestamp untuk menghindari nama file yang sama
+    $filename = time() . '.' . $photoFile->getClientOriginalExtension();
+
+    // Menyimpan file foto ke direktori public/upload/vendor_images dengan nama file yang telah dibuat
+    $photoFile->move(public_path('upload/vendor_images'), $filename);
+
+    // Menyimpan nama file foto ke database
+    $user->photo = $filename;
 
         $user->save();
         

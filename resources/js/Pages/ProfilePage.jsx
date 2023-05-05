@@ -17,7 +17,7 @@ function ProfilePage () {
         address: user.address,
         phone: user.phone,
         vendor_info: user.vendor_info,
-
+        photo: null,
     });
 
       // Handle form input change
@@ -25,6 +25,10 @@ function ProfilePage () {
         e.preventDefault();
         patch(route('profile.change'));
     };
+
+    const handlePhotoChange = (e) => {
+        setData('photo', e.target.files[0]);
+      };
 
     return(
         <>
@@ -39,15 +43,15 @@ function ProfilePage () {
                                 <img className="w-full h-40 lg:h-72 rounded-2xl object-cover" src={img} alt="Food Img"/>
                                 <ButtonChangePSampul/>
                                 <div className="absolute flex flex-row ap-2 mt-12 md:hidden">
-                                    <ButtonPhoto/>
+                                    <ButtonPhoto setData={setData} submit={submit}/>
                                     <ButtonHapusPhoto/>
                                 </div>
                                 <div className="absolute hidden md:flex md:flex-col md:gap-2">
-                                    <ButtonPhoto/>
+                                    <ButtonPhoto setData={setData} submit={submit}/>
                                     <ButtonHapusPhoto/>
                                 </div>
                                 <div className="relative overflow-hidden left-[50%] translate-x-[-50%] top-[-5em] w-28 h-28 md:w-44 md:h-44 md:left-[7em] md:translate-x[0%] md:top-[-4.5em] lg:w-52 lg:h-52 lg:top-[-5.5em] border border-white border-8 rounded-full">
-                                    <img className="w-full h-full object-cover" src={profileImg} alt="Profile Img"/>
+                                    <img className="w-full h-full object-cover" src={user.photo ? `/upload/vendor_images/${user.photo}` : profileImg} alt="Profile Picture" />
                                 </div>
                             </div>
 
@@ -60,8 +64,8 @@ function ProfilePage () {
                                     <form onSubmit={submit} className="border-b border-light-grey">
                                         <div className="grid gap-6 mb-6 md:grid-cols-2 mx-6 my-5">
                                             <div>
-                                                <label for="cateringname" className="block mb-2 text-sm font-bold text-[#F77E21]">Nama Katering</label>
-                                                <input type="text" id="cateringname" value={data.name} onChange={(e) => setData('username', e.target.value)}
+                                                <label for="name" className="block mb-2 text-sm font-bold text-[#F77E21]">Nama Katering</label>
+                                                <input type="text" id="name" value={data.name} onChange={(e) => setData('name', e.target.value)}
                                                 className="border border-[#F77E21] text-gray-900 text-sm rounded-lg block w-full p-2.5" placeholder="Pojok Dapur"/>
                                             </div>
                                             <div>
