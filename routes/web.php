@@ -80,8 +80,8 @@ route::middleware(['auth','role:vendor'])->group(function() {
     Route::get('/vendor/menupage', [VendorController::class, 'VendorMenu'])->
         name('vendor.menupage');
     
-    Route::get('/vendor/createmenupage', [VendorController::class, 'CreateVendorMenu'])->
-        name('vendor.createmenupage');
+    Route::get('/vendor/createeditmenu', [VendorController::class, 'CreateVendorMenu'])->
+        name('vendor.createeditmenu');
 
     Route::post('/vendor/logout', [VendorController::class, 'VendorDestroy'])->
         name('vendor.logout');

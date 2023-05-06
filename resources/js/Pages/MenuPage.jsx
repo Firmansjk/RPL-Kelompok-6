@@ -5,6 +5,8 @@ import ButtonHapusPK from "../components/ForPaketMenu/buttonHapusPK";
 import ButtonEP from "../components/ForPaketMenu/buttonEditPaket";
 import ButtonHapusMenu from "../components/ForMenuKatering/buttonHapusMenu";
 import ButtonEditMenu from "../components/ForMenuKatering/buttonEditMenu";
+import ButtonTambahMenu from "../components/ForMenuKatering/buttonTambahMenu";
+import ButtonTambahPaket from "../components/ForMenuKatering/buttonTambahPaket";
 
 export default function MenuPage(props){
 
@@ -49,8 +51,8 @@ export default function MenuPage(props){
                                         <button type="submit" className="text-white absolute right-2.5 bottom-2 bg-blue-700 hover:bg-blue-800 focus:ring-2 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-xs px-3 py-2">Search</button>
                                     </div>
                                     <div className="pl-0 mt-6 md:pl-6 md:mt-0 lg:pl-6 lg:mt-0 flex flex-row gap-3">
-                                        <button type ="submit" className="text-black bg-green-400 hover:bg-green-300 focus:ring-2 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-xs px-4 py-4">Tambah</button>
-                                        <button type ="submit" className="text-black bg-[#22D7FF] hover:bg-cyan-300 focus:ring-2 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-xs px-4 py-4">Edit Paket</button>
+                                        <ButtonTambahPaket type ="submit" className="text-black bg-green-400 hover:bg-green-300 focus:ring-2 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-xs px-4 py-4" >Tambah</ButtonTambahPaket>
+                                        {/* <button type ="submit" className="text-black bg-[#22D7FF] hover:bg-cyan-300 focus:ring-2 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-xs px-4 py-4" >Edit Paket</button> */}
                                     </div>
                                 </div>
 
@@ -67,7 +69,7 @@ export default function MenuPage(props){
                                                             Paket Menu
                                                         </th>
                                                         <th scope="col" className="px-6 py-3">
-                                                            Daftar Menu
+                                                            Isi Menu
                                                         </th>
                                                         <th scope="col" className="px-6 py-3 w-[8em] md:w-[15em] lg:w-[15em]">
                                                             Aksi
@@ -113,8 +115,8 @@ export default function MenuPage(props){
                                         <button type="submit" className="text-white absolute right-2.5 bottom-2 bg-blue-700 hover:bg-blue-800 focus:ring-2 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-xs px-3 py-2">Search</button>
                                     </div>
                                     <div className="pl-0 mt-6 md:pl-6 md:mt-0 lg:pl-6 lg:mt-0 flex flex-row gap-3">
-                                        <button type ="submit" className="text-black bg-green-400 hover:bg-green-300 focus:ring-2 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-xs px-4 py-4">Tambah</button>
-                                        <button type ="submit" className="text-black bg-[#22D7FF] hover:bg-cyan-300 focus:ring-2 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-xs px-4 py-4">Edit Menu</button>
+                                        <ButtonTambahMenu type ="submit" className="text-black bg-green-400 hover:bg-green-300 focus:ring-2 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-xs px-4 py-4">Tambah</ButtonTambahMenu>
+                                        {/* <button type ="submit" className="text-black bg-[#22D7FF] hover:bg-cyan-300 focus:ring-2 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-xs px-4 py-4">Edit Menu</button> */}
                                     </div>
                                 </div>
 

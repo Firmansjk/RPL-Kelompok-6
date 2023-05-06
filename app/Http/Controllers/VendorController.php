@@ -126,7 +126,7 @@ class VendorController extends Controller
      */
     public function CreateVendorMenu()
     {
-        return Inertia::render('CreateMenuPage');
+        return Inertia::render('CreateEditMenu');
     }
     
     /**
