@@ -13,12 +13,12 @@ function RegisterPage(){
             <div>
               <p className="text-white font-bold text-[1.5em]">Sudah Punya Akun?</p>
             </div>
-            <Link to="/" className="bg-white mt-10 mb-6 px-6 py-2 rounded-lg text-[#F77E21] font-semibold transition-all hover:bg-[#e4e1e1]">
+            <Link to="/loginpage" className="bg-white mt-10 mb-6 px-6 py-2 rounded-lg text-[#F77E21] font-semibold transition-all hover:bg-[#e4e1e1]">
               <button type="button">Login Akun</button>
             </Link>
           </div>
           <div className="w-full lg:w-1/2 py-16 px-12 flex flex-col justify-center">
-            <h2  className="text-3xl mb-5 text-center text-[#F77E21] font-extrabold">Register Akun Catering</h2>
+            <h2  className="text-3xl mb-5 text-center text-[#F77E21] font-extrabold">Register Akun</h2>
             <form action="#">
               <div>
                   <label htmlFor="username" className="block mb-2 text-sm font-bold text-[#F77E21]">Username</label>
@@ -37,7 +37,7 @@ function RegisterPage(){
                   <input type="password" name="password" id="password" placeholder="••••••••" className="bg-white border border-[#F77E21] text-black sm:text-sm rounded-lg block w-full p-2.5 placeholder-gray-400" required=""/>
               </div>
               <div className="mt-6 flex justify-center">
-                <Link to="/">
+                <Link to="/loginpage">
                   <button className="w-28 bg-[#F77E21] py-2 font-semibold rounded-lg text-center text-white transition-all hover:font-bold ">Register</button>
                 </Link>
               </div>

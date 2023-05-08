@@ -6,7 +6,7 @@ export default function ButtonHapusPhoto(){
     const [open, setOpen] = useState(false)
     return(
         <div>
-            <button onClick={() => setOpen(true)}type="submit" className="text-white bg-red-600 hover:bg-red-400 focus:ring-2 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-xs px-4 py-2 md:ml-60 lg:ml-64">Hapus Foto Profil</button>
+            <button onClick={() => setOpen(true)}type="submit" className="text-white bg-red-600 hover:bg-red-400 focus:ring-2 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-xs px-4 py-2">Hapus Foto Profil</button>
         
             <ModalDelPhoto open={open} onClose={() => setOpen(false)}>
                 <HiTrash size={56} className="mx-auto text-[#F77E21]"/>

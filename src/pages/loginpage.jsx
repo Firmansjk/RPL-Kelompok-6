@@ -19,7 +19,7 @@ function LoginPage() {
             </Link>
           </div>
           <div className="w-full lg:w-1/2 py-8 px-6 md:py-16 md:px-12 lg:py-16 lg:px-12 flex flex-col justify-center">
-            <h2 className="text-xl md:text-3xl lg:text-3xl mb-10 text-center text-[#F77E21] font-extrabold">Login Akun Catering</h2>
+            <h2 className="text-xl md:text-3xl lg:text-3xl mb-10 text-center text-[#F77E21] font-extrabold">Login Akun</h2>
             <form action="#">
               <div>
                   <label htmlFor="username" className="block mb-3 text-sm font-bold text-[#F77E21]">Username</label>
@@ -38,12 +38,12 @@ function LoginPage() {
                         <label htmlFor="remember" className="text-[#F77E21] font-semibold">Remember me</label>
                       </div>
                   </div>
-                  <Link to="/resetpassword" className="text-xs md:text-sm lg:text-sm font-semibold text-[#F77E21] hover:underline">
+                  <Link to="/forgetpassword" className="text-xs md:text-sm lg:text-sm font-semibold text-[#F77E21] hover:underline">
                     Lupa Password?
                   </Link>
               </div>
               <div className="mt-10 flex justify-center">
-                <Link to="/profile">
+                <Link to="/">
                   <button className="w-20 bg-[#F77E21] py-2 font-semibold rounded-lg text-center text-white transition-all hover:font-bold" type="button">Login</button>
                 </Link>
               </div>

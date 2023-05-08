@@ -17,7 +17,7 @@ export default function ButtonConfirmNewPass(){
                     <p className="text-base font-medium text-[#F77E21] mb-6">Kembali ke Halaman Awal untuk Login ke Akun</p>
                 </div>
 
-                <Link to="/">
+                <Link to="/loginpage">
                   <button className="w-28 bg-[#F77E21] py-2 font-semibold rounded-lg text-center text-white transition-all hover:font-bold ">Klik disini</button>
                 </Link>
             </ModalConfirmNP>

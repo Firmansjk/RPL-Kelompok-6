@@ -1,0 +1,86 @@
+[
+    {
+        "id": 1,
+        "title": "PAKET SUPER MENU 1",
+        "image": "https://tecdn.b-cdn.net/img/new/standard/nature/186.jpg",
+        "catering": "Toko Katering Anu",
+        "listmenu": ["Nasi Goreng", "Es Buah", "Ayam Bakar", "Pisang Ijo"]
+    },
+    {
+        "id": 2,
+        "title": "PAKET MENU 1",
+        "image": "https://tecdn.b-cdn.net/img/new/standard/nature/186.jpg",
+        "catering": "Berkah Catering",
+        "listmenu": ["Nasi Goreng", "Es Buah", "Ayam Bakar", "Pisang Ijo"]
+    },
+    {
+        "id": 3,
+        "title": "PAKET MENU 1",
+        "image": "https://tecdn.b-cdn.net/img/new/standard/nature/186.jpg",
+        "catering": "Toko Katering Sungguminasa",
+        "listmenu": ["Nasi Goreng", "Es Buah", "Ayam Bakar", "Pisang Ijo"]
+    },
+    {
+        "id": 4,
+        "title": "PAKET MENU 1",
+        "image": "https://tecdn.b-cdn.net/img/new/standard/nature/186.jpg",
+        "catering": "Toko Katering Sungguminasa",
+        "listmenu": ["Nasi Goreng", "Es Buah", "Ayam Bakar", "Pisang Ijo"]
+    },
+    {
+        "id": 5,
+        "title": "PAKET MENU 1",
+        "image": "https://tecdn.b-cdn.net/img/new/standard/nature/186.jpg",
+        "catering": "Toko Katering Sungguminasa",
+        "listmenu": ["Nasi Goreng", "Es Buah", "Ayam Bakar", "Pisang Ijo"]
+    },
+    {
+        "id": 6,
+        "title": "PAKET MENU 1",
+        "image": "https://tecdn.b-cdn.net/img/new/standard/nature/186.jpg",
+        "catering": "Toko Katering Sungguminasa",
+        "listmenu": ["Nasi Goreng", "Es Buah", "Ayam Bakar", "Pisang Ijo"]
+    },
+    {
+        "id": 7,
+        "title": "PAKET MENU 1",
+        "image": "https://tecdn.b-cdn.net/img/new/standard/nature/186.jpg",
+        "catering": "Toko Katering Sungguminasa",
+        "listmenu": ["Nasi Goreng", "Es Buah", "Ayam Bakar", "Pisang Ijo"]
+    },
+    {
+        "id": 8,
+        "title": "PAKET MENU 1",
+        "image": "https://tecdn.b-cdn.net/img/new/standard/nature/186.jpg",
+        "catering": "Toko Katering Sungguminasa",
+        "listmenu": ["Nasi Goreng", "Es Buah", "Ayam Bakar", "Pisang Ijo"]
+    },
+    {
+        "id": 9,
+        "title": "PAKET MENU 1",
+        "image": "https://tecdn.b-cdn.net/img/new/standard/nature/186.jpg",
+        "catering": "Toko Katering Sungguminasa",
+        "listmenu": ["Nasi Goreng", "Es Buah", "Ayam Bakar", "Pisang Ijo"]
+    },
+    {
+        "id": 10,
+        "title": "PAKET MENU 1",
+        "image": "https://tecdn.b-cdn.net/img/new/standard/nature/186.jpg",
+        "catering": "Toko Katering Sungguminasa",
+        "listmenu": ["Nasi Goreng", "Es Buah", "Ayam Bakar", "Pisang Ijo"]
+    },
+    {
+        "id": 11,
+        "title": "PAKET MENU 1",
+        "image": "https://tecdn.b-cdn.net/img/new/standard/nature/186.jpg",
+        "catering": "Toko Katering Sungguminasa",
+        "listmenu": ["Nasi Goreng", "Es Buah", "Ayam Bakar", "Pisang Ijo"]
+    },
+    {
+        "id": 12,
+        "title": "PAKET MENU 1",
+        "image": "https://tecdn.b-cdn.net/img/new/standard/nature/186.jpg",
+        "catering": "Toko Katering Sungguminasa",
+        "listmenu": ["Nasi Goreng", "Es Buah", "Ayam Bakar", "Pisang Ijo"]
+    }
+]

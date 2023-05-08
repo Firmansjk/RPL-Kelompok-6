@@ -5,7 +5,7 @@ export default function ButtonPhoto(){
     const [open, setOpen] = useState(false)
     return(
         <div>
-            <button onClick={() => setOpen(true)}type="submit" className="text-white bg-[#F77E21] hover:bg-yellow-600 focus:ring-2 focus:outline-none focus:ring-yellow-300 font-medium rounded-lg text-xs px-4 py-2 md:ml-60 lg:ml-64">Ganti Foto Profil</button>
+            <button onClick={() => setOpen(true)}type="submit" className="text-white bg-[#F77E21] hover:bg-yellow-600 focus:ring-2 focus:outline-none focus:ring-yellow-300 font-medium rounded-lg text-xs px-4 py-2">Ganti Foto Profil</button>
         
             <ModalPhoto open={open} onClose={() => setOpen(false)}>
                 <form>
