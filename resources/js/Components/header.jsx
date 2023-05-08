@@ -57,7 +57,7 @@ function Header(){
                 <img src={logowhite} className="w-24" alt="logo"/>
             </div>
             <div className={toggleState === true ? "absolute w-full z-10 top-[4em] transition-all shadow-2xl" : "absolute w-full z-10 top-[-18em] transition-all shadow-2xl"}>
-                    <ul class="font-medium flex flex-col py-1 px-4 mt-4 rounded-lg bg-[#F77E21]">
+                    <ul className="font-medium flex flex-col py-1 px-4 mt-4 rounded-lg bg-[#F77E21]">
                         <li>
                             <Link href={route('vendor.profilepage')} className="flex flex-row gap-3 items-center py-2 pl-3 my-2 pr-4 text-white focus:bg-white focus:text-[#F77E21] rounded">
                                 <AiOutlineUser/>Profil

@@ -63,7 +63,7 @@ function LoginPage() {
                         <label htmlFor="remember" className="text-[#F77E21] font-semibold">Remember me</label>
                       </div>
                   </div>
-                  <Link to="" className="text-xs md:text-sm lg:text-sm font-semibold text-[#F77E21] hover:underline">
+                  <Link href={route('lupapass')} className="text-xs md:text-sm lg:text-sm font-semibold text-[#F77E21] hover:underline">
                     Lupa Password?
                   </Link>
               </div>
