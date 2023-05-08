@@ -1,8 +1,25 @@
 import { useState } from "react"
+import { useForm } from "@inertiajs/react";
 import ModalTambahMenu from "./modalTambahMenu"
 
 export default function ButtonTambahPaket() {
     const[open, setOpen] = useState(false)
+    const { data, setData, post, processing, errors } = useForm({
+        product_name: '',
+        product_desc: '',
+      })
+
+    const onSubmitHandler = (e) => {
+        e.preventDefault()
+        console.log(data)
+        post('/vendor/tambahpaket', {
+            preserveScroll: true,
+            onSuccess: () => {
+                console.log(res)
+            }
+        }, data)
+    }
+
 
     return(
         <div>
@@ -13,15 +30,15 @@ export default function ButtonTambahPaket() {
                     <p className="text-xl font-bold text-[#F77E21] mb-6">Tambah Menu Catering</p>
                 </div>
 
-                <form>
+                <form onSubmit={onSubmitHandler}>
                     <div class="mb-6">
                         <label for="email" className="block mb-2 text-md font-bold text-[#F77E21] text-start">NAMA MENU</label>
-                        <input type="text" id="text" className="bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg block w-full p-2.5" placeholder="Nama Menu Katering"/>
+                        <input type="text" id="nama_menu" name="nama_menu"  className="bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg block w-full p-2.5" placeholder="Nama Menu Katering" value={data.product_name} onChange={(e) => setData("product_name", e.target.value)}/>
                     </div>
                         
                     <div class="mb-6">
                         <label for="email" className="block mb-2 text-md font-bold text-[#F77E21] text-start">ISI MENU</label>
-                        <input type="text" id="text" className="bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg block w-full p-2.5" placeholder="Nama Menu Katering"/>
+                        <input type="text" id="isi_menu" name="isi_menu"  className="bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg block w-full p-2.5" placeholder="Nama Menu Katering" value={data.product_desc} onChange={(e) => setData("product_desc", e.target.value)}/>
                     </div>
                     
                     <div className="flex gap-4 mt-8">

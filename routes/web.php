@@ -80,8 +80,13 @@ route::middleware(['auth','role:vendor'])->group(function() {
     Route::get('/vendor/menupage', [VendorController::class, 'VendorMenu'])->
         name('vendor.menupage');
     
-    Route::get('/vendor/createeditmenu', [VendorController::class, 'CreateVendorMenu'])->
-        name('vendor.createeditmenu');
+    Route::post('/vendor/tambahpaket', [VendorController::class, 'AddPackets'])->
+        name('vendor.tambahpaket');
+    // Route::get('/vendor/createeditmenu', [VendorController::class, 'CreateVendorMenu'])->
+    //     name('vendor.createeditmenu');
+    // Route::resource('posts', PacketsController::class);
+    // Route::post('/vendor/menupage/store', [VendorController::class, 'StoreVendorMenu'])->
+    //     name('vendor.menupage.AddPackets');
 
     Route::post('/vendor/logout', [VendorController::class, 'VendorDestroy'])->
         name('vendor.logout');

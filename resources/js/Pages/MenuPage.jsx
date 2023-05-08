@@ -16,6 +16,9 @@ export default function MenuPage(props){
             setToggleState(index)
         }
     const menus = props.posts
+    // const Index = () => {
+    //     const { posts } = usePage().props;
+    //     const { data } = posts;
 
     return(
         <>

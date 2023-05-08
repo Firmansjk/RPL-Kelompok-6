@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
 use App\Models\User;
 use App\Models\VendorMenu;
 
@@ -117,6 +118,25 @@ class VendorController extends Controller
         return Inertia::render('MenuPage', [
             'posts' => $posts->toArray()
         ]);
+    }
+    public function AddPackets(Request $request)
+    {
+        // dd($request->all());
+        //set validation
+        $request->validate([
+            'product_name' => 'required',
+            'product_desc' => 'required',
+        ]);
+
+        //create post
+        $post = VendorMenu::create([
+            'product_name'  => $request->product_name,
+            'product_desc'  => $request->product_desc
+        ]);
+
+        // if($post) {
+        //     return Redirect::route('vendor.tambahpaket')->with('message', 'Data Berhasil Disimpan!');
+        // }
     }
 
      /**
