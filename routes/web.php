@@ -64,6 +64,10 @@ Route::get('/loginpage', function () {
     return Inertia::render('LoginPage');
 })->name('loginpage');
 
+Route::get('/lupaspass', function () {
+    return Inertia::render('lupaPass');
+})->name('lupapass');
+
 Route::middleware(['auth','role:admin'])->group(function () {
     Route::get('/admin/dashboard', [AdminController::class, 'AdminDashboard'])->name('admin.dashboard');
 });
@@ -94,8 +98,11 @@ route::middleware(['auth','role:vendor'])->group(function() {
     Route::post('/vendor/logout', [VendorController::class, 'VendorDestroy'])->
         name('vendor.logout');
 
-    Route::patch('/vendor/profilepage', [VendorController::class, 'VendorUpdate'])
-    ->name('profile.change');
+    Route::patch('/vendor/profilepage', [VendorController::class, 'VendorUpdate'])->
+        name('profile.change');
+        
+    Route::post('/vendor/profilepage', [VendorController::class, 'VendorProfilePicture'])->
+        name('image.upload');
 });
 
 // //route index login

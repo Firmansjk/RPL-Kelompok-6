@@ -28,6 +28,18 @@ class VendorController extends Controller
     
     public function VendorUpdate(Request $request)
     {
+        // $request->validate([
+        //     'name' => 'required',
+        //     'email' => 'required|email|unique:users,email',
+        //     'photo' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        // ]);
+        // if ($request->hasFile('photo')) {
+        //     $fileName = time().'_'.$request->file('photo')->getClientOriginalName();
+        //     $path = $request->file('photo')->storeAs('public/images', $fileName);
+        // } else {
+        //     $fileName = null;
+        // }
+
         $user = Auth::user();
         
         $user->name = $request->name;
@@ -36,6 +48,7 @@ class VendorController extends Controller
         $user->phone = $request->phone;
         $user->address = $request->address;
         $user->vendor_info = $request->vendor_info;
+        // $user->photo = $fileName;
         $user->photo = $request->photo;
 
         // // Menyimpan nama asli file foto yang diunggah
@@ -49,8 +62,20 @@ class VendorController extends Controller
 
         // if ($request->file('photo')) {
         //     $file = $request->file('photo');
-        //     $filename = date('Ymdhi').$file->getClientOriginalName();
+        //     $filename = time().$file->getClientOriginalName();
         //     $file->move(public_path('upload/vendor_images'),$filename);
+        //     $user['photo'] = $filename;
+        //     $user->photo = Storage::url($path);
+        // }
+
+        // $input = $request->all();
+
+        // if ($request->file('photo')) {
+        //     $file = $request->file('photo');
+        //     $destination_path = "public/upload/vendor_images";
+        //     $filename = time().$file->getClientOriginalName();
+        //     $path = $request->
+           
         //     $user['photo'] = $filename;
         // }
 
@@ -83,25 +108,47 @@ class VendorController extends Controller
     
         // $user->photo = $fileName;
 
-        $request->validate([
-            'photo' => 'required|image|max:2048'
-        ]);
+    //     $request->validate([
+    //         'photo' => 'required|image|max:2048'
+    //     ]);
 
-        // Mengambil file foto dari request
-    $photoFile = $request->file('photo');
+    //     // Mengambil file foto dari request
+    // $photoFile = $request->file('photo');
 
-    // Membuat nama file dengan timestamp untuk menghindari nama file yang sama
-    $filename = time() . '.' . $photoFile->getClientOriginalExtension();
+    // // Membuat nama file dengan timestamp untuk menghindari nama file yang sama
+    // $filename = time() . '.' . $photoFile->getClientOriginalExtension();
 
-    // Menyimpan file foto ke direktori public/upload/vendor_images dengan nama file yang telah dibuat
-    $photoFile->move(public_path('upload/vendor_images'), $filename);
+    // // Menyimpan file foto ke direktori public/upload/vendor_images dengan nama file yang telah dibuat
+    // $photoFile->move(public_path('upload/vendor_images'), $filename);
 
-    // Menyimpan nama file foto ke database
-    $user->photo = $filename;
+    // // Menyimpan nama file foto ke database
+    // $user->photo = $filename;
 
         $user->save();
         
         return redirect()->back()->with('success', 'Profile updated successfully!');
+    }
+
+    public function VendorProfilePicture(Request $request)
+    {  
+        $request->validate([
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+        ]);
+    
+        // dapatkan user yang sedang login
+        $user = Auth::user();
+    
+        // simpan gambar ke direktori storage/app/public/images
+        $path = $request->file('image')->store('public/images');
+    
+        // simpan data gambar ke database
+        $user->photo()->create([
+            'path' => $path,
+            'title' => $request->file('image')->getClientOriginalName(),
+        ]);
+    
+        // kembali ke halaman sebelumnya dengan pesan sukses
+        return back()->with('success', 'Image uploaded successfully.');
     }
 
 

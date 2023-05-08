@@ -1,6 +1,6 @@
 import { useState } from "react"
 import ModalConfirmNP from "./modalConfirmNP"
-import { Link } from "react-router-dom"
+import { Link } from "@inertiajs/react"
 
 export default function ButtonConfirmNewPass(){
     const [open, setOpen] = useState(false)
