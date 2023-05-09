@@ -1,4 +1,4 @@
-export default function ModalTambahMenu({open, onClose, children}){
+export default function ModalConfirmPass({open, onClose, children}){
     return(
         <div
             onClick={onClose}

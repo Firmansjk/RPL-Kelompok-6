@@ -1,7 +1,7 @@
-import ButtonConfirmNewPass from "../components/ForConfirmNewPass/ButtonConfirmNP";
-import logoOrange from "../image/logo tring.png";
+import ButtonConfirmNewPass from "../../components/userpage/ForConfirmNewPass/ButtonConfirmNP";
+import logoOrange from "../../image/logo tring.png";
 
-export default function ResetPassPage() {
+export default function ResetPassPageUser() {
     return (
       <>
       <div className="min-h-screen py-20 font-Montserrat" style={{backgroundImage: 'linear-gradient(160deg, #FFFFFF, #f5aa75'}}>

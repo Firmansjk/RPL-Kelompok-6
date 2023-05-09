@@ -1,5 +1,5 @@
-import ButtonConfirmPass from "../components/ForConfirmPass/buttonConfirmPass";
-import logoOrange from "../image/logo tring.png";
+import ButtonConfirmPass from "../../components/vendorpage/ForConfirmPass/buttonConfirmPass";
+import logoOrange from "../../image/logo tring.png";
 import { Link } from "react-router-dom";
 
 export default function LupaPassPage() {
@@ -23,7 +23,7 @@ export default function LupaPassPage() {
                     <ButtonConfirmPass/>
                 </div>
 
-                <Link to="/" className="mt-2 flex flex-col md:flex-row justify-center">
+                <Link to="/loginpagecatering" className="mt-2 flex flex-col md:flex-row justify-center">
                     <p className="text-sm md:text-base font-medium hover:font-semibold text-[#F77E21]">Kembali ke Halaman Awal</p>
                 </Link>
             </div>

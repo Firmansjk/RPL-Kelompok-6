@@ -1,12 +1,12 @@
 import React, { useState } from "react"
-import SideBar from "../components/sidebar";
-import Header from "../components/header";
-import ButtonHapusPK from "../components/ForPaketMenu/buttonHapusPK";
-import ButtonEP from "../components/ForPaketMenu/buttonEditPaket";
-import ButtonHapusMenu from "../components/ForMenuKatering/buttonHapusMenu";
-import ButtonEditMenu from "../components/ForMenuKatering/buttonEditMenu";
-import ButtonTambahPK from "../components/ForPaketMenu/buttonTambahPK";
-import ButtonTambahMenu from "../components/ForMenuKatering/buttonTambahMenu";
+import SideBar from "../../components/vendorpage/sidebar";
+import Header from "../../components/vendorpage/header";
+import ButtonHapusPK from "../../components/vendorpage/ForPaketMenu/buttonHapusPK";
+import ButtonEP from "../../components/vendorpage/ForPaketMenu/buttonEditPaket";
+import ButtonHapusMenu from "../../components/vendorpage/ForMenuKatering/buttonHapusMenu";
+import ButtonEditMenu from "../../components/vendorpage/ForMenuKatering/buttonEditMenu";
+import ButtonTambahPK from "../../components/vendorpage/ForPaketMenu/buttonTambahPK";
+import ButtonTambahMenu from "../../components/vendorpage/ForMenuKatering/buttonTambahMenu";
 
 function MenuPage(){
 
@@ -72,6 +72,9 @@ function MenuPage(){
                                                         <th scope="col" className="px-6 py-3">
                                                             Daftar Menu
                                                         </th>
+                                                        <th scope="col" className="px-6 py-3">
+                                                            Harga Menu
+                                                        </th>
                                                         <th scope="col" className="px-6 py-3 w-[8em] md:w-[15em] lg:w-[15em]">
                                                             Aksi
                                                         </th>
@@ -93,6 +96,9 @@ function MenuPage(){
                                                             <p>Nasi Kuning</p>
                                                             <p>Nasi Kuning</p>
                                                             <p>Nasi Kuning</p>
+                                                        </td>
+                                                        <td className="px-6 py-4 font-semibold border-r-2">
+                                                            <p><span>Rp.</span></p>
                                                         </td>
                                                         <td className="px-6 py-4 flex flex-col md:flex-row lg:flex-row gap-2 content-center">
                                                             <ButtonHapusPK/>
@@ -139,6 +145,9 @@ function MenuPage(){
                                                         <th scope="col" className="px-6 py-3">
                                                             Gambar Menu
                                                         </th>
+                                                        <th scope="col" className="px-6 py-3">
+                                                            Harga Menu
+                                                        </th>
                                                         <th scope="col" className="px-6 py-3 w-[8em] md:w-[15em] lg:w-[15em]">
                                                             Aksi
                                                         </th>
@@ -154,6 +163,9 @@ function MenuPage(){
                                                         </td>
                                                         <td className="px-6 py-4 border-r-2">
                                                             <img className="inline-block h-16 w-24 rounded-lg" src="images/login_page.png" alt=""/>
+                                                        </td>
+                                                        <td className="px-6 py-4 font-medium border-r-2">
+                                                            <p><span>Rp.</span> </p>
                                                         </td>
                                                         <td className="px-6 py-4 flex flex-col md:flex-row lg:flex-row gap-2 content-center">
                                                             <ButtonHapusMenu/>

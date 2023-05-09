@@ -1,20 +1,20 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import sidePict from '../image/login_page.png';
-import logowhite from '../image/logo tring white.png';
+import sidePict from '../../image/login_page.png';
+import logowhite from '../../image/logo tring white.png';
 
 function LoginPage() {
   return (
     <>
     <div className="min-h-screen py-20 font-Montserrat" style={{backgroundImage: 'linear-gradient(160deg, #FFFFFF, #f5aa75'}}>
       <div className="container mx-auto">
-        <div className="flex flex-col xl:h-[34em] content-center lg:flex-row w-10/12 lg:w-8/12 bg-white rounded-xl mx-auto shadow-lg overflow-hidden">
+        <div className="flex flex-col-reverse xl:h-[34em] content-center lg:flex-row w-10/12 lg:w-8/12 bg-white rounded-xl mx-auto shadow-lg overflow-hidden">
           <div className="w-full lg:w-1/2 flex flex-col items-center justify-center p-12 bg-no-repeat bg-cover bg-center bg-repeat-space" style={{backgroundImage: `url(${sidePict})`}}>
             <img src={logowhite} className="w-64 ml-[-1em]" alt="img"/>
             <div>
               <p className="text-white font-bold text-[1.5em]">Belum Punya Akun?</p>
             </div>
-            <Link to="/register" className="bg-white mt-10 mb-6 px-6 py-2 rounded-lg text-[#F77E21] font-semibold transition-all hover:bg-[#e4e1e1]">
+            <Link to="/registerpagecatering" className="bg-white mt-10 mb-6 px-6 py-2 rounded-lg text-[#F77E21] font-semibold transition-all hover:bg-[#e4e1e1]">
               <button type="button">Buat Akun Baru</button>
             </Link>
           </div>
@@ -38,13 +38,16 @@ function LoginPage() {
                         <label htmlFor="remember" className="text-[#F77E21] font-semibold">Remember me</label>
                       </div>
                   </div>
-                  <Link to="/resetpassword" className="text-xs md:text-sm lg:text-sm font-semibold text-[#F77E21] hover:underline">
+                  <Link to="/resetpasswordcatering" className="text-xs text-right md:text-sm lg:text-sm font-semibold text-[#F77E21] hover:underline">
                     Lupa Password?
                   </Link>
               </div>
-              <div className="mt-10 flex justify-center">
-                <Link to="/profile">
+              <div className="mt-10 flex flex-col gap-6 items-center">
+                <Link to="/profilecatering">
                   <button className="w-20 bg-[#F77E21] py-2 font-semibold rounded-lg text-center text-white transition-all hover:font-bold" type="button">Login</button>
+                </Link>
+                <Link to="/" className='text-[#F77E21] text-sm font-semibold hover:font-bold'>
+                  Kembali ke halaman awal 
                 </Link>
               </div>
             </form>

@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
-import sidePict from '../image/login_page.png';
-import logowhite from '../image/logo tring white.png';
+import sidePict from '../../image/login_page.png';
+import logowhite from '../../image/logo tring white.png';
 
 function RegisterPage(){
     return(
@@ -13,7 +13,7 @@ function RegisterPage(){
             <div>
               <p className="text-white font-bold text-[1.5em]">Sudah Punya Akun?</p>
             </div>
-            <Link to="/" className="bg-white mt-10 mb-6 px-6 py-2 rounded-lg text-[#F77E21] font-semibold transition-all hover:bg-[#e4e1e1]">
+            <Link to="/loginpagecatering" className="bg-white mt-10 mb-6 px-6 py-2 rounded-lg text-[#F77E21] font-semibold transition-all hover:bg-[#e4e1e1]">
               <button type="button">Login Akun</button>
             </Link>
           </div>
@@ -37,7 +37,7 @@ function RegisterPage(){
                   <input type="password" name="password" id="password" placeholder="••••••••" className="bg-white border border-[#F77E21] text-black sm:text-sm rounded-lg block w-full p-2.5 placeholder-gray-400" required=""/>
               </div>
               <div className="mt-6 flex justify-center">
-                <Link to="/">
+                <Link to="/loginpagecatering">
                   <button className="w-28 bg-[#F77E21] py-2 font-semibold rounded-lg text-center text-white transition-all hover:font-bold ">Register</button>
                 </Link>
               </div>

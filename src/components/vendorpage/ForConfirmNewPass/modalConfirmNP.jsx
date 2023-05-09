@@ -1,4 +1,4 @@
-export default function ModalEditPK({open, onClose, children}){
+export default function ModalConfirmNP({open, onClose, children}){
     return(
         <div
             onClick={onClose}

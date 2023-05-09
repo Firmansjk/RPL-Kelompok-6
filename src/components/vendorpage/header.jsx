@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
-import profileImg from '../image/profile.png'
-import logowhite from "../image/logo tring white.png"
+import profileImg from '../../image/profile.png'
+import logowhite from "../../image/logo tring white.png"
 import {useEffect, useRef, useState} from "react";
 import { HiMenu, HiMenuAlt1 } from "react-icons/hi";
 import { AiOutlineUser } from "react-icons/ai";
@@ -38,11 +38,11 @@ function Header(){
                     </button>
                     <div id="ProfileDropDown" className={toggleState === true ? "rounded block shadow-md bg-white absolute mt-40 right-5 z-10 overflow-hidden" : "rounded hidden shadow-md bg-white absolute mt-48 right-5 z-10"}>
                         <ul className="list-reset group">
-                            <Link to="/profile" className="no-underline px-4 py-2 block text-black hover:bg-[#F77E21] hover:text-white">
+                            <Link to="/profilecatering" className="no-underline px-4 py-2 block text-black hover:bg-[#F77E21] hover:text-white">
                                 Profil Akun
                             </Link>
                             <li><hr className="border-t mx-2 border-grey-light"/></li>
-                            <Link to="/" className="no-underline px-4 py-2 block text-black hover:bg-[#F77E21] hover:text-white">
+                            <Link to="/loginpagecatering" className="no-underline px-4 py-2 block text-black hover:bg-[#F77E21] hover:text-white">
                                 Logout
                             </Link>
                         </ul>
@@ -59,14 +59,14 @@ function Header(){
             <div className={toggleState === true ? "absolute w-full z-10 top-[4em] transition-all shadow-2xl" : "absolute w-full z-10 top-[-18em] transition-all shadow-2xl"}>
                     <ul class="font-medium flex flex-col py-1 px-4 mt-4 rounded-lg bg-[#F77E21]">
                         <li>
-                            <Link to='/profile' className="flex flex-row gap-3 items-center py-2 pl-3 my-2 pr-4 text-white focus:bg-white focus:text-[#F77E21] rounded">
+                            <Link to='/profilecatering' className="flex flex-row gap-3 items-center py-2 pl-3 my-2 pr-4 text-white focus:bg-white focus:text-[#F77E21] rounded">
                                 <AiOutlineUser/>Profil
                             </Link>
-                            <Link to='/menu' className="flex flex-row gap-3 items-center py-2 pl-3 my-2 pr-4 text-white focus:bg-white focus:text-[#F77E21] rounded">
+                            <Link to='/menucatering' className="flex flex-row gap-3 items-center py-2 pl-3 my-2 pr-4 text-white focus:bg-white focus:text-[#F77E21] rounded">
                                 <HiMenu/>Menu
                             </Link>
                             <li><hr className="border-t mx-2 border-grey-light"/></li>
-                            <Link to='/' className="block py-2 pl-3 my-2 pr-4 text-white hover:bg-white hover:text-[#F77E21] rounded">
+                            <Link to='/loginpagecatering' className="block py-2 pl-3 my-2 pr-4 text-white hover:bg-white hover:text-[#F77E21] rounded">
                                 Logout
                             </Link>
                         </li>

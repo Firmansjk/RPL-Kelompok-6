@@ -2,12 +2,12 @@ import React, { useState } from "react";
 import { HiMenu, HiMenuAlt3 } from "react-icons/hi";
 import { AiOutlineUser,} from "react-icons/ai";
 import { Link } from "react-router-dom";
-import LogoOrange from "../image/logo tring.png"
+import LogoOrange from "../../image/logo tring.png"
 
 const SideBar = () => {
   const menus = [
-    { name: "Profile", link:"/profile", icon: AiOutlineUser },
-    { name: "Menu", link:"/menu", icon: HiMenu}
+    { name: "Profile", link:"/profilecatering", icon: AiOutlineUser },
+    { name: "Menu", link:"/menucatering", icon: HiMenu}
   ];
   const [open, setOpen] = useState(true);
   return (

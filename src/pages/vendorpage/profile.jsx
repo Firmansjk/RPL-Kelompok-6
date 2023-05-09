@@ -1,11 +1,11 @@
 import React from "react";
-import SideBar from "../components/sidebar";
-import Header from "../components/header";
-import img from "../image/image.png"
-import profileImg from "../image/profile.png"
-import ButtonChangePSampul from "../components/ForChangePhotoCatering/buttonChangePSampul";
-import ButtonPhoto from "../components/ForChangePhoto/buttonPhoto";
-import ButtonHapusPhoto from "../components/ForChangePhoto/buttonHapusPhoto";
+import SideBar from "../../components/vendorpage/sidebar";
+import Header from "../../components/vendorpage/header";
+import img from "../../image/image.png"
+import profileImg from "../../image/profile.png"
+import ButtonChangePSampul from "../../components/vendorpage/ForChangePhotoCatering/buttonChangePSampul";
+import ButtonPhoto from "../../components/vendorpage/ForChangePhoto/buttonPhoto";
+import ButtonHapusPhoto from "../../components/vendorpage/ForChangePhoto/buttonHapusPhoto";
 
 function ProfilePage () {
     return(
@@ -17,10 +17,10 @@ function ProfilePage () {
                     <main className="bg-white-300 flex-1 overflow-hidden mb-6">
                         <Header/>
                         <div className="flex flex-col pt-4 mr-3">
-                            <div className="mt-20 md:mt-0 ml-6 mr-2">
+                            <div className="flex flex-col items-center md:block mt-20 md:mt-0 ml-6 mr-2">
                                 <img className="w-full h-40 lg:h-72 rounded-2xl object-cover" src={img} alt="Food Img"/>
                                 <ButtonChangePSampul/>
-                                <div className="absolute flex flex-row ap-2 mt-12 md:hidden">
+                                <div className="absolute flex flex-row gap-2 mt-64 md:hidden">
                                     <ButtonPhoto/>
                                     <ButtonHapusPhoto/>
                                 </div>
@@ -28,7 +28,7 @@ function ProfilePage () {
                                     <ButtonPhoto/>
                                     <ButtonHapusPhoto/>
                                 </div>
-                                <div className="relative overflow-hidden left-[50%] translate-x-[-50%] top-[-5em] w-28 h-28 md:w-44 md:h-44 md:left-[7em] md:translate-x[0%] md:top-[-4.5em] lg:w-52 lg:h-52 lg:top-[-5.5em] border border-white border-8 rounded-full">
+                                <div className="relative overflow-hidden top-[-5em] w-28 h-28 md:w-44 md:h-44 md:left-[1em] md:top-[-4.5em] lg:w-52 lg:h-52 lg:top-[-5.5em] border border-white border-8 rounded-full">
                                     <img className="w-full h-full object-cover" src={profileImg} alt="Profile Img"/>
                                 </div>
                             </div>
