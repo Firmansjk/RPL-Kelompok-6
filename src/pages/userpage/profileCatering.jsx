@@ -43,7 +43,7 @@ export default function ProfileCateringPage(){
                             className="rounded-t-lg w-full h-40 object-cover"
                             src="https://tecdn.b-cdn.net/img/new/standard/nature/186.jpg"
                             alt="" />
-                            <div class="px-6 pt-6 pb-0">
+                            <div className="px-6 pt-6 pb-0">
                                 <div className="flex flex-col md:flex-row justify-between items-center gap-3">
                                     <div>
                                         <p
@@ -51,13 +51,19 @@ export default function ProfileCateringPage(){
                                         PAKET SUPER MENU 1
                                         </p>
                                         <p
-                                        className="mb-1 text-sm md:text-left font-semibold leading-tight text-neutral-800">
+                                        className="mb-3 text-sm md:text-left font-semibold leading-tight text-neutral-800">
                                         Toko Katering Anu
                                         </p>
                                     </div>
                                 </div>
                             </div>
-                            <ButtonShowMorePM/>
+                            <div className="w-full flex flex-col-reverse lg:flex-row justify-between items-center">
+                                <ButtonShowMorePM/>
+                                <p
+                                className="mr-0 mt-3 lg:mt-0 lg:mr-6 text-sm md:text-right font-semibold leading-tight text-[#F77E21]">
+                                <span>Rp.</span>10000<span>/pax</span>
+                                </p>
+                            </div>
                         </div>
 
                         <div className="flex flex-col justify-center items-start rounded-lg bg-white shadow-xl">
@@ -65,7 +71,7 @@ export default function ProfileCateringPage(){
                             className="rounded-t-lg w-full h-40 object-cover"
                             src="https://tecdn.b-cdn.net/img/new/standard/nature/186.jpg"
                             alt="" />
-                            <div class="px-6 pt-6 pb-0">
+                            <div className="px-6 pt-6 pb-0">
                                 <div className="flex flex-col md:flex-row justify-between items-center gap-3">
                                     <div>
                                         <p
@@ -73,13 +79,19 @@ export default function ProfileCateringPage(){
                                         PAKET SUPER MENU 1
                                         </p>
                                         <p
-                                        className="mb-1 text-sm md:text-left font-semibold leading-tight text-neutral-800">
+                                        className="mb-3 text-sm md:text-left font-semibold leading-tight text-neutral-800">
                                         Toko Katering Anu
                                         </p>
                                     </div>
                                 </div>
                             </div>
-                            <ButtonShowMorePM/>
+                            <div className="w-full flex flex-col-reverse lg:flex-row justify-between items-center">
+                                <ButtonShowMorePM/>
+                                <p
+                                className="mr-0 mt-3 lg:mt-0 lg:mr-6 text-sm md:text-right font-semibold leading-tight text-[#F77E21]">
+                                <span>Rp.</span>10000<span>/pax</span>
+                                </p>
+                            </div>
                         </div>
 
                         <div className="flex flex-col justify-center items-start rounded-lg bg-white shadow-xl">
@@ -87,7 +99,7 @@ export default function ProfileCateringPage(){
                             className="rounded-t-lg w-full h-40 object-cover"
                             src="https://tecdn.b-cdn.net/img/new/standard/nature/186.jpg"
                             alt="" />
-                            <div class="px-6 pt-6 pb-0">
+                            <div className="px-6 pt-6 pb-0">
                                 <div className="flex flex-col md:flex-row justify-between items-center gap-3">
                                     <div>
                                         <p
@@ -95,13 +107,19 @@ export default function ProfileCateringPage(){
                                         PAKET SUPER MENU 1
                                         </p>
                                         <p
-                                        className="mb-1 text-sm md:text-left font-semibold leading-tight text-neutral-800">
+                                        className="mb-3 text-sm md:text-left font-semibold leading-tight text-neutral-800">
                                         Toko Katering Anu
                                         </p>
                                     </div>
                                 </div>
                             </div>
-                            <ButtonShowMorePM/>
+                            <div className="w-full flex flex-col-reverse lg:flex-row justify-between items-center">
+                                <ButtonShowMorePM/>
+                                <p
+                                className="mr-0 mt-3 lg:mt-0 lg:mr-6 text-sm md:text-right font-semibold leading-tight text-[#F77E21]">
+                                <span>Rp.</span>10000<span>/pax</span>
+                                </p>
+                            </div>
                         </div>
                     </div>
                     <hr className="mt-12 w-full border border-[#F77E21]"/>
@@ -111,65 +129,83 @@ export default function ProfileCateringPage(){
                 <div className="mt-[2.5em] md:mt-10 flex flex-col justify-center content-center items-center md:block">
                     <p className="mb-8 text-2xl text-center md:text-left font-bold leading-tight text-neutral-800">LIST PILIHAN MENU TAMBAHAN :</p>
                     <div className="grid w-10/12 gap-x-8 gap-y-12 sm:w-11/12 sm:grid-cols-2 md:w-full md:grid-cols-2 xl:grid-cols-3">
-                        <div class="flex flex-col justify-start items-start rounded-lg bg-white shadow-xl">
+                        <div className="flex flex-col justify-center items-start rounded-lg bg-white shadow-xl">
                             <img
-                            class="rounded-t-lg w-full h-40 object-cover"
+                            className="rounded-t-lg w-full h-40 object-cover"
                             src="https://tecdn.b-cdn.net/img/new/standard/nature/186.jpg"
                             alt="" />
-                            <div class="px-6 pt-6 pb-3">
+                            <div className="px-6 pt-6 pb-0">
                                 <div className="flex flex-col md:flex-row justify-between items-center gap-3">
                                     <div>
                                         <p
-                                        class="mb-2 text-md text-center md:text-left font-bold leading-tight text-neutral-800">
+                                        className="mb-2 text-md md:text-left font-bold leading-tight text-neutral-800">
                                         NASI GORENG
                                         </p>
                                         <p
-                                        className="mb-1 text-sm md:text-left font-semibold leading-tight text-neutral-800">
+                                        className="mb-3 text-sm md:text-left font-semibold leading-tight text-neutral-800">
                                         Toko Katering Anu
                                         </p>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-
-                        <div class="flex flex-col justify-start items-start rounded-lg bg-white shadow-xl">
-                            <img
-                            class="rounded-t-lg w-full h-40 object-cover"
-                            src="https://tecdn.b-cdn.net/img/new/standard/nature/186.jpg"
-                            alt="" />
-                            <div class="px-6 pt-6 pb-3">
-                                <div className="flex flex-col md:flex-row justify-between items-center gap-3">
-                                    <div>
-                                        <p
-                                        class="mb-2 text-md text-center md:text-left font-bold leading-tight text-neutral-800">
-                                        CAPCAY GORENG
-                                        </p>
-                                        <p
-                                        className="mb-1 text-sm md:text-left font-semibold leading-tight text-neutral-800">
-                                        Toko Katering Anu
-                                        </p>
-                                    </div>
+                                <div className="w-full flex mb-5">
+                                    <p
+                                    className="mr-0 mt-3 lg:mt-0 lg:mr-6 text-sm md:text-right font-semibold leading-tight text-[#F77E21]">
+                                    <span>Rp.</span>10000
+                                    </p>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="flex flex-col justify-start items-start rounded-lg bg-white shadow-xl">
+                        <div className="flex flex-col justify-center items-start rounded-lg bg-white shadow-xl">
                             <img
-                            class="rounded-t-lg w-full h-40 object-cover"
+                            className="rounded-t-lg w-full h-40 object-cover"
                             src="https://tecdn.b-cdn.net/img/new/standard/nature/186.jpg"
                             alt="" />
-                            <div class="px-6 pt-6 pb-3">
+                            <div className="px-6 pt-6 pb-0">
                                 <div className="flex flex-col md:flex-row justify-between items-center gap-3">
                                     <div>
                                         <p
-                                        class="mb-2 text-md text-center md:text-left font-bold leading-tight text-neutral-800">
-                                        IKAN BARONANG
+                                        className="mb-2 text-md md:text-left font-bold leading-tight text-neutral-800">
+                                        NASI GORENG
                                         </p>
                                         <p
-                                        className="mb-1 text-sm md:text-left font-semibold leading-tight text-neutral-800">
+                                        className="mb-3 text-sm md:text-left font-semibold leading-tight text-neutral-800">
                                         Toko Katering Anu
                                         </p>
                                     </div>
+                                </div>
+                                <div className="w-full flex mb-5">
+                                    <p
+                                    className="mr-0 mt-3 lg:mt-0 lg:mr-6 text-sm md:text-right font-semibold leading-tight text-[#F77E21]">
+                                    <span>Rp.</span>10000
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className="flex flex-col justify-center items-start rounded-lg bg-white shadow-xl">
+                            <img
+                            className="rounded-t-lg w-full h-40 object-cover"
+                            src="https://tecdn.b-cdn.net/img/new/standard/nature/186.jpg"
+                            alt="" />
+                            <div className="px-6 pt-6 pb-0">
+                                <div className="flex flex-col md:flex-row justify-between items-center gap-3">
+                                    <div>
+                                        <p
+                                        className="mb-2 text-md md:text-left font-bold leading-tight text-neutral-800">
+                                        NASI GORENG
+                                        </p>
+                                        <p
+                                        className="mb-3 text-sm md:text-left font-semibold leading-tight text-neutral-800">
+                                        Toko Katering Anu
+                                        </p>
+                                    </div>
+                                </div>
+                                <div className="w-full flex mb-5">
+                                    <p
+                                    className="mr-0 mt-3 lg:mt-0 lg:mr-6 text-sm md:text-right font-semibold leading-tight text-[#F77E21]">
+                                    <span>Rp.</span>10000
+                                    </p>
                                 </div>
                             </div>
                         </div>
