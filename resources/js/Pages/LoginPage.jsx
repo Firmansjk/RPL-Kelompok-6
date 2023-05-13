@@ -1,8 +1,11 @@
 import React, {useStatev} from 'react';
+import { useEffect } from 'react';
+
 import { Link, useForm } from '@inertiajs/react';
 import '../App.css';
 import sidePict from '../image/login_page.png';
 import logowhite from '../image/logo tring white.png';
+import InputError from '@/Components/InputError';
 
 
 function LoginPage() {
@@ -11,6 +14,13 @@ function LoginPage() {
     password: '',
     remember: '',
 });
+
+useEffect(() => {
+  return () => {
+      reset('password');
+  };
+}, []);
+
 
   const handleOnChange = (event) => {
     setData(event.target.name, event.target.type === 'checkbox' ? event.target.checked : event.target.value);
@@ -44,6 +54,7 @@ function LoginPage() {
                   onChange={handleOnChange} 
                   className=" mb-5 bg-white border border-[#F77E21] text-black sm:text-sm rounded-lg block w-full p-2.5 placeholder-gray-400" 
                   />
+                  <InputError message={errors.email} className="mt-2" />
 
               </div>
               <div>
@@ -52,7 +63,7 @@ function LoginPage() {
                   onChange={handleOnChange}
                   className="mb-4 bg-white border border-[#F77E21] text-black sm:text-sm rounded-lg block w-full p-2.5 placeholder-gray-400" 
                   />
-
+                  <InputError message={errors.password} className="mt-2" />
               </div>
               <div className="flex items-center justify-between">
                   <div className="flex items-start">
@@ -68,9 +79,9 @@ function LoginPage() {
                   </Link>
               </div>
               <div className="mt-10 flex justify-center">
-                  <button 
+                  <button disabled={processing}
                   className="w-20 bg-[#F77E21] py-2 font-semibold rounded-lg text-center text-white transition-all hover:font-bold" type="submit">
-                    Login</button>
+                    Login </button>
               </div>
             </form>
           </div>

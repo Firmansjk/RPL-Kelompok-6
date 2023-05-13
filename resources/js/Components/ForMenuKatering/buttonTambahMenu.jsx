@@ -27,6 +27,11 @@ export default function ButtonTambahMenu() {
                         id="formFile" />
                         <p className="text-sm font-medium text-[#F77E21] mt-3 text-start">Klik "Pilih File" untuk menambah gambar</p>
                     </div>
+
+                    <div class="mb-6">
+                        <label for="email" className="block mb-2 text-md font-bold text-[#F77E21] text-start">HARGA MENU</label>
+                        <input type="number" id="number" className="bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg block w-full p-2.5" placeholder="Rp.10000"/>
+                    </div>
                     
                     <div className="flex gap-4 mt-8">
                         <button className="btn bg-green-600 text-white text-xs md:text-sm font-semibold py-2 rounded-lg w-full">Tambah Menu</button>

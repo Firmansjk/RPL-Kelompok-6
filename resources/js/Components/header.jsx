@@ -65,7 +65,7 @@ function Header(){
                             <Link to='/menu' className="flex flex-row gap-3 items-center py-2 pl-3 my-2 pr-4 text-white focus:bg-white focus:text-[#F77E21] rounded">
                                 <HiMenu/>Menu
                             </Link>
-                            <li><hr className="border-t mx-2 border-grey-light"/></li>
+                            <div><hr className="border-t mx-2 border-grey-light"/></div>
                             <Link href={route('logout')} method="post"  className="block py-2 pl-3 my-2 pr-4 text-white hover:bg-white hover:text-[#F77E21] rounded">
                                 Logout
                             </Link>

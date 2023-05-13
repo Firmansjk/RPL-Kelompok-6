@@ -86,6 +86,9 @@ route::middleware(['auth','role:vendor'])->group(function() {
     
     Route::post('/vendor/tambahpaket', [VendorController::class, 'AddPackets'])->
         name('vendor.tambahpaket');
+
+    Route::post('/vendor/tambahpaket', [VendorController::class, 'AddPackets'])->
+        name('vendor.tambahpaket');
     // Route::get('/vendor/createeditmenu', [VendorController::class, 'CreateVendorMenu'])->
     //     name('vendor.createeditmenu');
     // Route::resource('posts', PacketsController::class);
@@ -95,14 +98,21 @@ route::middleware(['auth','role:vendor'])->group(function() {
     Route::post('/vendor/logout', [VendorController::class, 'VendorDestroy'])->
         name('vendor.logout');
 
-    Route::post('/vendor/logout', [VendorController::class, 'VendorDestroy'])->
-        name('vendor.logout');
-
     Route::patch('/vendor/profilepage', [VendorController::class, 'VendorUpdate'])->
         name('profile.change');
         
-    Route::post('/vendor/profilepage', [VendorController::class, 'VendorProfilePicture'])->
+    Route::post('/vendor/profile/update', [VendorController::class, 'VendorProfilePicture'])->
         name('image.upload');
+
+    Route::post('/vendor/sampul/update', [VendorController::class, 'VendorSampulPicture'])->
+        name('image.upload');
+        
+    Route::post('/vendor/changepassword', [VendorController::class, 'VendorChangePassword'])->
+        name('vendor.changepassword');
+
+    Route::delete('vendor/delete-profile', [VendorController::class, 'VendorDeleteProfile'])->
+        name('vendor.deleteProfile');
+
 });
 
 // //route index login

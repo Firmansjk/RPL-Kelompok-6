@@ -21,8 +21,10 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->string('photo')->nullable();
+            $table->string('sampul')->nullable();
             $table->string('phone')->nullable();
             $table->text('address')->nullable();
+            $table->text('vendor_info')->nullable();
             $table->enum('role',['admin', 'vendor', 'user'])->default('user');
             $table->rememberToken();
             $table->timestamps();

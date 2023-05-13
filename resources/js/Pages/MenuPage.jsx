@@ -72,7 +72,13 @@ export default function MenuPage(props){
                                                             Paket Menu
                                                         </th>
                                                         <th scope="col" className="px-6 py-3">
+                                                            Gambar Menu
+                                                        </th>
+                                                        <th scope="col" className="px-6 py-3">
                                                             Isi Menu
+                                                        </th>
+                                                        <th scope="col" className="px-6 py-3">
+                                                            Harga Menu
                                                         </th>
                                                         <th scope="col" className="px-6 py-3 w-[8em] md:w-[15em] lg:w-[15em]">
                                                             Aksi
@@ -89,7 +95,13 @@ export default function MenuPage(props){
                                                             {menu.product_name}
                                                         </td>
                                                         <td className="px-6 py-4 border-r-2">
+                                                            <img className="inline-block h-16 w-24 rounded-lg" src="images/login_page.png" alt=""/>
+                                                        </td>
+                                                        <td className="px-6 py-4 border-r-2">
                                                             <p>{menu.product_desc}</p>
+                                                        </td>
+                                                        <td className="px-6 py-4 border-r-2">
+                                                            <p><span>Rp.</span></p>
                                                         </td>
                                                         <td className="px-6 py-4 flex flex-col md:flex-row lg:flex-row gap-2 content-center">
                                                             <ButtonHapusPK/>
@@ -138,6 +150,9 @@ export default function MenuPage(props){
                                                         <th scope="col" className="px-6 py-3">
                                                             Gambar Menu
                                                         </th>
+                                                        <th scope="col" className="px-6 py-3">
+                                                            Harga Menu
+                                                        </th>
                                                         <th scope="col" className="px-6 py-3 w-[8em] md:w-[15em] lg:w-[15em]">
                                                             Aksi
                                                         </th>
@@ -153,6 +168,9 @@ export default function MenuPage(props){
                                                         </td>
                                                         <td className="px-6 py-4 border-r-2">
                                                             <img className="inline-block h-16 w-24 rounded-lg" src="images/login_page.png" alt=""/>
+                                                        </td>
+                                                        <td className="px-6 py-4 font-medium border-r-2">
+                                                            <p><span>Rp.</span></p>
                                                         </td>
                                                         <td className="px-6 py-4 flex flex-col md:flex-row lg:flex-row gap-2 content-center">
                                                             <ButtonHapusMenu/>

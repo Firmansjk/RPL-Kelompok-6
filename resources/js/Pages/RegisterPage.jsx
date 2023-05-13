@@ -1,9 +1,33 @@
 // import '../app.css';
-import { Link } from '@inertiajs/react';
+import { Link, useForm } from '@inertiajs/react';
+import { useEffect } from 'react';
 import sidePict from './../../../public/images/login_page.png';
 import logowhite from './../../../public/images/logo tring white.png';
 
 function RegisterPage(){
+  const { data, setData, post, processing, errors, reset } = useForm({
+    name: '',
+    email: '',
+    password: '',
+    password_confirmation: '',
+});
+
+useEffect(() => {
+    return () => {
+        reset('password', 'password_confirmation');
+    };
+}, []);
+
+const handleOnChange = (event) => {
+    setData(event.target.name, event.target.type === 'checkbox' ? event.target.checked : event.target.value);
+};
+
+const submit = (e) => {
+    e.preventDefault();
+
+    post(route('register'));
+};
+
     return(
     <>
     <div className="min-h-screen py-20 font-Montserrat" style={{backgroundImage: 'linear-gradient(160deg, #FFFFFF, #f5aa75)'}}>
@@ -20,27 +44,59 @@ function RegisterPage(){
           </div>
           <div className="w-full lg:w-1/2 py-16 px-12 flex flex-col justify-center">
             <h2  className="text-3xl mb-5 text-center text-[#F77E21] font-extrabold">Register Akun Catering</h2>
-            <form action="#">
+            <form onSubmit={submit}>
               <div>
-                  <label htmlFor="username" className="block mb-2 text-sm font-bold text-[#F77E21]">Username</label>
-                  <input type="username" name="username" id="username" className=" mb-4 bg-white border border-[#F77E21] text-black sm:text-sm rounded-lg block w-full p-2.5 placeholder-gray-400" placeholder="Enter Username" required=""/>
+                  <label htmlFor="name" className="block mb-2 text-sm font-bold text-[#F77E21]">Username</label>
+                  <input 
+                  type="name" 
+                  name="name" 
+                  id="name"
+                  value={data.name}
+                  autoComplete="username"
+                  
+                  onChange={handleOnChange} 
+                  className=" mb-4 bg-white border border-[#F77E21] text-black sm:text-sm rounded-lg block w-full p-2.5 placeholder-gray-400" 
+          
+                  required=""/>
               </div>
               <div>
                 <label htmlFor="email" className="block mb-2 text-sm font-bold text-[#F77E21]">E-mail</label>
-                <input type="email" name="email" id="email" className=" mb-4 bg-white border border-[#F77E21] text-black sm:text-sm rounded-lg block w-full p-2.5 placeholder-gray-400" placeholder="email@something.com" required=""/>
+                <input 
+                type="email" 
+                name="email" 
+                id="email" 
+                value={data.email}
+                
+                onChange={handleOnChange}
+                className=" mb-4 bg-white border border-[#F77E21] text-black sm:text-sm rounded-lg block w-full p-2.5 placeholder-gray-400" 
+                required/>
               </div>
               <div>
-                <label htmlFor="username" className="block mb-2 text-sm font-bold text-[#F77E21]">No. Telepon</label>
-                <input type="username" name="username" id="username" className=" mb-4 bg-white border border-[#F77E21] text-black sm:text-sm rounded-lg block w-full p-2.5 placeholder-gray-400" placeholder="081xxxxxxxxx" required=""/>
+                <label htmlFor="password" className="block mb-2 text-sm font-bold text-[#F77E21]">Password</label>
+                <input 
+                type="password" 
+                name="password" 
+                id="password" 
+                value={data.password}
+                onChange={handleOnChange}
+                className=" mb-4 bg-white border border-[#F77E21] text-black sm:text-sm rounded-lg block w-full p-2.5 placeholder-gray-400" 
+                required/>
               </div>
               <div>
-                  <label htmlFor="password" className="block mb-2 text-sm font-bold text-[#F77E21]">Password</label>
-                  <input type="password" name="password" id="password" placeholder="••••••••" className="bg-white border border-[#F77E21] text-black sm:text-sm rounded-lg block w-full p-2.5 placeholder-gray-400" required=""/>
+                  <label htmlFor="password_confirmation" className="block mb-2 text-sm font-bold text-[#F77E21]">Confirm Password</label>
+                  <input 
+                  type="password" 
+                  name="password_confirmation" 
+                  id="password_confirmation" 
+                  value={data.password_confirmation}
+                  autoComplete="new-password"
+                  onChange={handleOnChange}
+                  
+                  className="bg-white border border-[#F77E21] text-black sm:text-sm rounded-lg block w-full p-2.5 placeholder-gray-400" 
+                  required/>
               </div>
               <div className="mt-6 flex justify-center">
-                <Link to="/">
                   <button className="w-28 bg-[#F77E21] py-2 font-semibold rounded-lg text-center text-white transition-all hover:font-bold ">Register</button>
-                </Link>
               </div>
             </form>
           </div>
