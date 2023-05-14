@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react"
+import React, { useState, useEffect, process} from "react"
 import SideBar from "../components/sidebar";
 import Header from "../components/header";
 import ButtonHapusPK from "../components/ForPaketMenu/buttonHapusPK";
@@ -10,14 +10,13 @@ import ButtonTambahPaket from "../components/ForMenuKatering/buttonTambahPaket";
 import { Link, useForm, usePage } from '@inertiajs/react';
 
 export default function MenuPage(){
-    
-    const { post } = useForm();
+    const {} = useForm();
     const [toggleState, setToggleState] = useState(1);
 
     const toggleTab  = (index1) =>{
             setToggleState(index1)
         }
-        const { packets = [] } = usePage().props;
+        const { packets = [], appUrl } = usePage().props;
         const { products = [] } = usePage().props;
     // const Index = () => {
     //     const { posts } = usePage().props;
@@ -104,7 +103,7 @@ export default function MenuPage(){
                                                         </td>
                                                         <td className="px-6 py-4 border-r-2">
                                                             
-                                                            <img className="inline-block h-16 w-24 rounded-lg" src={packet.packet_picture} alt={packet.packet_name} />
+                                                            <img className="inline-block h-16 w-24 rounded-lg" src={appUrl + '/' + packet.packet_picture} alt={packet.packet_name} />
                                                             
                                                         </td>
                                                         
