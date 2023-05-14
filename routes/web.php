@@ -117,12 +117,12 @@ route::middleware(['auth','role:vendor'])->group(function() {
 
 
 Route::controller(ProductController::class)->group(function(){
-    Route::get('/vendor/menupage', 'VendorAllProduct')->name('vendor.all.product');
+    Route::get('/vendor/all/product', 'VendorAllProduct')->name('vendor.all.product');
     Route::post('/vendor/add/product', 'VendorAddProduct')->name('vendor.add.product');
 });
 
 Route::controller(PacketsController::class)->group(function(){
-    Route::get('/vendor/all/packet', 'VendorAllPacket')->name('vendor.all.packet');
+    Route::get('/vendor/menupage', 'VendorAllPacket')->name('vendor.all.packet');
     Route::post('/vendor/add/packet', 'VendorAddPacket')->name('vendor.add.packet');
 });
 

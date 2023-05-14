@@ -10,14 +10,15 @@ import ButtonTambahPaket from "../components/ForMenuKatering/buttonTambahPaket";
 import { Link, useForm, usePage } from '@inertiajs/react';
 
 export default function MenuPage(){
-
+    
+    const { post } = useForm();
     const [toggleState, setToggleState] = useState(1);
 
     const toggleTab  = (index1) =>{
             setToggleState(index1)
         }
-    const { packets = [] } = usePage().props;
-    const { products = [] } = usePage().props;
+        const { packets = [] } = usePage().props;
+        const { products = [] } = usePage().props;
     // const Index = () => {
     //     const { posts } = usePage().props;
     //     const { data } = posts;
@@ -38,11 +39,11 @@ export default function MenuPage(){
                         <div className="flex flex-col">
                             <div className="mb-5 ml-4 mr-3 text-xs md:text-sm font-medium text-center text-gray-500 border-b border-gray-300">
                                 <ul className="flex flex-wrap -mb-px">
-                                    <li onClick={() => toggleTab(1)} className={toggleState === 1 ? "mr-2 inline-block p-4 text-[#F77E21] border-b-2 border-[#F77E21] font-bold rounded-t-lg" : "mr-2 inline-block p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300"}>
+                                <li onClick={() => toggleTab(1)} className={toggleState === 1 ? "mr-2 inline-block p-4 text-[#F77E21] border-b-2 border-[#F77E21] font-bold rounded-t-lg" : "mr-2 inline-block p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300"}>
                                         <button type="button">Paket Menu</button>
                                     </li>
                                     <li onClick={() => toggleTab(2)} className={toggleState === 2 ? "mr-2 inline-block p-4 text-[#F77E21] border-b-2 border-[#F77E21] font-bold rounded-t-lg" : "mr-2 inline-block p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300"}>
-                                        <button type="button">Menu Katering</button>
+                                    <button type="button">Menu Katering</button>
                                     </li>
                                 </ul>
                             </div>
@@ -93,17 +94,20 @@ export default function MenuPage(){
                                                     </tr>
                                                 </thead>
                                                 <tbody className="text-black">
-                                                    {packets.map((packet =>     
-                                                    <tr className="bg-white border-b">
+                                                    {packets.map((packet, index) =>     
+                                                    <tr key={index} className="bg-white border-b">
                                                         <th scope="row" className="px-6 py-4 font-medium whitespace-nowrap border-r-2">
-                                                            1
+                                                            {index + 1}
                                                         </th>
                                                         <td className="px-6 py-4 font-bold border-r-2">
                                                             {packet.packet_name}
                                                         </td>
                                                         <td className="px-6 py-4 border-r-2">
-                                                            <img className="inline-block h-16 w-24 rounded-lg" src={`/upload/vendor_product/${packet.packet_picture}`} alt={packet.packet_name}/>
+                                                            
+                                                            <img className="inline-block h-16 w-24 rounded-lg" src={packet.packet_picture} alt={packet.packet_name} />
+                                                            
                                                         </td>
+                                                        
                                                         <td className="px-6 py-4 border-r-2">
                                                             <p>{packet.packet_desc}</p>
                                                         </td>
@@ -115,9 +119,10 @@ export default function MenuPage(){
                                                             <ButtonEP/>
                                                         </td>
                                                     </tr>
-                                                ))}
+                                                )}
                                                 </tbody>
-                                            </table>                                
+                                            </table> 
+                                                                           
                                         </div>
                                     </div>
                                 </div>
