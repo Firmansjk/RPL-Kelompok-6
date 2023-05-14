@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import SideBar from "../components/sidebar";
 import Header from "../components/header";
 import ButtonHapusPK from "../components/ForPaketMenu/buttonHapusPK";
@@ -7,18 +7,25 @@ import ButtonHapusMenu from "../components/ForMenuKatering/buttonHapusMenu";
 import ButtonEditMenu from "../components/ForMenuKatering/buttonEditMenu";
 import ButtonTambahMenu from "../components/ForMenuKatering/buttonTambahMenu";
 import ButtonTambahPaket from "../components/ForMenuKatering/buttonTambahPaket";
+import { Link, useForm, usePage } from '@inertiajs/react';
 
-export default function MenuPage(props){
+export default function MenuPage(){
 
     const [toggleState, setToggleState] = useState(1);
 
-        const toggleTab  = (index) =>{
-            setToggleState(index)
+    const toggleTab  = (index1) =>{
+            setToggleState(index1)
         }
-    const menus = props.posts
+    const { packets = [] } = usePage().props;
+    const { products = [] } = usePage().props;
     // const Index = () => {
     //     const { posts } = usePage().props;
     //     const { data } = posts;
+//     const [productList, setProductList] = useState([]);
+
+//   useEffect(() => {
+//     setProductList(products);
+//   }, [products]);
 
     return(
         <>
@@ -48,7 +55,7 @@ export default function MenuPage(props){
                                 <div className="flex flex-1 flex-col md:flex-row lg:flex-row lg:mr-4 ml-6 mr-3 mb-6 justify-between content-center">
                                     <div className="relative w-full md:w-[60%] lg:w-[70%]">
                                         <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                                            <svg aria-hidden="true" className="w-5 h-5 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                                            <svg aria-hidden="true" className="w-5 h-5 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
                                         </div>
                                         <input type="search" id="default-search" className="block w-full p-3 pl-10 text-sm text-black border border-[#F77E21] rounded-lg bg-white" placeholder="Cari Menu"/>
                                         <button type="submit" className="text-white absolute right-2.5 bottom-2 bg-blue-700 hover:bg-blue-800 focus:ring-2 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-xs px-3 py-2">Search</button>
@@ -75,7 +82,7 @@ export default function MenuPage(props){
                                                             Gambar Menu
                                                         </th>
                                                         <th scope="col" className="px-6 py-3">
-                                                            Isi Menu
+                                                            Daftar Menu
                                                         </th>
                                                         <th scope="col" className="px-6 py-3">
                                                             Harga Menu
@@ -86,29 +93,29 @@ export default function MenuPage(props){
                                                     </tr>
                                                 </thead>
                                                 <tbody className="text-black">
-                                                    {menus.map((menu =>
+                                                    {packets.map((packet =>     
                                                     <tr className="bg-white border-b">
                                                         <th scope="row" className="px-6 py-4 font-medium whitespace-nowrap border-r-2">
-                                                            {menu.id}
+                                                            1
                                                         </th>
                                                         <td className="px-6 py-4 font-bold border-r-2">
-                                                            {menu.product_name}
+                                                            {packet.packet_name}
                                                         </td>
                                                         <td className="px-6 py-4 border-r-2">
-                                                            <img className="inline-block h-16 w-24 rounded-lg" src="images/login_page.png" alt=""/>
+                                                            <img className="inline-block h-16 w-24 rounded-lg" src={`/upload/vendor_product/${packet.packet_picture}`} alt={packet.packet_name}/>
                                                         </td>
                                                         <td className="px-6 py-4 border-r-2">
-                                                            <p>{menu.product_desc}</p>
+                                                            <p>{packet.packet_desc}</p>
                                                         </td>
                                                         <td className="px-6 py-4 border-r-2">
-                                                            <p><span>Rp.</span></p>
+                                                            <p><span>Rp.</span>{packet.packet_price}</p>
                                                         </td>
                                                         <td className="px-6 py-4 flex flex-col md:flex-row lg:flex-row gap-2 content-center">
                                                             <ButtonHapusPK/>
                                                             <ButtonEP/>
                                                         </td>
                                                     </tr>
-                                                    ))}
+                                                ))}
                                                 </tbody>
                                             </table>                                
                                         </div>
@@ -124,7 +131,7 @@ export default function MenuPage(props){
                                 <div className="flex flex-1 flex-col md:flex-row lg:flex-row lg:mr-4 ml-6 mr-3 mb-6 justify-between content-center">
                                     <div className="relative w-full md:w-[60%] lg:w-[70%]">
                                         <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                                            <svg aria-hidden="true" className="w-5 h-5 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                                            <svg aria-hidden="true" className="w-5 h-5 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
                                         </div>
                                         <input type="search" id="default-search" className="block w-full p-3 pl-10 text-sm text-black border border-[#F77E21] rounded-lg bg-white" placeholder="Cari Menu"/>
                                         <button type="submit" className="text-white absolute right-2.5 bottom-2 bg-blue-700 hover:bg-blue-800 focus:ring-2 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-xs px-3 py-2">Search</button>
@@ -159,24 +166,26 @@ export default function MenuPage(props){
                                                     </tr>
                                                 </thead>
                                                 <tbody className="text-black">
+                                                {products.map(product => (
                                                     <tr className="bg-white border-b">
-                                                        <th scope="row" className="px-6 py-4 font-medium whitespace-nowrap border-r-2">
-                                                            1.
-                                                        </th>
+                                                        <td scope="row" className="px-6 py-4 font-medium whitespace-nowrap border-r-2">
+                                                            1
+                                                        </td>
                                                         <td className="px-6 py-4 font-medium border-r-2">
-                                                            Nasi Kuning
+                                                            {product.product_name}
                                                         </td>
                                                         <td className="px-6 py-4 border-r-2">
-                                                            <img className="inline-block h-16 w-24 rounded-lg" src="images/login_page.png" alt=""/>
+                                                            <img className="inline-block h-16 w-24 rounded-lg" src={`/upload/vendor_product/${product.product_picture}`} alt={product.product_name}/>
                                                         </td>
                                                         <td className="px-6 py-4 font-medium border-r-2">
-                                                            <p><span>Rp.</span></p>
+                                                            <p><span>Rp.</span>{product.product_price}</p>
                                                         </td>
                                                         <td className="px-6 py-4 flex flex-col md:flex-row lg:flex-row gap-2 content-center">
                                                             <ButtonHapusMenu/>
                                                             <ButtonEditMenu/>
                                                         </td>
                                                     </tr>
+                                                    ))}
                                                 </tbody>
                                             </table>                                
                                         </div>

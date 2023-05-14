@@ -7,6 +7,8 @@ use Inertia\Inertia;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\VendorController;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\PacketsController;
 
 
 
@@ -81,8 +83,8 @@ route::middleware(['auth','role:vendor'])->group(function() {
     Route::get('/vendor/profilepage', [VendorController::class, 'VendorProfile'])->
         name('vendor.profilepage');
 
-    Route::get('/vendor/menupage', [VendorController::class, 'VendorMenu'])->
-        name('vendor.menupage');
+    // Route::get('/vendor/menupage', [VendorController::class, 'VendorMenu'])->
+    //     name('vendor.menupage');
     
     Route::post('/vendor/tambahpaket', [VendorController::class, 'AddPackets'])->
         name('vendor.tambahpaket');
@@ -112,6 +114,17 @@ route::middleware(['auth','role:vendor'])->group(function() {
 
     Route::delete('vendor/delete-profile', [VendorController::class, 'VendorDeleteProfile'])->
         name('vendor.deleteProfile');
+
+
+Route::controller(ProductController::class)->group(function(){
+    Route::get('/vendor/menupage', 'VendorAllProduct')->name('vendor.all.product');
+    Route::post('/vendor/add/product', 'VendorAddProduct')->name('vendor.add.product');
+});
+
+Route::controller(PacketsController::class)->group(function(){
+    Route::get('/vendor/all/packet', 'VendorAllPacket')->name('vendor.all.packet');
+    Route::post('/vendor/add/packet', 'VendorAddPacket')->name('vendor.add.packet');
+});
 
 });
 

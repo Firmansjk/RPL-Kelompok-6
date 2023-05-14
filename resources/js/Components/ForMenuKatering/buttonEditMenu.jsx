@@ -28,7 +28,7 @@ export default function ButtonEditMenu(){
                     </div>
 
                     <div class="mb-6">
-                        <label for="email" className="block mb-2 text-md font-bold text-[#F77E21] text-start">HARGA MENU</label>
+                        <label for="harga" className="block mb-2 text-md font-bold text-[#F77E21] text-start">HARGA MENU</label>
                         <input type="number" id="number" className="bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg block w-full p-2.5" placeholder="Rp.10000"/>
                     </div>
 

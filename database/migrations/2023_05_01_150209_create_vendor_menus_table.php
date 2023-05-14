@@ -16,9 +16,10 @@ return new class extends Migration
         Schema::create('vendor_menus', function (Blueprint $table) {
             $table->id();
             $table->integer('product_type_id')->nullable();
-            $table->integer('vendor_id')->nullable();
             $table->string('product_name')->nullable();
-            $table->string('product_desc')->nullable();
+            $table->string('product_price')->nullable();
+            $table->string('product_picture')->nullable();
+            $table->integer('vendor_id')->nullable();
             $table->timestamps();
         });
     }
