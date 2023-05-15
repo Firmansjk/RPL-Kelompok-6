@@ -39,4 +39,18 @@ class ProductController extends Controller
 
         return redirect()->back();
     }
+    public function VendorProductDelete($id){
+
+        $product = Product::findOrFail($id);
+        unlink($product->product_picture);
+        $product->delete();
+
+        $notification = array(
+            'message' => 'Vendor Product Deleted Successfully',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->back()->with($notification);
+
+    }// End Method 
 }

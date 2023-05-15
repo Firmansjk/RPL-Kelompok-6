@@ -2,15 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Packets;
+use App\Models\Packet;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Image;
 use Inertia\Inertia;
+use App\Models\Product;
 
-class PacketsController extends Controller
+class PacketController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -20,8 +21,9 @@ class PacketsController extends Controller
     public function VendorAllPacket()
     {
         $id = Auth::user()->id;
-        $packets = Packets::where('vendor_id', $id)->latest()->get();
-        return Inertia::render('MenuPage', compact('packets'));
+        $packets = Packet::where('vendor_id', $id)->latest()->get();
+        $products = Product::where('vendor_id', $id)->latest()->get();
+        return Inertia::render('MenuPage', compact('packets', 'products'));
     }
 
     public function VendorAddPacket(Request $request)
@@ -31,7 +33,7 @@ class PacketsController extends Controller
         Image::make($image)->resize(800,800)->save('upload/packets/'.$name_gen);
         $save_url = 'upload/packets/'.$name_gen;
 
-        $packet_id = Packets::insertGetId([
+        $packet_id = Packet::insertGetId([
             'packet_name' => $request->packet_name,
             'packet_price' => $request->packet_price,
             'packet_desc' => $request->packet_desc,
@@ -41,6 +43,73 @@ class PacketsController extends Controller
 
         return redirect()->back();
     }
+
+    public function VendorUpdatePacket(Request $request, $id)
+{
+    $image = $request->file('packet_picture');
+    $packet = Packet::find($id);
+
+    if ($image) {
+        $name_gen = hexdec(uniqid()) . '.' . $image->getClientOriginalExtension();
+        Image::make($image)->resize(800, 800)->save('upload/packets/' . $name_gen);
+        $save_url = 'upload/packets/' . $name_gen;
+
+        $packet->packet_picture = $save_url;
+    }
+
+    $packet->packet_name = $request->packet_name;
+    $packet->packet_price = $request->packet_price;
+    $packet->packet_desc = $request->packet_desc;
+    $packet->save();
+
+    return redirect()->back();
+}
+
+public function VendorDeletePacket($id)
+{
+    $packet = Packet::findOrFail($id);
+    $packet->delete();
+
+    return redirect()->back();
+}
+
+
+    public function VendorEditProduct($id){
+        $products = Product::findOrFail($id);
+        return Inertia::render('MenuPage', compact('packets'));
+    }// End Method
+
+    public function VendorUpdateProduct(Request $request){
+
+        $product_id = $request->id;
+
+        Product::findOrFail($product_id)->update([
+
+            'packet_name' => $request->packet_name,
+            'packet_price' => $request->packet_price,
+            'packet_desc' => $request->packet_desc, 
+        ]);
+
+
+   return redirect()->back(); 
+
+}// End Method 
+
+    public function VendorPacketDelete($id){
+
+        $packet = Packet::findOrFail($id);
+        unlink($packet->packet_picture);
+        $packet->delete();
+
+        $notification = array(
+            'message' => 'Vendor Product Deleted Successfully',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->back()->with($notification);
+
+    }// End Method 
+
 
     /**
      * Store a newly created resource in storage.
@@ -111,4 +180,7 @@ class PacketsController extends Controller
 
         return Redirect::route('posts.index');
     }
+
+
+    
 }

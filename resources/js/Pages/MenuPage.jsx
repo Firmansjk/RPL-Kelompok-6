@@ -115,7 +115,8 @@ export default function MenuPage(){
                                                             <p><span>Rp.</span>{packet.packet_price}</p>
                                                         </td>
                                                         <td className="px-6 py-4 flex flex-col md:flex-row lg:flex-row gap-2 content-center">
-                                                            <ButtonHapusPK/>
+                                                            <ButtonHapusPK packetId={packet.id}/>
+                                                            
                                                             <ButtonEP/>
                                                         </td>
                                                     </tr>
@@ -171,10 +172,10 @@ export default function MenuPage(){
                                                     </tr>
                                                 </thead>
                                                 <tbody className="text-black">
-                                                {products.map(product => (
-                                                    <tr className="bg-white border-b">
+                                                {products.map((product, index) =>
+                                                    <tr key={index} className="bg-white border-b">
                                                         <td scope="row" className="px-6 py-4 font-medium whitespace-nowrap border-r-2">
-                                                            1
+                                                        {index + 1}
                                                         </td>
                                                         <td className="px-6 py-4 font-medium border-r-2">
                                                             {product.product_name}
@@ -186,11 +187,11 @@ export default function MenuPage(){
                                                             <p><span>Rp.</span>{product.product_price}</p>
                                                         </td>
                                                         <td className="px-6 py-4 flex flex-col md:flex-row lg:flex-row gap-2 content-center">
-                                                            <ButtonHapusMenu/>
+                                                            <ButtonHapusMenu productId={product.id}/>
                                                             <ButtonEditMenu/>
                                                         </td>
                                                     </tr>
-                                                    ))}
+                                                    )}
                                                 </tbody>
                                             </table>                                
                                         </div>

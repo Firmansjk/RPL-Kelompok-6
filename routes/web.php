@@ -8,7 +8,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\VendorController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\ProductController;
-use App\Http\Controllers\PacketsController;
+use App\Http\Controllers\PacketController;
 
 
 
@@ -119,11 +119,15 @@ route::middleware(['auth','role:vendor'])->group(function() {
 Route::controller(ProductController::class)->group(function(){
     Route::get('/vendor/all/product', 'VendorAllProduct')->name('vendor.all.product');
     Route::post('/vendor/add/product', 'VendorAddProduct')->name('vendor.add.product');
+    Route::delete('/vendor/delete/{id}' , 'VendorProductDelete')->name('vendor.delete.product');
 });
 
-Route::controller(PacketsController::class)->group(function(){
+Route::controller(PacketController::class)->group(function(){
     Route::get('/vendor/menupage', 'VendorAllPacket')->name('vendor.all.packet');
     Route::post('/vendor/add/packet', 'VendorAddPacket')->name('vendor.add.packet');
+    Route::post('/vendor/edit/packet/{id}' , 'VendorEditPacket')->name('vendor.edit.packet');
+    Route::delete('/vendor/hapus/{id}' , 'VendorPacketDelete')->name('vendor.delete.packet');
+    // Route::post('/vendor/update/product' , 'VendorUpdateProduct')->name('vendor.update.product');
 });
 
 });

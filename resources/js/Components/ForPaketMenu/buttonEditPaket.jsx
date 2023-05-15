@@ -1,8 +1,21 @@
 import { useState } from "react"
 import ModalEditPK from "./modalEditPaket"
+import { Link, useForm, usePage } from '@inertiajs/react';
 
 export default function ButtonEditPaket(){
     const [open, setOpen] = useState(false)
+    const { product } = usePage().props;
+    const { data, setData, put } = useForm({ product });
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    put(route('vendor.update.product', { id: productId }));
+  };
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setData(name, value);
+  };
     return(
         <div>
             <button onClick={() => setOpen(true)}type="submit" className="text-black bg-[#22D7FF] hover:bg-cyan-300 focus:ring-2 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-xs px-4 py-2">Edit</button>
@@ -12,10 +25,16 @@ export default function ButtonEditPaket(){
                     <p className="text-xl font-bold text-[#F77E21] mb-6">Edit Paket Menu</p>
                 </div>
 
-                <form>
+                <form onSubmit={handleSubmit}>
                     <div class="mb-6">
-                        <label for="paketmenu" className="block mb-2 text-md font-bold text-[#F77E21] text-start">NAMA PAKET MENU</label>
-                        <input type="text" id="text" className="bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg block w-full p-2.5" placeholder="Nama Paket Menu"/>
+                        <label for="packet_name" className="block mb-2 text-md font-bold text-[#F77E21] text-start">NAMA PAKET MENU</label>
+                        <input 
+                        type="text" 
+                        id="packet_name" 
+                        name="packet_name"
+                        value={data.packet_name} onChange={handleInputChange}
+                        className="bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg block w-full p-2.5" 
+                        placeholder="Nama Paket Menu"/>
                     </div>
                     
                     <div class="mb-6">
@@ -28,13 +47,27 @@ export default function ButtonEditPaket(){
                     </div>
 
                     <div class="mb-6">
-                        <label for="message" className="block mb-2 text-md font-bold text-[#F77E21] text-start">DAFTAR MENU</label>
-                        <textarea id="message" style={{resize: "none"}} className="block p-2.5 h-28 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-400" placeholder="Daftar Menu"></textarea>
+                        <label for="packet_desc" className="block mb-2 text-md font-bold text-[#F77E21] text-start">DAFTAR MENU</label>
+                        <input 
+                        id="packet_desc" 
+                        type="text"
+                        name="packet_desc"
+                        value={data.packet_desc} 
+                        onChange={handleInputChange}
+                        className="block p-2.5 h-28 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-400" 
+                        placeholder="Daftar Menu"></input>
                     </div>
 
                     <div class="mb-6">
-                        <label for="harga" className="block mb-2 text-md font-bold text-[#F77E21] text-start">HARGA MENU</label>
-                        <input type="number" id="number" className="bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg block w-full p-2.5" placeholder="Rp.10000"/>
+                        <label for="packet_price" className="block mb-2 text-md font-bold text-[#F77E21] text-start">HARGA MENU</label>
+                        <input 
+                        type="text" 
+                        id="packet_price" 
+                        name="packet_price"
+                        value={data.packet_price} 
+                        onChange={handleInputChange}
+                        className="bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg block w-full p-2.5" 
+                        placeholder="Rp.10000"/>
                     </div>
 
                     <div className="flex gap-4 mt-8">
