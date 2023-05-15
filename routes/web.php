@@ -62,6 +62,13 @@ Route::get('/registerpage', function () {
     return Inertia::render('RegisterPage');
 })->name('registerpage');
 
+Route::post('/vendor/register', [VendorController::class, 'VendorRegister'])->
+    name('vendor.register');
+Route::get('/vendor/login', [VendorController::class, 'VendorLogin'])->
+    name('vendor.login');
+Route::get('/vendor/register', [VendorController::class, 'VendorRegisterPage'])->
+    name('vendor.registerpage');;
+
 Route::get('/loginpage', function () {
     return Inertia::render('LoginPage');
 })->name('loginpage');
@@ -125,9 +132,9 @@ Route::controller(ProductController::class)->group(function(){
 Route::controller(PacketController::class)->group(function(){
     Route::get('/vendor/menupage', 'VendorAllPacket')->name('vendor.all.packet');
     Route::post('/vendor/add/packet', 'VendorAddPacket')->name('vendor.add.packet');
-    Route::post('/vendor/edit/packet/{id}' , 'VendorEditPacket')->name('vendor.edit.packet');
+    Route::get('/vendor/edit/{id}' , 'VendorEditPacket')->name('vendor.edit.packet');
     Route::delete('/vendor/hapus/{id}' , 'VendorPacketDelete')->name('vendor.delete.packet');
-    // Route::post('/vendor/update/product' , 'VendorUpdateProduct')->name('vendor.update.product');
+    Route::post('/vendor/update' , 'VendorUpdatePacket')->name('vendor.update.packet');
 });
 
 });

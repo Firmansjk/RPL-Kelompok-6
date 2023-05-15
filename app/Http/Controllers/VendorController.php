@@ -190,8 +190,14 @@ class VendorController extends Controller
     }
 
 
-    public function VendorLogin(){
-        return Inertia::render('loginpage');
+    public function VendorLogin()
+    {
+        return Inertia::render('LoginPage');
+    }
+
+    public function VendorRegisterPage()
+    {
+        return Inertia::render('RegisterPage');
     }
 
     public function VendorUpdatePassword(Request $request): RedirectResponse
@@ -212,14 +218,40 @@ class VendorController extends Controller
         return back()->with("status", "Password Changed Succesfully");
     }
 
-    public function VendorDestroy(Request $request): RedirectResponse
-    {
-        Auth::guard('web')->logout();
+public function VendorRegister(Request $request)
+{
+    $request->validate([
+        'name' => ['required', 'string', 'max:255'],
+        'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+        'password' => ['required', 'confirmed'],
+    ]);
 
-        $request->session()->invalidate();
+    $user = User::create([
+        'name' => $request->name,
+        'email' => $request->email,
+        'password' => Hash::make($request->password),
+        'role' => 'vendor',
+    ]);
 
-        $request->session()->regenerateToken();
+    $notification = [
+        'message' => 'Vendor Registered Successfully',
+        'alert-type' => 'success'
+    ];
 
-        return redirect('/');
-    }
+    return Inertia::render('LoginPage')->with('notification', $notification);
+}
+
+    
+
+    public function VendorDestroy(Request $request)
+{
+    Auth::guard('web')->logout();
+
+    $request->session()->invalidate();
+
+    $request->session()->regenerateToken();
+
+    return redirect('/loginpage');
+}
+
 }

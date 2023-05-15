@@ -42,7 +42,7 @@ function Header(){
                                 Profil Akun
                             </Link>
                             <li><hr className="border-t mx-2 border-grey-light"/></li>
-                            <Link href={route('logout')} method="post" className="no-underline px-4 py-2 block text-black hover:bg-[#F77E21] hover:text-white">
+                            <Link href={route('vendor.logout')} method="post" className="no-underline px-4 py-2 block text-black hover:bg-[#F77E21] hover:text-white">
                                 Logout
                             </Link>
                         </ul>
@@ -66,7 +66,7 @@ function Header(){
                                 <HiMenu/>Menu
                             </Link>
                             <div><hr className="border-t mx-2 border-grey-light"/></div>
-                            <Link href={route('logout')} method="post"  className="block py-2 pl-3 my-2 pr-4 text-white hover:bg-white hover:text-[#F77E21] rounded">
+                            <Link href={route('vendor.logout')} method="post"  className="block py-2 pl-3 my-2 pr-4 text-white hover:bg-white hover:text-[#F77E21] rounded">
                                 Logout
                             </Link>
                         </li>
