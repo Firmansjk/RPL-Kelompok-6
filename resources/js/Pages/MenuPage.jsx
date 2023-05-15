@@ -16,8 +16,8 @@ export default function MenuPage(){
     const toggleTab  = (index1) =>{
             setToggleState(index1)
         }
-        const { packets = [], appUrl } = usePage().props;
-        const { products = [] } = usePage().props;
+        const { packets = [], products = [], appUrl } = usePage().props;
+        // const { products = [], appUrl } = usePage().props;
     // const Index = () => {
     //     const { posts } = usePage().props;
     //     const { data } = posts;
@@ -180,7 +180,7 @@ export default function MenuPage(){
                                                             {product.product_name}
                                                         </td>
                                                         <td className="px-6 py-4 border-r-2">
-                                                            <img className="inline-block h-16 w-24 rounded-lg" src={`/upload/vendor_product/${product.product_picture}`} alt={product.product_name}/>
+                                                            <img className="inline-block h-16 w-24 rounded-lg" src={appUrl + '/' + product.product_picture} alt={product.product_name}/>
                                                         </td>
                                                         <td className="px-6 py-4 font-medium border-r-2">
                                                             <p><span>Rp.</span>{product.product_price}</p>
