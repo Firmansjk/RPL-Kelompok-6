@@ -2,11 +2,10 @@ import React, { useState } from "react"
 import SideBar from "../../components/vendorpage/sidebar";
 import Header from "../../components/vendorpage/header";
 import ButtonHapusPK from "../../components/vendorpage/ForPaketMenu/buttonHapusPK";
-import ButtonEP from "../../components/vendorpage/ForPaketMenu/buttonEditPaket";
 import ButtonHapusMenu from "../../components/vendorpage/ForMenuKatering/buttonHapusMenu";
-import ButtonEditMenu from "../../components/vendorpage/ForMenuKatering/buttonEditMenu";
 import ButtonTambahPK from "../../components/vendorpage/ForPaketMenu/buttonTambahPK";
 import ButtonTambahMenu from "../../components/vendorpage/ForMenuKatering/buttonTambahMenu";
+import { Link } from "react-router-dom";
 
 function MenuPage(){
 
@@ -102,7 +101,9 @@ function MenuPage(){
                                                         </td>
                                                         <td className="px-6 py-4 flex flex-col md:flex-row lg:flex-row gap-2 content-center">
                                                             <ButtonHapusPK/>
-                                                            <ButtonEP/>
+                                                            <Link to="/editpkmenu">
+                                                                <button type="submit" className="text-black bg-[#22D7FF] hover:bg-cyan-300 focus:ring-2 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-xs px-4 py-2">Edit</button>
+                                                            </Link>
                                                         </td>
                                                     </tr>
                                                 </tbody>
@@ -169,7 +170,9 @@ function MenuPage(){
                                                         </td>
                                                         <td className="px-6 py-4 flex flex-col md:flex-row lg:flex-row gap-2 content-center">
                                                             <ButtonHapusMenu/>
-                                                            <ButtonEditMenu/>
+                                                            <Link to="/editmenu">
+                                                                <button type="submit" className="text-black bg-[#22D7FF] hover:bg-cyan-300 focus:ring-2 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-xs px-4 py-2">Edit</button>
+                                                            </Link>
                                                         </td>
                                                     </tr>
                                                 </tbody>

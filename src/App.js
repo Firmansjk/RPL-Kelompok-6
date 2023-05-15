@@ -16,6 +16,8 @@ import RegisterPageUser from '../src/pages/userpage/registerpage';
 import ResetPassPageUser from '../src/pages/userpage/resetpass';
 import LupaPassPageUser from '../src/pages/userpage/lupaPass';
 import HubungiPenjual from '../src/pages/userpage/hubungipenjual';
+import PageEditPaket from './components/vendorpage/ForPaketMenu/pageEditPaket';
+import PageEditMenu from './components/vendorpage/ForMenuKatering/pageEditMenu';
 
 
 function App() {
@@ -30,6 +32,8 @@ function App() {
 
             <Route path='/profilecatering' element={<ProfilePage/>}/>
             <Route path='/menucatering' element={<MenuPage/>}/>
+            <Route path='/editpkmenu' element={<PageEditPaket/>}/>
+            <Route path='/editmenu' element={<PageEditMenu/>}/>
 
             {/* ROUTES FOR USER PAGE */}
             <Route path='/loginpage' element={<LoginPageUser />} />
