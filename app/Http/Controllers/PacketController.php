@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Auth;
 use Image;
 use Inertia\Inertia;
 use App\Models\Product;
+use Illuminate\Support\Facades\Redirect;
 
 class PacketController extends Controller
 {
@@ -44,27 +45,6 @@ class PacketController extends Controller
         return redirect()->back();
     }
 
-    public function VendorUpdatePacket(Request $request, $id)
-{
-    $image = $request->file('packet_picture');
-    $packet = Packet::find($id);
-
-    if ($image) {
-        $name_gen = hexdec(uniqid()) . '.' . $image->getClientOriginalExtension();
-        Image::make($image)->resize(800, 800)->save('upload/packets/' . $name_gen);
-        $save_url = 'upload/packets/' . $name_gen;
-
-        $packet->packet_picture = $save_url;
-    }
-
-    $packet->packet_name = $request->packet_name;
-    $packet->packet_price = $request->packet_price;
-    $packet->packet_desc = $request->packet_desc;
-    $packet->save();
-
-    return redirect()->back();
-}
-
 public function VendorDeletePacket($id)
 {
     $packet = Packet::findOrFail($id);
@@ -74,24 +54,23 @@ public function VendorDeletePacket($id)
 }
 
 
-    public function VendorEditProduct($id){
-        $products = Product::findOrFail($id);
-        return Inertia::render('MenuPage', compact('packets'));
+    public function VendorEditPacket($id){
+        $packets = Packet::findOrFail($id);
+        return Inertia::render('PageEditPaket', compact('packets'));
     }// End Method
 
-    public function VendorUpdateProduct(Request $request){
-
-        $product_id = $request->id;
-
-        Product::findOrFail($product_id)->update([
+    public function VendorUpdatePacket(Request $request){
+        // dd($request);
+        $packet_id = $request->id;
+        $packet = Packet::findOrFail($packet_id);
+        $packet->update([
 
             'packet_name' => $request->packet_name,
             'packet_price' => $request->packet_price,
             'packet_desc' => $request->packet_desc, 
         ]);
-
-
-   return redirect()->back(); 
+    
+        return Redirect::route('vendor.all.packet');
 
 }// End Method 
 

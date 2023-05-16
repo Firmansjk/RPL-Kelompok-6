@@ -10,14 +10,20 @@ import ButtonTambahPaket from "../components/ForMenuKatering/buttonTambahPaket";
 import { Link, useForm, usePage } from '@inertiajs/react';
 
 export default function MenuPage(){
+    
     const {} = useForm();
     const [toggleState, setToggleState] = useState(1);
+
+    const handleEdit = (productId) => {
+        // Arahkan pengguna ke halaman Edit menggunakan Inertia.js
+        Inertia.visit(`/vendor/menupage/edit/${productId}`);
+      };
 
     const toggleTab  = (index1) =>{
             setToggleState(index1)
         }
-        const { packets = [], products = [], appUrl } = usePage().props;
-        // const { products = [], appUrl } = usePage().props;
+    const { packets = [], products = [], appUrl } = usePage().props;
+        // const { products = [] } = usePage().props;
     // const Index = () => {
     //     const { posts } = usePage().props;
     //     const { data } = posts;
@@ -26,7 +32,7 @@ export default function MenuPage(){
 //   useEffect(() => {
 //     setProductList(products);
 //   }, [products]);
-
+    console.log(appUrl);
     return(
         <>
         <div className="mx-auto bg-[#FFF9EB]">
@@ -94,7 +100,7 @@ export default function MenuPage(){
                                                 </thead>
                                                 <tbody className="text-black">
                                                     {packets.map((packet, index) =>     
-                                                    <tr key={index} className="bg-white border-b">
+                                                    <tr key={packet.id} className="bg-white border-b">
                                                         <th scope="row" className="px-6 py-4 font-medium whitespace-nowrap border-r-2">
                                                             {index + 1}
                                                         </th>
@@ -105,8 +111,8 @@ export default function MenuPage(){
                                                             
                                                             <img className="inline-block h-16 w-24 rounded-lg" src={appUrl + '/' + packet.packet_picture} alt={packet.packet_name} />
                                                             
-                                                        </td>
-                                                        
+                                                                       </td>
+                                         
                                                         <td className="px-6 py-4 border-r-2">
                                                             <p>{packet.packet_desc}</p>
                                                         </td>
@@ -115,8 +121,12 @@ export default function MenuPage(){
                                                         </td>
                                                         <td className="px-6 py-4 flex flex-col md:flex-row lg:flex-row gap-2 content-center">
                                                             <ButtonHapusPK packetId={packet.id}/>
-                                                            
-                                                            <ButtonEP/>
+                                                            <Link
+                                                            href={route('vendor.edit.packet', { id: packet.id })}
+                                                            className="text-black bg-[#22D7FF] hover:bg-cyan-300 focus:ring-2 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-xs px-4 py-2"
+                                                            >Edit
+                                                            </Link>
+
                                                         </td>
                                                     </tr>
                                                 )}

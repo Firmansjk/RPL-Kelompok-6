@@ -25,7 +25,7 @@ const handleOnChange = (event) => {
 const submit = (e) => {
     e.preventDefault();
 
-    post(route('register'));
+    post(route('vendor.register'));
 };
 
     return(
@@ -38,7 +38,7 @@ const submit = (e) => {
             <div>
               <p className="text-white font-bold text-[1.5em]">Sudah Punya Akun?</p>
             </div>
-            <Link href={route('loginpage')} className="bg-white mt-10 mb-6 px-6 py-2 rounded-lg text-[#F77E21] font-semibold transition-all hover:bg-[#e4e1e1]">
+            <Link href={route('vendor.login')} className="bg-white mt-10 mb-6 px-6 py-2 rounded-lg text-[#F77E21] font-semibold transition-all hover:bg-[#e4e1e1]">
               <button type="button">Login Akun</button>
             </Link>
           </div>
@@ -52,7 +52,7 @@ const submit = (e) => {
                   name="name" 
                   id="name"
                   value={data.name}
-                  autoComplete="username"
+                  autoComplete="name"
                   
                   onChange={handleOnChange} 
                   className=" mb-4 bg-white border border-[#F77E21] text-black sm:text-sm rounded-lg block w-full p-2.5 placeholder-gray-400" 
@@ -66,7 +66,7 @@ const submit = (e) => {
                 name="email" 
                 id="email" 
                 value={data.email}
-                
+                autoComplete="username"
                 onChange={handleOnChange}
                 className=" mb-4 bg-white border border-[#F77E21] text-black sm:text-sm rounded-lg block w-full p-2.5 placeholder-gray-400" 
                 required/>
@@ -96,7 +96,7 @@ const submit = (e) => {
                   required/>
               </div>
               <div className="mt-6 flex justify-center">
-                  <button className="w-28 bg-[#F77E21] py-2 font-semibold rounded-lg text-center text-white transition-all hover:font-bold ">Register</button>
+                  <button type='' className="w-28 bg-[#F77E21] py-2 font-semibold rounded-lg text-center text-white transition-all hover:font-bold ">Register</button>
               </div>
             </form>
           </div>

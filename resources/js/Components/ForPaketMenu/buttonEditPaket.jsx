@@ -9,7 +9,7 @@ export default function ButtonEditPaket(){
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    put(route('vendor.update.product', { id: productId }));
+    put(route('vendor.update.product', { id: product.id }));
   };
 
   const handleInputChange = (e) => {

@@ -1,8 +1,11 @@
 import { useState } from "react"
 import ModalEditMenu from "./modalEditMenu"
 
-export default function ButtonEditMenu(){
+export default function ButtonEditMenu({productId}){
     const [open, setOpen] = useState(false)
+    const handleDelete = () => {
+        Inertia.patch(`/vendor/delete/${productId}`)
+    };
     return(
         <div>
             <button 
