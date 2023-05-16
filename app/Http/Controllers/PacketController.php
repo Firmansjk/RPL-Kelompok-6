@@ -68,8 +68,8 @@ class PacketController extends Controller
 
         if ($image) {
             $name_gen = hexdec(uniqid()) . '.' . $image->getClientOriginalExtension();
-            Image::make($image)->resize(800, 800)->save(public_path('upload/products/' . $name_gen));
-            $save_url = 'upload/products/' . $name_gen;
+            Image::make($image)->resize(800, 800)->save(public_path('upload/packets/' . $name_gen));
+            $save_url = 'upload/packets/' . $name_gen;
 
             if (file_exists(public_path($oldImage))) {
                 unlink(public_path($oldImage));
