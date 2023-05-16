@@ -1,4 +1,4 @@
-import{a as e,j as l,r as n,F as i,d as o}from"./app-af036a24.js";import{l as c}from"./logo tring-1734e28a.js";function d({open:a,onClose:t,children:s}){return e("div",{onClick:t,className:`
+import{a as e,j as l,r as n,F as i,d as o}from"./app-af036a24.js";import{l as c}from"./logo tring-83bb4ec9.js";function d({open:a,onClose:t,children:s}){return e("div",{onClick:t,className:`
             fixed inset-0 flex justify-center items-center transition-colors
             ${a?"visible bg-black/20 z-10":"invisible"}
             `,children:l("div",{onClick:r=>r.stopPropagation(),className:`

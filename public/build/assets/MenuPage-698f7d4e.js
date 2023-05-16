@@ -1,4 +1,4 @@
-import{a as e,j as t,r as c,W as x,_ as h,F as N}from"./app-af036a24.js";import{S as y}from"./sidebar-63c14dcb.js";import{H as w}from"./header-329f90a9.js";import{H as f}from"./index.esm-bfb3731b.js";import{d as b}from"./index-868997d9.js";import"./logo tring-83bb4ec9.js";import"./logo tring white-5eb8ef4e.js";function k({open:a,onClose:l,children:r}){return e("div",{onClick:l,className:`
+import{a as e,j as t,r as c,W as x,_ as h,F as N}from"./app-af036a24.js";import{S as y}from"./sidebar-63c14dcb.js";import{H as w}from"./header-329f90a9.js";import{H as f}from"./index.esm-bfb3731b.js";import{d as b}from"./index-868997d9.js";import"./logo tring-1734e28a.js";import"./logo tring white-ff470b45.js";function k({open:a,onClose:l,children:r}){return e("div",{onClick:l,className:`
             fixed inset-0 flex justify-center items-center transition-colors
             ${a?"visible bg-black/20 z-10":"invisible"}
             `,children:t("div",{onClick:o=>o.stopPropagation(),className:`
