@@ -126,15 +126,17 @@ route::middleware(['auth','role:vendor'])->group(function() {
 Route::controller(ProductController::class)->group(function(){
     Route::get('/vendor/all/product', 'VendorAllProduct')->name('vendor.all.product');
     Route::post('/vendor/add/product', 'VendorAddProduct')->name('vendor.add.product');
+    Route::get('/vendor/editProduct/{id}' , 'VendorEditProduct')->name('vendor.edit.product');
     Route::delete('/vendor/delete/{id}' , 'VendorProductDelete')->name('vendor.delete.product');
+    Route::post('/vendor/updateproduct' , 'VendorUpdateProduct')->name('vendor.update.product');
 });
 
 Route::controller(PacketController::class)->group(function(){
     Route::get('/vendor/menupage', 'VendorAllPacket')->name('vendor.all.packet');
     Route::post('/vendor/add/packet', 'VendorAddPacket')->name('vendor.add.packet');
-    Route::get('/vendor/edit/{id}' , 'VendorEditPacket')->name('vendor.edit.packet');
+    Route::get('/vendor/editPacket/{id}' , 'VendorEditPacket')->name('vendor.edit.packet');
     Route::delete('/vendor/hapus/{id}' , 'VendorPacketDelete')->name('vendor.delete.packet');
-    Route::post('/vendor/update' , 'VendorUpdatePacket')->name('vendor.update.packet');
+    Route::post('/vendor/updatepacket' , 'VendorUpdatePacket')->name('vendor.update.packet');
 });
 
 });

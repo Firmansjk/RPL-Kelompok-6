@@ -7,6 +7,7 @@ export default function PageEditPaket({ packets }){
         packet_name: packets.packet_name,
         packet_price: packets.packet_price,
         packet_desc: packets.packet_desc,
+        product_picture: null,
       });
     
       const handleSubmit = (e) => {
@@ -40,11 +41,13 @@ export default function PageEditPaket({ packets }){
                                     </div>
                                     
                                     <div class="mb-6">
-                                        <label for="message" className="block mb-2 text-sm font-bold text-[#F77E21] text-start">GAMBAR MENU</label>
+                                        <label for="packet_picture" className="block mb-2 text-sm font-bold text-[#F77E21] text-start">GAMBAR MENU</label>
                                         <input
                                         className="relative m-0 block w-full min-w-0 flex-auto rounded border border-solid border-neutral-300 bg-clip-padding py-[0.32rem] px-3 text-base font-normal transition duration-300 ease-in-out file:-mx-3 file:-my-[0.32rem] file:overflow-hidden file:rounded-none file:border-0 file:border-solid file:border-inherit file:bg-neutral-100 file:px-3 file:py-[0.32rem] file:text-neutral-700 file:transition file:duration-150 file:ease-in-out file:[margin-inline-end:0.75rem] file:[border-inline-end-width:1px] hover:file:bg-neutral-200 focus:border-primary focus:text-neutral-700 focus:shadow-[0_0_0_1px] focus:shadow-primary focus:outline-none"
                                         type="file"
-                                        id="formFile" />
+                                        id="packet_picture" 
+                                        name="packet_picture" 
+                                        onChange={(e) => setData('packet_picture', e.target.files[0])}/>
                                         <p className="text-sm font-medium text-[#F77E21] mt-3 text-start">Klik "Pilih File" untuk menambah gambar</p>
                                     </div>
 

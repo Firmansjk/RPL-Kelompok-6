@@ -197,7 +197,8 @@ export default function MenuPage(){
                                                         </td>
                                                         <td className="px-6 py-4 flex flex-col md:flex-row lg:flex-row gap-2 content-center">
                                                             <ButtonHapusMenu productId={product.id}/>
-                                                            <ButtonEditMenu/>
+                                                            <Link href={route('vendor.edit.product', { id: product.id })} className="text-black bg-[#22D7FF] hover:bg-cyan-300 focus:ring-2 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-xs px-4 py-2">
+                                                                Edit</Link>
                                                         </td>
                                                     </tr>
                                                     )}

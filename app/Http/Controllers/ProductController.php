@@ -9,6 +9,7 @@ use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Image;
 use Inertia\Inertia;
+use Illuminate\Support\Facades\Redirect;
 
 class ProductController extends Controller
 {
@@ -53,4 +54,43 @@ class ProductController extends Controller
         return redirect()->back()->with($notification);
 
     }// End Method 
+    public function VendorEditProduct($id){
+        $products = Product::findOrFail($id);
+        return Inertia::render('PageEditMenu', compact('products'));
+    }// End Method
+    
+    public function VendorUpdateProduct(Request $request){
+        // dd($request);
+        $product_id = $request->id;
+        $product = Product::findOrFail($product_id);
+
+        $image = $request->file('product_picture');
+        $oldImage = $product->product_picture;
+
+        if ($image) {
+            $name_gen = hexdec(uniqid()) . '.' . $image->getClientOriginalExtension();
+            Image::make($image)->resize(800, 800)->save(public_path('upload/products/' . $name_gen));
+            $save_url = 'upload/products/' . $name_gen;
+
+            if (file_exists(public_path($oldImage))) {
+                unlink(public_path($oldImage));
+            }
+
+            $product->update([
+                'product_picture' => $save_url,
+            ]);
+        }
+        $product_id = $request->id;
+        $product = Product::findOrFail($product_id);
+        $product->update([
+    
+            'product_name' => $request->product_name,
+            'product_price' => $request->product_price,
+        ]);
+    
+        return Redirect::route('vendor.all.packet');
+    
+    }// End Method 
 }
+
+
