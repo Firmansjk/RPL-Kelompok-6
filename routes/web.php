@@ -24,7 +24,7 @@ use App\Http\Controllers\PacketController;
 */
 
 Route::get('/', function () {
-    return Inertia::render('Welcome', [
+    return Inertia::render('UserPage/homePage', [
         // 'canLogin' => Route::has('login'),
         'canRegister' => Route::has('register'),
         'laravelVersion' => Application::VERSION,
@@ -32,6 +32,40 @@ Route::get('/', function () {
     ]);
 });
 
+//User Routes
+Route::get('/', function () {
+    return Inertia::render('UserPage/homePage');
+})->name('homepage');
+
+Route::get('/profilecatering', function () {
+    return Inertia::render('UserPage/profileCatering');
+})->name('profilecatering');
+
+Route::get('/searchcatering', function () {
+    return Inertia::render('UserPage/searchCatering');
+})->name('searchcatering');
+
+Route::get('/searchmenu', function () {
+    return Inertia::render('UserPage/searchMenu');
+})->name('searchmenu');
+
+Route::get('/loginpageuser', function () {
+    return Inertia::render('UserPage/loginpage');
+})->name('loginpageuser');
+
+Route::get('/registerpageuser', function () {
+    return Inertia::render('UserPage/registerpage');
+})->name('registerpageuser');
+
+Route::get('/forgetpassword', function () {
+    return Inertia::render('UserPage/lupaPass');
+})->name('forgetpassword');
+
+Route::get('/userprofilesettings', function () {
+    return Inertia::render('UserPage/settingProfile');
+})->name('userprofilesettings');
+
+//Laravel Breeze
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
@@ -42,21 +76,6 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-// Route::get('/dashboardpage', function () {
-//     return Inertia::render('DashboardPage');
-// })->name('dashboardpage');
-
-// Route::get('/profilepage', function () {
-//     return Inertia::render('ProfilePage');
-// })->name('profilepage');
-
-// Route::get('/menupage', function () {
-//     return Inertia::render('MenuPage');
-// })->name('menupage');
-
-// Route::get('/loginpage', function () {
-//     return Inertia::render('LoginPage');
-// })->name('loginpage');
 
 Route::get('/registerpage', function () {
     return Inertia::render('RegisterPage');
@@ -89,20 +108,12 @@ route::middleware(['auth','role:vendor'])->group(function() {
 
     Route::get('/vendor/profilepage', [VendorController::class, 'VendorProfile'])->
         name('vendor.profilepage');
-
-    // Route::get('/vendor/menupage', [VendorController::class, 'VendorMenu'])->
-    //     name('vendor.menupage');
     
     Route::post('/vendor/tambahpaket', [VendorController::class, 'AddPackets'])->
         name('vendor.tambahpaket');
 
     Route::post('/vendor/tambahpaket', [VendorController::class, 'AddPackets'])->
         name('vendor.tambahpaket');
-    // Route::get('/vendor/createeditmenu', [VendorController::class, 'CreateVendorMenu'])->
-    //     name('vendor.createeditmenu');
-    // Route::resource('posts', PacketsController::class);
-    // Route::post('/vendor/menupage/store', [VendorController::class, 'StoreVendorMenu'])->
-    //     name('vendor.menupage.AddPackets');
 
     Route::post('/vendor/logout', [VendorController::class, 'VendorDestroy'])->
         name('vendor.logout');
@@ -138,24 +149,6 @@ Route::controller(PacketController::class)->group(function(){
 });
 
 });
-
-// //route index login
-// Route::get('/loginpage', [VendorController::class, 'VendorLogin'])
-//     ->name('vendor.login');
-
-// route::middleware(['auth','role:vendor'])->group(function() {
-//     Route::get('/dashboardpage', [VendorController::class, 'VendorDashboard'])->name('vendor.menupage');
-// });
-
-// route::middleware(['auth','role:vendor'])->group(function() {
-//     Route::get('/vendor/dashboard', [VendorController::class, 'VendorDashboard']);
-// });
-
-// //route store login
-// Route::post('/loginpage', [LoginController::class, 'store']);
-
-// //route logout
-// Route::post('/logout', [LoginController::class, 'destroy'])->middleware('auth');
 
 
 
