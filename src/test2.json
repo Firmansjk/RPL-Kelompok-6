@@ -1,0 +1,79 @@
+[
+    {
+        "id":1,
+        "namemenu":"NASI GORENG",
+        "catering":"Toko Katering Anu",
+        "image":"https://tecdn.b-cdn.net/img/new/standard/nature/186.jpg",
+        "price":10000
+    },
+    {
+        "id":2,
+        "namemenu":"NASI GORENG",
+        "catering":"Toko Katering Anu",
+        "image":"https://tecdn.b-cdn.net/img/new/standard/nature/186.jpg",
+        "price":10000
+    },
+    {
+        "id":3,
+        "namemenu":"NASI KECOMBRANG",
+        "catering":"Toko Katering Anu",
+        "image":"https://tecdn.b-cdn.net/img/new/standard/nature/186.jpg",
+        "price":50000
+    },
+    {
+        "id":4,
+        "namemenu":"NASI GORENG",
+        "catering":"Toko Katering Anu",
+        "image":"https://tecdn.b-cdn.net/img/new/standard/nature/186.jpg",
+        "price":10000
+    },
+    {
+        "id":5,
+        "namemenu":"RISOLES",
+        "catering":"Toko Katering Anu",
+        "image":"https://tecdn.b-cdn.net/img/new/standard/nature/186.jpg",
+        "price":5000
+    },
+    {
+        "id":6,
+        "namemenu":"NASI GORENG",
+        "catering":"Toko Katering Anu",
+        "image":"https://tecdn.b-cdn.net/img/new/standard/nature/186.jpg",
+        "price":10000
+    },
+    {
+        "id":7,
+        "namemenu":"NASI GORENG",
+        "catering":"Toko Katering Anu",
+        "image":"https://tecdn.b-cdn.net/img/new/standard/nature/186.jpg",
+        "price":30000
+    },
+    {
+        "id":8,
+        "namemenu":"NASI GORENG",
+        "catering":"Toko Katering Anu",
+        "image":"https://tecdn.b-cdn.net/img/new/standard/nature/186.jpg",
+        "price":10000
+    },
+    {
+        "id":9,
+        "namemenu":"NASI GORENG",
+        "catering":"Toko Katering Anu",
+        "image":"https://tecdn.b-cdn.net/img/new/standard/nature/186.jpg",
+        "price":10000
+    },
+    {
+        "id":10,
+        "namemenu":"NASI GORENG",
+        "catering":"Toko Katering Anu",
+        "image":"https://tecdn.b-cdn.net/img/new/standard/nature/186.jpg",
+        "price":150000
+    },
+    {
+        "id":11,
+        "namemenu":"NASI GORENG",
+        "catering":"Toko Katering Anu",
+        "image":"https://tecdn.b-cdn.net/img/new/standard/nature/186.jpg",
+        "price":10000
+    }
+]

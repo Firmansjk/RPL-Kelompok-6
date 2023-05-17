@@ -4,8 +4,30 @@ import img from "../../image/homepage.png"
 import ButtonShowMorePM from "../../components/userpage/ForPaketMenu/buttonShowMorePM"
 import logo from "../../image/logo tring.png"
 import logowhite from "../../image/logo tring white.png"
+import Carousel from "react-multi-carousel"
+import "react-multi-carousel/lib/styles.css"
 
 export default function HomePage(){
+    const responsive = {
+        superLargeDesktop: {
+          // the naming can be any, depends on you.
+          breakpoint: { max: 4000, min: 3000 },
+          items: 4
+        },
+        desktop: {
+          breakpoint: { max: 3000, min: 1024 },
+          items: 3
+        },
+        tablet: {
+          breakpoint: { max: 1024, min: 464 },
+          items: 2
+        },
+        mobile: {
+          breakpoint: { max: 464, min: 0 },
+          items: 1
+        }
+    };
+
     return(
         <>
         <div className="min-h-screen flex flex-col">
@@ -30,10 +52,10 @@ export default function HomePage(){
                     <img className="w-full h-screen object-cover" src={img} alt="Food Img"/>
                     
 
-                    <div className="w-full min-h-screen flex flex-col justify-start items-center xl:justify-center px-4 py-14 lg:px-48">
-                        <p className="mb-2 text-2xl md:text-4xl font-bold leading-tight text-[#F77E21]">LIST KATERING</p>
-                        <div className="mt-10 grid w-10/12 grid-flow-row gap-x-8 gap-y-12 sm:w-11/12 sm:grid-cols-2 md:w-full md:grid-cols-2 xl:grid-cols-3">
-                            <div class="flex flex-col justify-center items-start rounded-lg bg-white shadow-lg">
+                    <div className="w-full min-h-screen flex flex-col justify-center gap-14 px-4 py-14 lg:px-48">
+                        <p className="mb-2 text-2xl md:text-4xl font-bold leading-tight text-[#F77E21] text-center ">LIST KATERING</p>
+                        <Carousel responsive={responsive} swipeable={true} showDots={true} className="pb-8 z-0">
+                            <div class="flex flex-col justify-center items-start rounded-lg bg-white shadow-lg mx-4">
                                 <img
                                 class="rounded-t-lg w-full h-48 object-cover"
                                 src="https://tecdn.b-cdn.net/img/new/standard/nature/186.jpg"
@@ -59,7 +81,7 @@ export default function HomePage(){
                                     </button>
                                 </Link>
                             </div>
-                            <div class="flex flex-col justify-center items-start rounded-lg bg-white shadow-lg">
+                            <div class="flex flex-col justify-center items-start rounded-lg bg-white shadow-lg mx-4">
                                 <img
                                 class="rounded-t-lg w-full h-48 object-cover"
                                 src="https://tecdn.b-cdn.net/img/new/standard/nature/186.jpg"
@@ -85,7 +107,7 @@ export default function HomePage(){
                                     </button>
                                 </Link>
                             </div>
-                            <div class="flex flex-col justify-center items-start rounded-lg bg-white shadow-lg">
+                            <div class="flex flex-col justify-center items-start rounded-lg bg-white shadow-lg mx-4">
                                 <img
                                 class="rounded-t-lg w-full h-48 object-cover"
                                 src="https://tecdn.b-cdn.net/img/new/standard/nature/186.jpg"
@@ -111,9 +133,60 @@ export default function HomePage(){
                                     </button>
                                 </Link>
                             </div>
-                        </div>
+                            <div class="flex flex-col justify-center items-start rounded-lg bg-white shadow-lg mx-4">
+                                <img
+                                class="rounded-t-lg w-full h-48 object-cover"
+                                src="https://tecdn.b-cdn.net/img/new/standard/nature/186.jpg"
+                                alt="" />
+                                <div class="px-6 pt-6 pb-0">
+                                    <div className="flex flex-col justify-between items-start gap-3">
+                                        <div>
+                                            <h5
+                                            class="mb-2 text-md text-left font-bold leading-tight text-neutral-800">
+                                            TOKO KATERING
+                                            </h5>
+                                            <p class="mb-4 text-xs text-black">
+                                            Jl. Pajjaiangan | 0812xxxxxxxx
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <Link to='/profile'>
+                                    <button
+                                    type="button"
+                                    class="ml-6 my-5 inline-block rounded bg-[#F77E21] px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)]">
+                                    KUNJUNGI TOKO
+                                    </button>
+                                </Link>
+                            </div>
+                            <div class="flex flex-col justify-center items-start rounded-lg bg-white shadow-lg mx-4">
+                                <img
+                                class="rounded-t-lg w-full h-48 object-cover"
+                                src="https://tecdn.b-cdn.net/img/new/standard/nature/186.jpg"
+                                alt="" />
+                                <div class="px-6 pt-6 pb-0">
+                                    <div className="flex flex-col justify-between items-start gap-3">
+                                        <div>
+                                            <h5
+                                            class="mb-2 text-md text-left font-bold leading-tight text-neutral-800">
+                                            TOKO KATERING
+                                            </h5>
+                                            <p class="mb-4 text-xs text-black">
+                                            Jl. Pajjaiangan | 0812xxxxxxxx
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <Link to='/profile'>
+                                    <button
+                                    type="button"
+                                    class="ml-6 my-5 inline-block rounded bg-[#F77E21] px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)]">
+                                    KUNJUNGI TOKO
+                                    </button>
+                                </Link>
+                            </div>
+                        </Carousel>
                     </div>
-
 
                     <div className="w-full min-h-screen flex flex-col bg-[#F77E21] justify-start items-center xl:justify-center px-4 py-14 lg:px-48">
                         <p className="mb-2 text-2xl md:text-4xl font-bold leading-tight text-white self-start">DAFTAR MENU</p>
@@ -138,7 +211,9 @@ export default function HomePage(){
                                         </div>
                                     </div>
                                 </div>
-                                <ButtonShowMorePM/>
+                                <div className="ml-6 lg:ml-0">
+                                    <ButtonShowMorePM/>
+                                </div>
                             </div>
 
                             <div className="flex flex-col justify-center items-start rounded-lg bg-white shadow-xl">
@@ -160,7 +235,9 @@ export default function HomePage(){
                                         </div>
                                     </div>
                                 </div>
-                                <ButtonShowMorePM/>
+                                <div className="ml-6 lg:ml-0">
+                                    <ButtonShowMorePM/>
+                                </div>
                             </div>
                             
                             <div className="flex flex-col justify-center items-start rounded-lg bg-white shadow-xl">
@@ -182,7 +259,9 @@ export default function HomePage(){
                                         </div>
                                     </div>
                                 </div>
-                                <ButtonShowMorePM/>
+                                <div className="ml-6 lg:ml-0">
+                                    <ButtonShowMorePM/>
+                                </div>
                             </div>
                         </div>
                     </div>

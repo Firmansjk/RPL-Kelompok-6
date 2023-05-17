@@ -4,48 +4,48 @@
         "namemenu":"PAKET SUPER MENU 1",
         "catering":"Toko Katering Anu",
         "image":"https://tecdn.b-cdn.net/img/new/standard/nature/186.jpg",
-        "price":"10.000"
+        "price":10000
     },
     {
         "id":2,
         "namemenu":"PAKET SUPER MENU 1",
         "catering":"Toko Katering Anu",
         "image":"https://tecdn.b-cdn.net/img/new/standard/nature/186.jpg",
-        "price":"10.000"
+        "price":20000
     },
     {
         "id":3,
         "namemenu":"PAKET SUPER MENU 1",
         "catering":"Toko Katering Anu",
         "image":"https://tecdn.b-cdn.net/img/new/standard/nature/186.jpg",
-        "price":"10.000"
+        "price":10000
     },
     {
         "id":4,
         "namemenu":"PAKET SUPER MENU 1",
         "catering":"Toko Katering Anu",
         "image":"https://tecdn.b-cdn.net/img/new/standard/nature/186.jpg",
-        "price":"10.000"
+        "price":50000
     },
     {
         "id":5,
         "namemenu":"PAKET SUPER MENU 1",
         "catering":"Toko Katering Anu",
         "image":"https://tecdn.b-cdn.net/img/new/standard/nature/186.jpg",
-        "price":"10.000"
+        "price":10000
     },
     {
         "id":6,
         "namemenu":"PAKET SUPER MENU 1",
         "catering":"Toko Katering Anu",
         "image":"https://tecdn.b-cdn.net/img/new/standard/nature/186.jpg",
-        "price":"10.000"
+        "price":100000
     },
     {
         "id":7,
         "namemenu":"PAKET SUPER MENU 1",
         "catering":"Toko Katering Anu",
         "image":"https://tecdn.b-cdn.net/img/new/standard/nature/186.jpg",
-        "price":"10.000"
+        "price":10000
     }
 ]

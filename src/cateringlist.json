@@ -1,0 +1,74 @@
+[
+    {
+        "id":1,
+        "catering":"Toko Katering Anu",
+        "image":"https://tecdn.b-cdn.net/img/new/standard/nature/186.jpg",
+        "address": "Jl. Pajjaiangan",
+        "numbertelp": "081232340923",
+        "totalmenu" : 10
+    },
+    {
+        "id":2,
+        "catering":"Anu Berkah",
+        "image":"https://tecdn.b-cdn.net/img/new/standard/nature/186.jpg",
+        "address": "Jl. Pajjaiangan",
+        "numbertelp": "081232340923",
+        "totalmenu" : 10
+    },
+    {
+        "id":4,
+        "catering":"Toko Katering Anu",
+        "image":"https://tecdn.b-cdn.net/img/new/standard/nature/186.jpg",
+        "address": "Jl. Pajjaiangan",
+        "numbertelp": "081232340923",
+        "totalmenu" : 10
+    },
+    {
+        "id":5,
+        "catering":"Bisa Berkah",
+        "image":"https://tecdn.b-cdn.net/img/new/standard/nature/186.jpg",
+        "address": "Jl. Pajjaiangan",
+        "numbertelp": "081232340923",
+        "totalmenu" : 10
+    },
+    {
+        "id":6,
+        "catering":"Toko Katering Anu",
+        "image":"https://tecdn.b-cdn.net/img/new/standard/nature/186.jpg",
+        "address": "Jl. Pajjaiangan",
+        "numbertelp": "081232340923",
+        "totalmenu" : 10
+    },
+    {
+        "id":7,
+        "catering":"Duta Katering",
+        "image":"https://tecdn.b-cdn.net/img/new/standard/nature/186.jpg",
+        "address": "Jl. Pajjaiangan",
+        "numbertelp": "081232340923",
+        "totalmenu" : 10
+    },
+    {
+        "id":8,
+        "catering":"Toko Katering Anu",
+        "image":"https://tecdn.b-cdn.net/img/new/standard/nature/186.jpg",
+        "address": "Jl. Pajjaiangan",
+        "numbertelp": "081232340923",
+        "totalmenu" : 10
+    },
+    {
+        "id":9,
+        "catering":"Toko Katering Anu",
+        "image":"https://tecdn.b-cdn.net/img/new/standard/nature/186.jpg",
+        "address": "Jl. Pajjaiangan",
+        "numbertelp": "081232340923",
+        "totalmenu" : 10
+    },
+    {
+        "id":10,
+        "catering":"Toko Katering Anu",
+        "image":"https://tecdn.b-cdn.net/img/new/standard/nature/186.jpg",
+        "address": "Jl. Pajjaiangan",
+        "numbertelp": "081232340923",
+        "totalmenu" : 10
+    }
+]
