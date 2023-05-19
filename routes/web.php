@@ -132,6 +132,9 @@ route::middleware(['auth','role:vendor'])->group(function() {
 
     Route::delete('vendor/delete-profile', [VendorController::class, 'VendorDeleteProfile'])->
         name('vendor.deleteProfile');
+        
+        //test search
+    Route::post('/vendor/search', [PacketController::class, 'searchVendor'])->name('vendor.search');
 
 
 Route::controller(ProductController::class)->group(function(){
@@ -149,6 +152,7 @@ Route::controller(PacketController::class)->group(function(){
 });
 
 });
+
 
 
 

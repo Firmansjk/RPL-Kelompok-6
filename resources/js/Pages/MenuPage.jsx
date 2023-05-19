@@ -11,7 +11,10 @@ import { Link, useForm, usePage } from '@inertiajs/react';
 
 export default function MenuPage(){
     
-    const {} = useForm();
+    const {data, setData, post, processing} = useForm({
+        query: '',
+        results: [],
+    });
     const [toggleState, setToggleState] = useState(1);
 
     const handleEdit = (productId) => {
@@ -22,17 +25,18 @@ export default function MenuPage(){
     const toggleTab  = (index1) =>{
             setToggleState(index1)
         }
-    const { packets = [], products = [], appUrl } = usePage().props;
-        // const { products = [] } = usePage().props;
-    // const Index = () => {
-    //     const { posts } = usePage().props;
-    //     const { data } = posts;
-//     const [productList, setProductList] = useState([]);
+    const { packets = [], products = [], appUrl, results = [] } = usePage().props;
 
-//   useEffect(() => {
-//     setProductList(products);
-//   }, [products]);
-    console.log(appUrl);
+    const handleSearch = (e) => {
+        e.preventDefault();
+        post(route('vendor.search'), {  // Update the endpoint to match your Laravel route
+          query: data.query,  // Send the query from form data
+        //   onSuccess: (results) => {
+        //     setData('results', results);
+        //   },
+        });
+      };
+
     return(
         <>
         <div className="mx-auto bg-[#FFF9EB]">
@@ -60,11 +64,13 @@ export default function MenuPage(){
 
                                 <div className="flex flex-1 flex-col md:flex-row lg:flex-row lg:mr-4 ml-6 mr-3 mb-6 justify-between content-center">
                                     <div className="relative w-full md:w-[60%] lg:w-[70%]">
-                                        <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                                            <svg aria-hidden="true" className="w-5 h-5 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
-                                        </div>
-                                        <input type="search" id="default-search" className="block w-full p-3 pl-10 text-sm text-black border border-[#F77E21] rounded-lg bg-white" placeholder="Cari Menu"/>
-                                        <button type="submit" className="text-white absolute right-2.5 bottom-2 bg-blue-700 hover:bg-blue-800 focus:ring-2 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-xs px-3 py-2">Search</button>
+                                        <form onSubmit={handleSearch}>  
+                                            <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                                                <svg aria-hidden="true" className="w-5 h-5 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                                            </div>
+                                            <input /*type="search"*/ id="default-search" className="block w-full p-3 pl-10 text-sm text-black border border-[#F77E21] rounded-lg bg-white" placeholder="Cari Menu" type="text" value={data.query} onChange={(e) => setData('query', e.target.value)}/>
+                                            <button type="submit" className="text-white absolute right-2.5 bottom-2 bg-blue-700 hover:bg-blue-800 focus:ring-2 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-xs px-3 py-2">Search</button>
+                                        </form>
                                     </div>
                                     <div className="pl-0 mt-6 md:pl-6 md:mt-0 lg:pl-6 lg:mt-0 flex flex-row gap-3">
                                         <ButtonTambahPaket type ="submit" className="text-black bg-green-400 hover:bg-green-300 focus:ring-2 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-xs px-4 py-4" >Tambah</ButtonTambahPaket>
@@ -75,6 +81,63 @@ export default function MenuPage(){
                                 <div className="flex flex-1 flex-col md:flex-row lg:flex-row mx-4 mr-5 md:mr-3 lg:mr-3">
                                     <div className="rounded shadow bg-white mx-2 w-full">
                                         <div className="overflow-x-auto">
+                                        <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                                                <thead className="text-xs text-[#F77E21] uppercase bg-white">
+                                                    <tr className="border-b-2 border-black">
+                                                        <th scope="col" className="px-6 py-3">
+                                                            No.
+                                                        </th>
+                                                        <th scope="col" className="px-6 py-3">
+                                                            Paket Menu
+                                                        </th>
+                                                        <th scope="col" className="px-6 py-3">
+                                                            Gambar Menu
+                                                        </th>
+                                                        <th scope="col" className="px-6 py-3">
+                                                            Daftar Menu
+                                                        </th>
+                                                        <th scope="col" className="px-6 py-3">
+                                                            Harga Menu
+                                                        </th>
+                                                        <th scope="col" className="px-6 py-3 w-[8em] md:w-[15em] lg:w-[15em]">
+                                                            Aksi
+                                                        </th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody className="text-black">
+                                                    {results.map((result, index) =>     
+                                                    <tr key={result.id} className="bg-white border-b">
+                                                        <th scope="row" className="px-6 py-4 font-medium whitespace-nowrap border-r-2">
+                                                            {index + 1}
+                                                        </th>
+                                                        <td className="px-6 py-4 font-bold border-r-2">
+                                                            {result.packet_name}
+                                                        </td>
+                                                        <td className="px-6 py-4 border-r-2">
+                                                            
+                                                            <img className="inline-block h-16 w-24 rounded-lg" src={appUrl + '/' + result.packet_picture} alt={result.packet_name} />
+                                                            
+                                                        </td>
+                                         
+                                                        <td className="px-6 py-4 border-r-2">
+                                                            <p>{result.packet_desc}</p>
+                                                        </td>
+                                                        <td className="px-6 py-4 border-r-2">
+                                                            <p><span>Rp.</span>{result.packet_price}</p>
+                                                        </td>
+                                                        <td className="px-6 py-4 flex flex-col md:flex-row lg:flex-row gap-2 content-center">
+                                                            <ButtonHapusPK packetId={result.id}/>
+                                                            <Link
+                                                            href={route('vendor.edit.packet', { id: result.id })}
+                                                            className="text-black bg-[#22D7FF] hover:bg-cyan-300 focus:ring-2 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-xs px-4 py-2"
+                                                            >Edit
+                                                            </Link>
+
+                                                        </td>
+                                                    </tr>
+                                                )}
+                                                </tbody>
+                                            </table> 
                                             <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                                                 <thead className="text-xs text-[#F77E21] uppercase bg-white">
                                                     <tr className="border-b-2 border-black">
@@ -111,7 +174,7 @@ export default function MenuPage(){
                                                             
                                                             <img className="inline-block h-16 w-24 rounded-lg" src={appUrl + '/' + packet.packet_picture} alt={packet.packet_name} />
                                                             
-                                                                       </td>
+                                                        </td>
                                          
                                                         <td className="px-6 py-4 border-r-2">
                                                             <p>{packet.packet_desc}</p>

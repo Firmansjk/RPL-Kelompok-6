@@ -189,6 +189,17 @@ class VendorController extends Controller
         }
     }
 
+    // public function searchVendor(Request $request)
+    // {
+    //     $query = $request->input('query');
+
+    //     $results = VendorMenu::where('name', 'like', '%' . $query . '%')
+    //         ->orWhere('description', 'like', '%' . $query . '%')
+    //         ->get();
+
+    //     return response()->json($results);
+    // }
+
 
     public function VendorLogin()
     {

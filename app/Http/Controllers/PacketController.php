@@ -24,7 +24,9 @@ class PacketController extends Controller
         $id = Auth::user()->id;
         $packets = Packet::where('vendor_id', $id)->latest()->get();
         $products = Product::where('vendor_id', $id)->latest()->get();
-        return Inertia::render('MenuPage', compact('packets', 'products'));
+        //tambahan
+        $results = [];
+        return Inertia::render('MenuPage', compact('packets', 'products', 'results'));
     }
 
     public function VendorAddPacket(Request $request)
@@ -88,6 +90,32 @@ public function VendorDeletePacket($id)
         return redirect()->back()->with($notification);
 
     }// End Method 
+
+    public function searchVendor(Request $request)
+    {
+        $query = $request->input('query');
+
+        $id = Auth::user()->id;
+        $packets = Packet::where('vendor_id', $id)->latest()->get();
+        $products = Product::where('vendor_id', $id)->latest()->get();
+        //tambahan
+        $results = Packet::where('packet_name', 'like', '%' . $query . '%')
+        ->orWhere('packet_desc', 'like', '%' . $query . '%')
+        ->get();
+        return Inertia::render('MenuPage', compact('packets', 'products', 'results'));
+
+        // $results = Packet::where('packet_name', 'like', '%' . $query . '%')
+        //     ->orWhere('packet_desc', 'like', '%' . $query . '%')
+        //     ->get();
+        
+        // $response['data'] = $results;
+        // return response()->json($results);
+        // return response()->json($results);
+            // Return the Inertia response with the data and view
+        // return Inertia::render('MenuPage', compact('packets', 'products', 'results'));
+            // Return the Inertia response with the data and view
+        // return Inertia::render('MenuPage', compact('results'));
+    }
 
 
     /**
