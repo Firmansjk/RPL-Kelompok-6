@@ -41,7 +41,7 @@ class AuthenticatedSessionController extends Controller
         } elseif ($request->user()->role === 'vendor') {
             $url = 'vendor/profilepage';
         } elseif ($request->user()->role === 'user') {
-            $url = '/dashboard';
+            $url = '/';
         }
 
         return redirect()->intended($url);

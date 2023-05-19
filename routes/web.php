@@ -9,7 +9,7 @@ use App\Http\Controllers\VendorController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\PacketController;
-
+use App\Http\Controllers\UserController;
 
 
 /*
@@ -23,14 +23,14 @@ use App\Http\Controllers\PacketController;
 |
 */
 
-Route::get('/', function () {
-    return Inertia::render('Welcome', [
-        // 'canLogin' => Route::has('login'),
-        'canRegister' => Route::has('register'),
-        'laravelVersion' => Application::VERSION,
-        'phpVersion' => PHP_VERSION,
-    ]);
-});
+// Route::get('/', function () {
+//     return Inertia::render('Welcome', [
+//         // 'canLogin' => Route::has('login'),
+//         'canRegister' => Route::has('register'),
+//         'laravelVersion' => Application::VERSION,
+//         'phpVersion' => PHP_VERSION,
+//     ]);
+// });
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
@@ -42,25 +42,18 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-// Route::get('/dashboardpage', function () {
-//     return Inertia::render('DashboardPage');
-// })->name('dashboardpage');
 
-// Route::get('/profilepage', function () {
-//     return Inertia::render('ProfilePage');
-// })->name('profilepage');
+// Route::get('/', function () {
+//     return Inertia::render('userpage/HomePage');
+// })->name('homepage');
 
-// Route::get('/menupage', function () {
-//     return Inertia::render('MenuPage');
-// })->name('menupage');
+Route::get('/', [UserController::class, 'index'])->
+    name('homepage');
+Route::get('/register', [UserController::class, 'UserRegisterPage'])->
+    name('user.register');
+Route::get('/login', [UserController::class, 'UserLogin'])->
+    name('user.login');
 
-// Route::get('/loginpage', function () {
-//     return Inertia::render('LoginPage');
-// })->name('loginpage');
-
-Route::get('/registerpage', function () {
-    return Inertia::render('RegisterPage');
-})->name('registerpage');
 
 Route::post('/vendor/register', [VendorController::class, 'VendorRegister'])->
     name('vendor.register');
@@ -92,17 +85,6 @@ route::middleware(['auth','role:vendor'])->group(function() {
 
     // Route::get('/vendor/menupage', [VendorController::class, 'VendorMenu'])->
     //     name('vendor.menupage');
-    
-    Route::post('/vendor/tambahpaket', [VendorController::class, 'AddPackets'])->
-        name('vendor.tambahpaket');
-
-    Route::post('/vendor/tambahpaket', [VendorController::class, 'AddPackets'])->
-        name('vendor.tambahpaket');
-    // Route::get('/vendor/createeditmenu', [VendorController::class, 'CreateVendorMenu'])->
-    //     name('vendor.createeditmenu');
-    // Route::resource('posts', PacketsController::class);
-    // Route::post('/vendor/menupage/store', [VendorController::class, 'StoreVendorMenu'])->
-    //     name('vendor.menupage.AddPackets');
 
     Route::post('/vendor/logout', [VendorController::class, 'VendorDestroy'])->
         name('vendor.logout');
@@ -123,42 +105,54 @@ route::middleware(['auth','role:vendor'])->group(function() {
         name('vendor.deleteProfile');
 
 
-Route::controller(ProductController::class)->group(function(){
-    Route::get('/vendor/all/product', 'VendorAllProduct')->name('vendor.all.product');
-    Route::post('/vendor/add/product', 'VendorAddProduct')->name('vendor.add.product');
-    Route::get('/vendor/editProduct/{id}' , 'VendorEditProduct')->name('vendor.edit.product');
-    Route::delete('/vendor/delete/{id}' , 'VendorProductDelete')->name('vendor.delete.product');
-    Route::post('/vendor/updateproduct' , 'VendorUpdateProduct')->name('vendor.update.product');
+    Route::controller(ProductController::class)->group(function(){
+        Route::get('/vendor/all/product', 'VendorAllProduct')->name('vendor.all.product');
+        Route::post('/vendor/add/product', 'VendorAddProduct')->name('vendor.add.product');
+        Route::get('/vendor/editProduct/{id}' , 'VendorEditProduct')->name('vendor.edit.product');
+        Route::delete('/vendor/delete/{id}' , 'VendorProductDelete')->name('vendor.delete.product');
+        Route::post('/vendor/updateproduct' , 'VendorUpdateProduct')->name('vendor.update.product');
+    });
+
+    Route::controller(PacketController::class)->group(function(){
+        Route::get('/vendor/menupage', 'VendorAllPacket')->name('vendor.all.packet');
+        Route::post('/vendor/add/packet', 'VendorAddPacket')->name('vendor.add.packet');
+        Route::get('/vendor/editPacket/{id}' , 'VendorEditPacket')->name('vendor.edit.packet');
+        Route::delete('/vendor/hapus/{id}' , 'VendorPacketDelete')->name('vendor.delete.packet');
+        Route::post('/vendor/updatepacket' , 'VendorUpdatePacket')->name('vendor.update.packet');
+    });
+
 });
 
-Route::controller(PacketController::class)->group(function(){
-    Route::get('/vendor/menupage', 'VendorAllPacket')->name('vendor.all.packet');
-    Route::post('/vendor/add/packet', 'VendorAddPacket')->name('vendor.add.packet');
-    Route::get('/vendor/editPacket/{id}' , 'VendorEditPacket')->name('vendor.edit.packet');
-    Route::delete('/vendor/hapus/{id}' , 'VendorPacketDelete')->name('vendor.delete.packet');
-    Route::post('/vendor/updatepacket' , 'VendorUpdatePacket')->name('vendor.update.packet');
+Route::get('/searchcatering', [UserController::class, 'SearchCatering'])->
+        name('user.searchcatering');
+
+route::middleware(['auth','role:user'])->group(function() {
+    Route::get('/searchcatering', [UserController::class, 'SearchCatering'])->
+        name('user.searchcatering');
+    Route::get('/user/profile', [UserController::class, 'UserProfile'])->
+        name('user.profilepage');
+
+    // Route::get('/vendor/menupage', [VendorController::class, 'VendorMenu'])->
+    //     name('vendor.menupage');
+
+    Route::post('/user/logout', [UserController::class, 'UserDestroy'])->
+        name('user.logout');
+
+    Route::patch('/user/profilepage', [VendorController::class, 'VendorUpdate'])->
+        name('profile.change');
+        
+    Route::post('/vendor/profile/update', [VendorController::class, 'VendorProfilePicture'])->
+        name('image.upload');
+
+    Route::post('/vendor/sampul/update', [VendorController::class, 'VendorSampulPicture'])->
+        name('image.upload');
+        
+    Route::post('/vendor/changepassword', [VendorController::class, 'VendorChangePassword'])->
+        name('vendor.changepassword');
+
+    Route::delete('vendor/delete-profile', [VendorController::class, 'VendorDeleteProfile'])->
+        name('vendor.deleteProfile');
 });
-
-});
-
-// //route index login
-// Route::get('/loginpage', [VendorController::class, 'VendorLogin'])
-//     ->name('vendor.login');
-
-// route::middleware(['auth','role:vendor'])->group(function() {
-//     Route::get('/dashboardpage', [VendorController::class, 'VendorDashboard'])->name('vendor.menupage');
-// });
-
-// route::middleware(['auth','role:vendor'])->group(function() {
-//     Route::get('/vendor/dashboard', [VendorController::class, 'VendorDashboard']);
-// });
-
-// //route store login
-// Route::post('/loginpage', [LoginController::class, 'store']);
-
-// //route logout
-// Route::post('/logout', [LoginController::class, 'destroy'])->middleware('auth');
-
 
 
 require __DIR__.'/auth.php';
