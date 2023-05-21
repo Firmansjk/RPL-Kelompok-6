@@ -9,7 +9,7 @@ use App\Http\Controllers\VendorController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\PacketController;
-
+use App\Http\Controllers\UserController;
 
 
 /*
@@ -23,14 +23,15 @@ use App\Http\Controllers\PacketController;
 |
 */
 
-Route::get('/', function () {
-    return Inertia::render('UserPage/homePage', [
-        // 'canLogin' => Route::has('login'),
-        'canRegister' => Route::has('register'),
-        'laravelVersion' => Application::VERSION,
-        'phpVersion' => PHP_VERSION,
-    ]);
-});
+
+// Route::get('/', function () {
+//     return Inertia::render('Welcome', [
+//         // 'canLogin' => Route::has('login'),
+//         'canRegister' => Route::has('register'),
+//         'laravelVersion' => Application::VERSION,
+//         'phpVersion' => PHP_VERSION,
+//     ]);
+// });
 
 //User Routes
 Route::get('/', function () {
@@ -76,10 +77,17 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+// Route::get('/', function () {
+//     return Inertia::render('userpage/HomePage');
+// })->name('homepage');
 
-Route::get('/registerpage', function () {
-    return Inertia::render('RegisterPage');
-})->name('registerpage');
+Route::get('/', [UserController::class, 'index'])->
+    name('homepage');
+Route::get('/register', [UserController::class, 'UserRegisterPage'])->
+    name('user.register');
+Route::get('/login', [UserController::class, 'UserLogin'])->
+    name('user.login');
+
 
 Route::post('/vendor/register', [VendorController::class, 'VendorRegister'])->
     name('vendor.register');
@@ -108,9 +116,6 @@ route::middleware(['auth','role:vendor'])->group(function() {
 
     Route::get('/vendor/profilepage', [VendorController::class, 'VendorProfile'])->
         name('vendor.profilepage');
-    
-    Route::post('/vendor/tambahpaket', [VendorController::class, 'AddPackets'])->
-        name('vendor.tambahpaket');
 
     Route::post('/vendor/tambahpaket', [VendorController::class, 'AddPackets'])->
         name('vendor.tambahpaket');
@@ -119,13 +124,13 @@ route::middleware(['auth','role:vendor'])->group(function() {
         name('vendor.logout');
 
     Route::patch('/vendor/profilepage', [VendorController::class, 'VendorUpdate'])->
-        name('profile.change');
+        name('vendor.profile.change');
         
-    Route::post('/vendor/profile/update', [VendorController::class, 'VendorProfilePicture'])->
-        name('image.upload');
+    Route::post('/vendor/picture/update', [VendorController::class, 'VendorProfilePicture'])->
+        name('vendor.photo.upload');
 
     Route::post('/vendor/sampul/update', [VendorController::class, 'VendorSampulPicture'])->
-        name('image.upload');
+        name('vendor.sampul.upload');
         
     Route::post('/vendor/changepassword', [VendorController::class, 'VendorChangePassword'])->
         name('vendor.changepassword');
@@ -137,23 +142,55 @@ route::middleware(['auth','role:vendor'])->group(function() {
     Route::post('/vendor/search', [PacketController::class, 'searchVendor'])->name('vendor.search');
 
 
-Route::controller(ProductController::class)->group(function(){
-    Route::get('/vendor/all/product', 'VendorAllProduct')->name('vendor.all.product');
-    Route::post('/vendor/add/product', 'VendorAddProduct')->name('vendor.add.product');
-    Route::delete('/vendor/delete/{id}' , 'VendorProductDelete')->name('vendor.delete.product');
+    Route::controller(ProductController::class)->group(function(){
+        Route::get('/vendor/all/product', 'VendorAllProduct')->name('vendor.all.product');
+        Route::post('/vendor/add/product', 'VendorAddProduct')->name('vendor.add.product');
+        Route::get('/vendor/editProduct/{id}' , 'VendorEditProduct')->name('vendor.edit.product');
+        Route::delete('/vendor/delete/{id}' , 'VendorProductDelete')->name('vendor.delete.product');
+        Route::post('/vendor/updateproduct' , 'VendorUpdateProduct')->name('vendor.update.product');
+    });
+
+    Route::controller(PacketController::class)->group(function(){
+        Route::get('/vendor/menupage', 'VendorAllPacket')->name('vendor.all.packet');
+        Route::post('/vendor/add/packet', 'VendorAddPacket')->name('vendor.add.packet');
+        Route::get('/vendor/editPacket/{id}' , 'VendorEditPacket')->name('vendor.edit.packet');
+        Route::delete('/vendor/hapus/{id}' , 'VendorPacketDelete')->name('vendor.delete.packet');
+        Route::post('/vendor/updatepacket' , 'VendorUpdatePacket')->name('vendor.update.packet');
+    });
+
 });
 
-Route::controller(PacketController::class)->group(function(){
-    Route::get('/vendor/menupage', 'VendorAllPacket')->name('vendor.all.packet');
-    Route::post('/vendor/add/packet', 'VendorAddPacket')->name('vendor.add.packet');
-    Route::get('/vendor/edit/{id}' , 'VendorEditPacket')->name('vendor.edit.packet');
-    Route::delete('/vendor/hapus/{id}' , 'VendorPacketDelete')->name('vendor.delete.packet');
-    Route::post('/vendor/update' , 'VendorUpdatePacket')->name('vendor.update.packet');
+route::middleware(['auth','role:user'])->group(function() {
+    Route::get('/home', [UserController::class, 'Homepage'])->
+        name('user.home');
+    Route::get('/search-catering', [UserController::class, 'SearchCatering'])->
+        name('user.searchcatering');
+    Route::get('/search-menu', [UserController::class, 'SearchMenu'])->
+        name('user.searchmenu');
+    Route::get('/user/profilepage', [UserController::class, 'UserProfile'])->
+        name('user.profilepage');
+    Route::patch('/user/profilepage', [VendorController::class, 'VendorUpdate'])->
+        name('user.profile.change');
+    Route::post('/user/picture/update', [UserController::class, 'UserProfilePicture'])->
+        name('user.photo.upload');
+    Route::delete('user/delete-profile', [UserController::class, 'UserDeleteProfile'])->
+        name('user.deleteProfile');
+
+    // Route::get('/vendor/menupage', [VendorController::class, 'VendorMenu'])->
+    //     name('vendor.menupage');
+
+    Route::post('/user/logout', [UserController::class, 'UserDestroy'])->
+        name('user.logout');
+        
+    // Route::post('/vendor/profile/update', [VendorController::class, 'VendorProfilePicture'])->
+    //     name('image.upload');
+
+    // Route::post('/vendor/sampul/update', [VendorController::class, 'VendorSampulPicture'])->
+    //     name('image.upload');
+        
+    // Route::post('/vendor/changepassword', [VendorController::class, 'VendorChangePassword'])->
+    //     name('vendor.changepassword');
 });
-
-});
-
-
 
 
 require __DIR__.'/auth.php';

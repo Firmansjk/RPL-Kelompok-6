@@ -10,7 +10,7 @@ export default function ButtonChangePSampul(){
     const formData = new FormData();
     formData.append('sampul', sampul);
 
-    Inertia.post('/vendor/sampul/update', formData);
+    Inertia.post(route('vendor.sampul.upload'), formData);
   };
 
   const handlePhotoChange = (e) => {

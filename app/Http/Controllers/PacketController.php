@@ -47,13 +47,13 @@ class PacketController extends Controller
         return redirect()->back();
     }
 
-public function VendorDeletePacket($id)
-{
-    $packet = Packet::findOrFail($id);
-    $packet->delete();
+    public function VendorDeletePacket($id)
+    {
+        $packet = Packet::findOrFail($id);
+        $packet->delete();
 
-    return redirect()->back();
-}
+        return redirect()->back();
+    }
 
 
     public function VendorEditPacket($id){
@@ -62,7 +62,26 @@ public function VendorDeletePacket($id)
     }// End Method
 
     public function VendorUpdatePacket(Request $request){
-        // dd($request);
+        $packet_id = $request->id;
+        $packet = Packet::findOrFail($packet_id);
+
+        $image = $request->file('packet_picture');
+        $oldImage = $packet->packet_picture;
+
+        if ($image) {
+            $name_gen = hexdec(uniqid()) . '.' . $image->getClientOriginalExtension();
+            Image::make($image)->resize(800, 800)->save(public_path('upload/packets/' . $name_gen));
+            $save_url = 'upload/packets/' . $name_gen;
+
+            if (file_exists(public_path($oldImage))) {
+                unlink(public_path($oldImage));
+            }
+
+            $packet->update([
+                'packet_picture' => $save_url,
+            ]);
+        }
+
         $packet_id = $request->id;
         $packet = Packet::findOrFail($packet_id);
         $packet->update([
@@ -90,6 +109,7 @@ public function VendorDeletePacket($id)
         return redirect()->back()->with($notification);
 
     }// End Method 
+
 
     public function searchVendor(Request $request)
     {
@@ -187,7 +207,6 @@ public function VendorDeletePacket($id)
 
         return Redirect::route('posts.index');
     }
-
 
     
 }

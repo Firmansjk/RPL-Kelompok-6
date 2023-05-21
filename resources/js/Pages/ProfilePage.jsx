@@ -12,7 +12,7 @@ import UpdatePassword from "./UpdatePassword";
 
 
 function ProfilePage () {
-        const { user } = usePage().props;
+    const { user } = usePage().props;
     const { data, setData, patch, put, processing, errors, reset } = useForm({
         name: user.name,
         email: user.email,
@@ -25,7 +25,7 @@ function ProfilePage () {
       // Handle form input change
       const submit = (e) => {
         e.preventDefault();
-        patch(route('profile.change'));
+        patch(route('vendor.profile.change'));
     };
 
 
@@ -42,11 +42,11 @@ function ProfilePage () {
                                 <img className="w-full h-40 lg:h-72 rounded-2xl object-cover" src={user.sampul ? `/upload/vendor_sampul/${user.sampul}` : img} alt="Food Img"/>
                                 <ButtonChangePSampul/>
                                 <div className="absolute flex flex-row ap-2 mt-12 md:hidden">
-                                    <ButtonPhoto setData={setData} submit={submit}/>
+                                    <ButtonPhoto/>
                                     <ButtonHapusPhoto/>
                                 </div>
                                 <div className="absolute hidden md:flex md:flex-col md:gap-2">
-                                    <ButtonPhoto setData={setData} submit={submit}/>
+                                    <ButtonPhoto/>
                                     <ButtonHapusPhoto/>
                                 </div>
                                 <div className="relative overflow-hidden left-[50%] translate-x-[-50%] top-[-5em] w-28 h-28 md:w-44 md:h-44 md:left-[7em] md:translate-x[0%] md:top-[-4.5em] lg:w-52 lg:h-52 lg:top-[-5.5em] border border-white border-8 rounded-full">
@@ -64,32 +64,60 @@ function ProfilePage () {
                                         <div className="grid gap-6 mb-6 md:grid-cols-2 mx-6 my-5">
                                             <div>
                                                 <label htmlFor="name" className="block mb-2 text-sm font-bold text-[#F77E21]">Nama Katering</label>
-                                                <input type="text" id="name" value={data.name} onChange={(e) => setData('name', e.target.value)}
+                                                <input 
+                                                type="text" 
+                                                id="name" 
+                                                value={data.name} 
+                                                onChange={(e) => setData('name', e.target.value)}
                                                 className="border border-[#F77E21] text-gray-900 text-sm rounded-lg block w-full p-2.5" placeholder="Pojok Dapur"/>
                                             </div>
                                             <div>
                                                 <label htmlFor="username" className="block mb-2 text-sm font-bold text-[#F77E21]">Username</label>
-                                                <input type="text" id="username" name="username" value={data.username} onChange={(e) => setData('username', e.target.value)} 
+                                                <input 
+                                                type="text" 
+                                                id="username" 
+                                                name="username" 
+                                                value={data.username} 
+                                                onChange={(e) => setData('username', e.target.value)} 
                                                 className="border border-[#F77E21] text-gray-900 text-sm rounded-lg block w-full p-2.5" placeholder="pojokdapur123"/>
                                             </div>
                                             <div>
                                                 <label htmlFor="email" className="block mb-2 text-sm font-bold text-[#F77E21]">E-mail</label>
-                                                <input type="email" id="email" name="email" value={data.email} onChange={(e) => setData('email', e.target.value)}
+                                                <input 
+                                                type="email" 
+                                                id="email"
+                                                name="email" 
+                                                value={data.email} 
+                                                onChange={(e) => setData('email', e.target.value)}
                                                 className="border border-[#F77E21] text-gray-900 text-sm rounded-lg block w-full p-2.5" placeholder="pojokdapur@gmail.com"/>
                                             </div>  
                                             <div>
                                                 <label htmlFor="address" className="block mb-2 text-sm font-bold text-[#F77E21]">Alamat Katering</label>
-                                                <input type="text" id="address" name="address" value={data.address} onChange={(e) => setData('address', e.target.value)}
+                                                <input 
+                                                type="text" 
+                                                id="address" 
+                                                name="address" 
+                                                value={data.address} 
+                                                onChange={(e) => setData('address', e.target.value)}
                                                 className="border border-[#F77E21] text-gray-900 text-sm rounded-lg block w-full p-2.5" placeholder="Jl. Pajjaiang"/>
                                             </div>
                                             <div>
                                                 <label htmlFor="number" className="block mb-2 text-sm font-bold text-[#F77E21]">No. Telepon</label>
-                                                <input type="tel" id="number" name="number" value={data.phone} onChange={(e) => setData('phone', e.target.value)} 
+                                                <input 
+                                                type="tel" 
+                                                id="number" 
+                                                name="number" 
+                                                value={data.phone} 
+                                                onChange={(e) => setData('phone', e.target.value)} 
                                                 className="border border-[#F77E21] text-gray-900 text-sm rounded-lg block w-full p-2.5" placeholder="0851xxxxxxxx"/>
                                             </div>
                                             <div>
                                                 <label htmlFor="Deskripsi Katering" className="block mb-2 text-sm font-bold text-[#F77E21]">Deskripsi Katering</label>
-                                                <textarea id="description" name="description" value={data.vendor_info} onChange={(e) => setData('vendor_info', e.target.value)}
+                                                <textarea 
+                                                id="description" 
+                                                name="description" 
+                                                value={data.vendor_info} 
+                                                onChange={(e) => setData('vendor_info', e.target.value)}
                                                 className="border border-[#F77E21] rounded-lg w-full h-24 p-3 text-sm" style={{resize: "none"}} placeholder="Enter some text"></textarea>
                                             </div>
                                             <div className="mt-1 mb-3">
