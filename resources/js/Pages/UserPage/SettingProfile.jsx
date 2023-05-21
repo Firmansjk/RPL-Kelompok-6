@@ -1,6 +1,6 @@
 import ButtonPhoto from "../../components/userpage/ForChangePhoto/buttonPhoto";
 import ButtonHapusPhoto from "../../components/userpage/ForChangePhoto/buttonHapusPhoto"
-import Header from "../../components/userpage/header";
+import Header from "../../Components/userpage/Header";
 import { Link, useForm, usePage } from '@inertiajs/react';
 import profileImg from "../../image/profile.png"
 import React from "react";
@@ -17,7 +17,7 @@ export default function SettingProfileUserPage(){
 
     const submit = (e) => {
         e.preventDefault();
-        patch(route('profile.change'));
+        patch(route('user.profile.change'));
     };
 
     return(
@@ -28,7 +28,7 @@ export default function SettingProfileUserPage(){
                 <div className="flex flex-col pt-4 mr-3">
                     <div className="flex flex-1 flex-col md:flex-row lg:flex-row mx-4 mb-10 mt-20 md:mt-0">
                         <div className="flex justify-center gap-10">
-                            <img className="block h-24 w-24 rounded-full object-center" src={profileImg} alt=""/>
+                            <img className="block h-24 w-24 rounded-full object-center" src={user.photo ? `/upload/user_profile/${user.photo}` : profileImg} alt="Profile Picture"/>
                             <div className="flex flex-col justify-center gap-3">
                                 <ButtonPhoto/>
                                 <ButtonHapusPhoto/>

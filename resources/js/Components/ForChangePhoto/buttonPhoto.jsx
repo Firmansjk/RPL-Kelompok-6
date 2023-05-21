@@ -13,7 +13,7 @@ export default function ButtonPhoto(){
     const formData = new FormData();
     formData.append('photo', photo);
 
-    Inertia.post('/vendor/profile/update', formData);
+    Inertia.post(route('vendor.photo.upload'), formData);
   };
 
   const handlePhotoChange = (e) => {

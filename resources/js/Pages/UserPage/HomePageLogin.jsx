@@ -1,13 +1,13 @@
 import { Link } from '@inertiajs/react';
-import HeaderBefore from '@/Components/userpage/HeaderBefore';
-import img from "../../image/homepage.png";
+import Header from '@/Components/userpage/Header';
+import img from "../../image/homepage.png"
 import ButtonShowMorePM from '@/Components/userpage/ForPaketMenu/buttonShowMorePM';
 import logo from "../../image/logo tring.png"
 import logowhite from "../../image/logo tring white.png"
 import React from 'react';
 import {usePage} from '@inertiajs/react';
 
-export default function HomePage({users, packets}){
+export default function HomePageLogin({users, packets}){
     const limitedUsers = users.slice(0, 3);
     const limitedPackets = packets.slice(0, 3);
     const { appUrl } = usePage().props;
@@ -15,7 +15,7 @@ export default function HomePage({users, packets}){
     return(
         <>
         <div className="min-h-screen flex flex-col">
-            <HeaderBefore/>
+            <Header/>
             <main className="flex flex-col">
                 <div className="flex flex-col items-center md:block">
                     <div className="absolute w-full h-screen object-cover bg-black/50"></div>

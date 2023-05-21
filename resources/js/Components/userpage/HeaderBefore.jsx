@@ -1,10 +1,9 @@
 import { useEffect, useRef, useState } from "react";
 import OrangeLogo from "../../image/logo tring.png"
 import profileImg from "../../image/profile.png"
-import { Link, usePage } from '@inertiajs/react';
+import { Link } from '@inertiajs/react';
 
-export default function Header(){
-    const { user } = usePage().props;
+export default function HeaderBefore(){
     const [navbarOpen, setNavbarOpen] = useState(false);
     const [toggleState, setToggleState] = useState(false);
 
@@ -57,7 +56,7 @@ export default function Header(){
                 >
                     <ul className="flex flex-col lg:flex-row list-none lg:ml-auto lg:items-center">
                         <li className="nav-item">
-                            <Link href={route('user.home')}
+                            <Link href={route('homepage')}
                             className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-[#F77E21] hover:opacity-75"
                             >
                             <i className="fab fa-facebook-square text-lg leading-lg text-white opacity-75"></i><span className="ml-2">Home</span>
@@ -79,33 +78,13 @@ export default function Header(){
                         </li>
 
                         {/* Login Logout */}
-                        <hr className="absolute top-[10.8em] border-t mx-2 border-grey-light w-full lg:hidden"/>                        
+                        <hr className="absolute top-[10.8em] border-t mx-2 border-grey-light w-full lg:hidden"/>
                         <li className="nav-item">
-                            <Link href={route('user.profilepage')} className="lg:hidden px-3 pt-5 pb-2 flex items-center text-xs uppercase font-bold leading-snug text-[#F77E21] hover:opacity-75">
-                                <i className="fab fa-pinterest text-lg leading-lg text-white opacity-75"></i><span className="ml-2">Profil Akun</span>
-                            </Link>
-                            <Link href={route('user.logout')} method="post"
-                            className="lg:hidden px-3 pt-1 pb-2 flex items-center text-xs uppercase"
+                            <Link href={route('user.login')}
+                            className="px-3 pt-5 pb-2 lg:pt-2 flex items-center text-xs uppercase"
                             >
-                            <button type="button" className="text-white bg-[#F77E21] hover:bg-yellow-500 font-medium rounded-full text-xs px-4 py-2 text-center">LOG OUT</button>
+                            <button type="button" className="text-white bg-[#F77E21] hover:bg-yellow-500 font-medium rounded-full text-xs px-4 py-2 text-center">LOG IN</button>
                             </Link>
-                        </li>
-
-                        <li className="p-1 flex flex-row items-center mr-4">
-                            <button onClick={() => toggleTab(!toggleState)} className="hidden lg:block p-1 bg-white border border-2 border-gray-300 rounded-xl">
-                                <img className="inline-block h-6 w-6 md:w-8 md:h-8 rounded-full" src={user.photo ? `/upload/user_profile/${user.photo}` : profileImg} alt="Profile Picture"/>
-                            </button>
-                            <div id="ProfileDropDown" className={toggleState === true ? "rounded block shadow-md bg-white absolute mt-40 right-[11em] z-10 overflow-hidden" : "rounded hidden shadow-md bg-white absolute mt-48 right-5 z-10"}>
-                                <ul className="list-reset group">
-                                    <Link href={route('user.profilepage')} className="no-underline px-4 py-2 block text-black hover:bg-[#F77E21] hover:text-white">
-                                        Profil Akun
-                                    </Link>
-                                    <li><hr className="border-t mx-2 border-grey-light"/></li>
-                                    <Link href={route('user.logout')} method="post" className="no-underline px-4 py-2 block text-black hover:bg-[#F77E21] hover:text-white">
-                                        Logout
-                                    </Link>
-                                </ul>
-                            </div>
                         </li>
                     </ul>
                 </div>

@@ -25,7 +25,7 @@ function ProfilePage () {
       // Handle form input change
       const submit = (e) => {
         e.preventDefault();
-        patch(route('profile.change'));
+        patch(route('vendor.profile.change'));
     };
 
 
@@ -42,11 +42,11 @@ function ProfilePage () {
                                 <img className="w-full h-40 lg:h-72 rounded-2xl object-cover" src={user.sampul ? `/upload/vendor_sampul/${user.sampul}` : img} alt="Food Img"/>
                                 <ButtonChangePSampul/>
                                 <div className="absolute flex flex-row ap-2 mt-12 md:hidden">
-                                    <ButtonPhoto setData={setData} submit={submit}/>
+                                    <ButtonPhoto/>
                                     <ButtonHapusPhoto/>
                                 </div>
                                 <div className="absolute hidden md:flex md:flex-col md:gap-2">
-                                    <ButtonPhoto setData={setData} submit={submit}/>
+                                    <ButtonPhoto/>
                                     <ButtonHapusPhoto/>
                                 </div>
                                 <div className="relative overflow-hidden left-[50%] translate-x-[-50%] top-[-5em] w-28 h-28 md:w-44 md:h-44 md:left-[7em] md:translate-x[0%] md:top-[-4.5em] lg:w-52 lg:h-52 lg:top-[-5.5em] border border-white border-8 rounded-full">

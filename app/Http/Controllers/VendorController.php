@@ -39,7 +39,6 @@ class VendorController extends Controller
         $user->phone = $request->phone;
         $user->address = $request->address;
         $user->vendor_info = $request->vendor_info;
-        $user->photo = $request->photo;
 
       
         $user->save();

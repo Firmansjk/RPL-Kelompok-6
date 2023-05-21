@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import ButtonShowMorePM from "../../components/userpage/ForPaketMenu/buttonShowMorePM";
-import Header from "../../components/userpage/header";
+import Header from "../../Components/userpage/Header";
 import img from "../../image/image.png"
 
 export default function ProfileCateringPage(){

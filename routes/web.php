@@ -90,13 +90,13 @@ route::middleware(['auth','role:vendor'])->group(function() {
         name('vendor.logout');
 
     Route::patch('/vendor/profilepage', [VendorController::class, 'VendorUpdate'])->
-        name('profile.change');
+        name('vendor.profile.change');
         
-    Route::post('/vendor/profile/update', [VendorController::class, 'VendorProfilePicture'])->
-        name('image.upload');
+    Route::post('/vendor/picture/update', [VendorController::class, 'VendorProfilePicture'])->
+        name('vendor.photo.upload');
 
     Route::post('/vendor/sampul/update', [VendorController::class, 'VendorSampulPicture'])->
-        name('image.upload');
+        name('vendor.sampul.upload');
         
     Route::post('/vendor/changepassword', [VendorController::class, 'VendorChangePassword'])->
         name('vendor.changepassword');
@@ -123,35 +123,36 @@ route::middleware(['auth','role:vendor'])->group(function() {
 
 });
 
-Route::get('/searchcatering', [UserController::class, 'SearchCatering'])->
-        name('user.searchcatering');
-
 route::middleware(['auth','role:user'])->group(function() {
-    Route::get('/searchcatering', [UserController::class, 'SearchCatering'])->
+    Route::get('/home', [UserController::class, 'Homepage'])->
+        name('user.home');
+    Route::get('/search-catering', [UserController::class, 'SearchCatering'])->
         name('user.searchcatering');
-    Route::get('/user/profile', [UserController::class, 'UserProfile'])->
+    Route::get('/search-menu', [UserController::class, 'SearchMenu'])->
+        name('user.searchmenu');
+    Route::get('/user/profilepage', [UserController::class, 'UserProfile'])->
         name('user.profilepage');
+    Route::patch('/user/profilepage', [VendorController::class, 'VendorUpdate'])->
+        name('user.profile.change');
+    Route::post('/user/picture/update', [UserController::class, 'UserProfilePicture'])->
+        name('user.photo.upload');
+    Route::delete('user/delete-profile', [UserController::class, 'UserDeleteProfile'])->
+        name('user.deleteProfile');
 
     // Route::get('/vendor/menupage', [VendorController::class, 'VendorMenu'])->
     //     name('vendor.menupage');
 
     Route::post('/user/logout', [UserController::class, 'UserDestroy'])->
         name('user.logout');
-
-    Route::patch('/user/profilepage', [VendorController::class, 'VendorUpdate'])->
-        name('profile.change');
         
-    Route::post('/vendor/profile/update', [VendorController::class, 'VendorProfilePicture'])->
-        name('image.upload');
+    // Route::post('/vendor/profile/update', [VendorController::class, 'VendorProfilePicture'])->
+    //     name('image.upload');
 
-    Route::post('/vendor/sampul/update', [VendorController::class, 'VendorSampulPicture'])->
-        name('image.upload');
+    // Route::post('/vendor/sampul/update', [VendorController::class, 'VendorSampulPicture'])->
+    //     name('image.upload');
         
-    Route::post('/vendor/changepassword', [VendorController::class, 'VendorChangePassword'])->
-        name('vendor.changepassword');
-
-    Route::delete('vendor/delete-profile', [VendorController::class, 'VendorDeleteProfile'])->
-        name('vendor.deleteProfile');
+    // Route::post('/vendor/changepassword', [VendorController::class, 'VendorChangePassword'])->
+    //     name('vendor.changepassword');
 });
 
 

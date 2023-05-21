@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use Inertia\Inertia;
 use App\Models\Packet;
+use App\Models\Product;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules\Password;
 
@@ -23,8 +24,43 @@ class UserController extends Controller
         return Inertia::render('UserPage/HomePage', compact('users', 'packets'));
     }
 
-    public function SearchCatering(){
-        return Inertia::render('UserPage/SearchCatering');
+    public function Homepage()
+    {
+        // Mengambil data user yang memiliki role "vendor"
+        $user = Auth::user();
+        $users = User::where('role', 'vendor')->get();
+        $packets = Packet::with('user')->get();
+        // $packets = User::where('role', 'vendor')->get();
+
+        return Inertia::render('UserPage/HomePageLogin', compact('users', 'packets', 'user'));
+    }
+
+    public function SearchCatering(Request $request)
+    {
+        $user = Auth::user();
+        $searchQuery = $request->query('query'); // Mengambil query pencarian dari permintaan
+
+        // Lakukan pencarian pada pengguna yang memiliki peran vendor
+        $results = User::withCount(['products', 'packets'])
+            ->where('role', 'vendor')
+            ->where(function ($query) use ($searchQuery) {
+                $query->where('name', 'like', "%$searchQuery%")
+                    ->orWhere('address', 'like', "%$searchQuery%");
+            })
+            ->get();
+
+        return Inertia::render('UserPage/SearchCatering', compact('results', 'user'));
+    }
+
+    public function SearchMenu(Request $request)
+    {
+        $user = Auth::user();
+        $searchQuery = $request->input('query');
+
+       
+ 
+        
+        return Inertia::render('UserPage/SearchMenu', compact('user'));
     }
 
     public function UserLogin()
@@ -53,8 +89,6 @@ class UserController extends Controller
         $user->username = $request->username;
         $user->phone = $request->phone;
         $user->address = $request->address;
-        $user->vendor_info = $request->vendor_info;
-        $user->photo = $request->photo;
 
       
         $user->save();
@@ -78,6 +112,26 @@ class UserController extends Controller
         $data->save();
         return redirect()->back();
     }
+
+    public function UserDeleteProfile(Request $request)
+    {
+        $id = Auth::user()->id;
+        $data = User::find($id);
+
+        if ($data->photo) {
+            // Hapus foto dari direktori upload
+            $file_path = public_path('upload/user_profile/' . $data->photo);
+            if (file_exists($file_path)) {
+                unlink($file_path);
+            }
+
+            // Hapus nama foto dari kolom photo di database
+            $data->photo = null;
+            $data->save();
+        }
+        return redirect()->back();
+    }
+
 
     public function UserDestroy(Request $request)
     {
