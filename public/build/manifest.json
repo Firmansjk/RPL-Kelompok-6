@@ -61,11 +61,35 @@
       "resources/js/app.jsx"
     ]
   },
+  "_index.esm-bfb3731b.js": {
+    "file": "assets/index.esm-bfb3731b.js",
+    "imports": [
+      "resources/js/app.jsx"
+    ]
+  },
+  "_login_page-490d40ed.js": {
+    "assets": [
+      "assets/login_page-75644e81.png"
+    ],
+    "file": "assets/login_page-490d40ed.js"
+  },
+  "_logo tring white-5eb8ef4e.js": {
+    "assets": [
+      "assets/logo tring white-2dc575d0.png"
+    ],
+    "file": "assets/logo tring white-5eb8ef4e.js"
+  },
   "_logo tring white-ff470b45.js": {
     "assets": [
       "assets/logo tring white-2dc575d0.png"
     ],
     "file": "assets/logo tring white-ff470b45.js"
+  },
+  "_logo tring-1734e28a.js": {
+    "assets": [
+      "assets/logo tring-2dd1a48d.png"
+    ],
+    "file": "assets/logo tring-1734e28a.js"
   },
   "_logo tring-83bb4ec9.js": {
     "assets": [
@@ -77,7 +101,8 @@
     "file": "assets/sidebar-6c1567fa.js",
     "imports": [
       "resources/js/app.jsx",
-      "_logo tring-83bb4ec9.js"
+      "_index.esm-bfb3731b.js",
+      "_logo tring-1734e28a.js"
     ]
   },
   "_transition-9b1c9735.js": {
@@ -88,11 +113,11 @@
   },
   "public/images/login_page.png": {
     "file": "assets/login_page-75644e81.png",
-    "src": "public/images/login_page.png"
+    "src": "resources/js/image/UserImage/login_page.png"
   },
   "public/images/logo tring white.png": {
     "file": "assets/logo tring white-2dc575d0.png",
-    "src": "public/images/logo tring white.png"
+    "src": "resources/js/image/UserImage/logo tring white.png"
   },
   "resources/js/Pages/Auth/ConfirmPassword.jsx": {
     "file": "assets/ConfirmPassword-97273d95.js",
@@ -327,7 +352,8 @@
       "_header-f7e65119.js",
       "_index-f33c4812.js",
       "resources/js/Pages/UpdatePassword.jsx",
-      "_logo tring-83bb4ec9.js",
+      "_index.esm-bfb3731b.js",
+      "_logo tring-1734e28a.js",
       "_logo tring white-ff470b45.js"
     ],
     "isDynamicEntry": true,
@@ -349,7 +375,7 @@
     "file": "assets/ResetPassPage-12e272d1.js",
     "imports": [
       "resources/js/app.jsx",
-      "_logo tring-83bb4ec9.js"
+      "_logo tring-1734e28a.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/Pages/ResetPassPage.jsx"
@@ -365,6 +391,117 @@
     "isDynamicEntry": true,
     "src": "resources/js/Pages/UpdatePassword.jsx"
   },
+  "resources/js/Pages/UserPage/homePage.jsx": {
+    "assets": [
+      "assets/homepage-20b3cbb6.png"
+    ],
+    "file": "assets/homePage-9cac0c8b.js",
+    "imports": [
+      "resources/js/app.jsx",
+      "_header-5f1543a5.js",
+      "_buttonShowMorePM-120f8bc2.js",
+      "_logo tring-83bb4ec9.js",
+      "_logo tring white-5eb8ef4e.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "resources/js/Pages/UserPage/homePage.jsx"
+  },
+  "resources/js/Pages/UserPage/hubungipenjual.jsx": {
+    "file": "assets/hubungipenjual-f7d285b0.js",
+    "imports": [
+      "resources/js/app.jsx",
+      "_header-5f1543a5.js",
+      "_image-63692e15.js",
+      "_logo tring-83bb4ec9.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "resources/js/Pages/UserPage/hubungipenjual.jsx"
+  },
+  "resources/js/Pages/UserPage/loginpage.jsx": {
+    "file": "assets/loginpage-38474558.js",
+    "imports": [
+      "resources/js/app.jsx",
+      "_login_page-490d40ed.js",
+      "_logo tring white-5eb8ef4e.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "resources/js/Pages/UserPage/loginpage.jsx"
+  },
+  "resources/js/Pages/UserPage/lupaPass.jsx": {
+    "file": "assets/lupaPass-bfb27bf2.js",
+    "imports": [
+      "resources/js/app.jsx",
+      "_logo tring-83bb4ec9.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "resources/js/Pages/UserPage/lupaPass.jsx"
+  },
+  "resources/js/Pages/UserPage/profileCatering.jsx": {
+    "file": "assets/profileCatering-d5d8f7e1.js",
+    "imports": [
+      "resources/js/app.jsx",
+      "_buttonShowMorePM-120f8bc2.js",
+      "_header-5f1543a5.js",
+      "_image-63692e15.js",
+      "_logo tring-83bb4ec9.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "resources/js/Pages/UserPage/profileCatering.jsx"
+  },
+  "resources/js/Pages/UserPage/registerpage.jsx": {
+    "file": "assets/registerpage-3036eac5.js",
+    "imports": [
+      "resources/js/app.jsx",
+      "_login_page-490d40ed.js",
+      "_logo tring white-5eb8ef4e.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "resources/js/Pages/UserPage/registerpage.jsx"
+  },
+  "resources/js/Pages/UserPage/resetpass.jsx": {
+    "file": "assets/resetpass-23b99cbe.js",
+    "imports": [
+      "resources/js/app.jsx",
+      "_logo tring-83bb4ec9.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "resources/js/Pages/UserPage/resetpass.jsx"
+  },
+  "resources/js/Pages/UserPage/searchCatering.jsx": {
+    "assets": [
+      "assets/food-493c2b98.png"
+    ],
+    "file": "assets/searchCatering-6f6d0b16.js",
+    "imports": [
+      "resources/js/app.jsx",
+      "_header-5f1543a5.js",
+      "_logo tring-83bb4ec9.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "resources/js/Pages/UserPage/searchCatering.jsx"
+  },
+  "resources/js/Pages/UserPage/searchMenu.jsx": {
+    "file": "assets/searchMenu-a2523fb4.js",
+    "imports": [
+      "resources/js/app.jsx",
+      "_header-5f1543a5.js",
+      "_buttonShowMorePM-120f8bc2.js",
+      "_logo tring-83bb4ec9.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "resources/js/Pages/UserPage/searchMenu.jsx"
+  },
+  "resources/js/Pages/UserPage/settingProfile.jsx": {
+    "file": "assets/settingProfile-4d2ccada.js",
+    "imports": [
+      "resources/js/app.jsx",
+      "_index.esm-bfb3731b.js",
+      "_header-5f1543a5.js",
+      "_logo tring-83bb4ec9.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "resources/js/Pages/UserPage/settingProfile.jsx"
+  },
   "resources/js/Pages/Welcome.jsx": {
     "file": "assets/Welcome-b65dd844.js",
     "imports": [
@@ -377,18 +514,18 @@
     "file": "assets/lupaPass-60b33405.js",
     "imports": [
       "resources/js/app.jsx",
-      "_logo tring-83bb4ec9.js"
+      "_logo tring-1734e28a.js"
     ],
     "isDynamicEntry": true,
     "src": "resources/js/Pages/lupaPass.jsx"
   },
   "resources/js/app.css": {
-    "file": "assets/app-cac63eed.css",
+    "file": "assets/app-b95f7f44.css",
     "src": "resources/js/app.css"
   },
   "resources/js/app.jsx": {
     "css": [
-      "assets/app-cac63eed.css"
+      "assets/app-b95f7f44.css"
     ],
     "dynamicImports": [
       "resources/js/Pages/Auth/ConfirmPassword.jsx",
@@ -412,6 +549,16 @@
       "resources/js/Pages/RegisterPage.jsx",
       "resources/js/Pages/ResetPassPage.jsx",
       "resources/js/Pages/UpdatePassword.jsx",
+      "resources/js/Pages/UserPage/homePage.jsx",
+      "resources/js/Pages/UserPage/hubungipenjual.jsx",
+      "resources/js/Pages/UserPage/loginpage.jsx",
+      "resources/js/Pages/UserPage/lupaPass.jsx",
+      "resources/js/Pages/UserPage/profileCatering.jsx",
+      "resources/js/Pages/UserPage/registerpage.jsx",
+      "resources/js/Pages/UserPage/resetpass.jsx",
+      "resources/js/Pages/UserPage/searchCatering.jsx",
+      "resources/js/Pages/UserPage/searchMenu.jsx",
+      "resources/js/Pages/UserPage/settingProfile.jsx",
       "resources/js/Pages/Welcome.jsx",
       "resources/js/Pages/lupaPass.jsx"
     ],
@@ -419,17 +566,45 @@
     "isEntry": true,
     "src": "resources/js/app.jsx"
   },
+  "resources/js/image/UserImage/food.png": {
+    "file": "assets/food-493c2b98.png",
+    "src": "resources/js/image/UserImage/food.png"
+  },
+  "resources/js/image/UserImage/homepage.png": {
+    "file": "assets/homepage-20b3cbb6.png",
+    "src": "resources/js/image/UserImage/homepage.png"
+  },
+  "resources/js/image/UserImage/image.png": {
+    "file": "assets/image-4e5a37a4.png",
+    "src": "resources/js/image/image.png"
+  },
+  "resources/js/image/UserImage/login_page.png": {
+    "file": "assets/login_page-75644e81.png",
+    "src": "resources/js/image/UserImage/login_page.png"
+  },
+  "resources/js/image/UserImage/logo tring white.png": {
+    "file": "assets/logo tring white-2dc575d0.png",
+    "src": "resources/js/image/UserImage/logo tring white.png"
+  },
+  "resources/js/image/UserImage/logo tring.png": {
+    "file": "assets/logo tring-2dd1a48d.png",
+    "src": "resources/js/image/logo tring.png"
+  },
+  "resources/js/image/UserImage/profile.png": {
+    "file": "assets/profile-1e63bf30.png",
+    "src": "resources/js/image/profile.png"
+  },
   "resources/js/image/image.png": {
     "file": "assets/image-4e5a37a4.png",
     "src": "resources/js/image/image.png"
   },
   "resources/js/image/login_page.png": {
     "file": "assets/login_page-75644e81.png",
-    "src": "public/images/login_page.png"
+    "src": "resources/js/image/UserImage/login_page.png"
   },
   "resources/js/image/logo tring white.png": {
     "file": "assets/logo tring white-2dc575d0.png",
-    "src": "public/images/logo tring white.png"
+    "src": "resources/js/image/UserImage/logo tring white.png"
   },
   "resources/js/image/logo tring.png": {
     "file": "assets/logo tring-2dd1a48d.png",
