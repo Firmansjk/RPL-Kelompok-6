@@ -6,10 +6,8 @@ import React, { useState, useEffect, process} from "react"
 import {usePage} from '@inertiajs/react';
 
 export default function SearchCateringPage(){
-    const [searchQuery, setSearchQuery] = useState('');
-
-    const [query, setQuery] = useState('');
-    const { results } = usePage().props;
+    const { results, searchQuery } = usePage().props;
+    const [query, setQuery] = useState(searchQuery || '');
   
     const submitSearch = (e) => {
       e.preventDefault();
@@ -44,7 +42,6 @@ export default function SearchCateringPage(){
                                 id="default-search" 
                                 class="block w-full p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-white focus:ring-[#F77E21] focus:border-[#F77E21]" 
                                 placeholder="Cari Katering" 
-                                required
                                 value={query}
                                 onChange={(e) => setQuery(e.target.value)}
                                 />
@@ -63,7 +60,7 @@ export default function SearchCateringPage(){
                         <div key={result.id} class="flex flex-col justify-center items-center md:rounded-lg bg-white shadow-lg">
                             <img
                             class="rounded-t-lg w-full h-48 object-cover"
-                            src="https://tecdn.b-cdn.net/img/new/standard/nature/186.jpg"
+                            src={result.photo ? `/upload/vendor_profile/${result.photo}` : "https://tecdn.b-cdn.net/img/new/standard/nature/186.jpg"}
                             alt="" />
                             <div class="px-6 pt-6 pb-0">
                                 <div className="flex flex-col lg:flex-row justify-between items-center gap-3">

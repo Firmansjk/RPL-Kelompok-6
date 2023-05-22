@@ -33,15 +33,24 @@ class VendorController extends Controller
     public function VendorMenu(Request $request)
     {
         $user = Auth::user();
+        $id = $user->id;
         $searchQuery = $request->query('query'); // Mengambil query pencarian dari permintaan
 
-        $packets = Packet::where('packet_name', 'like', "%$searchQuery%")
-                        ->orWhere('packet_desc', 'like', "%$searchQuery%")
-            ->get();
+        $packets = Packet::where(function($query) use ($searchQuery, $id) {
+            $query->where(function($innerQuery) use ($searchQuery) {
+                    $innerQuery->where('packet_name', 'like', "%$searchQuery%")
+                               ->orWhere('packet_desc', 'like', "%$searchQuery%");
+                })
+                ->where('vendor_id', $id);
+        })
+        ->get();
 
-        $products = Product::where('product_name', 'like', "%{$searchQuery}%")
-            ->get();
-        
+        $products = Product::where(function($query) use ($searchQuery, $id) {
+            $query->where('product_name', 'like', "%$searchQuery%")
+                  ->where('vendor_id', $id);
+        })
+        ->get();
+
         return Inertia::render('MenuPage', compact('user', 'packets', 'products', 'searchQuery'));
     }
 

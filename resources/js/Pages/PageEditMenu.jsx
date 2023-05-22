@@ -63,7 +63,7 @@ export default function PageEditMenu({products}){
 
                                     <div className="flex gap-4 mt-8">
                                         <button type='submit' className="btn bg-green-600 text-white text-xs md:text-sm font-semibold py-2 rounded-lg w-full">Simpan Perubahan</button>
-                                        <Link href={route('vendor.all.packet')} className="btn bg-red-600 text-white text-xs md:text-sm font-semibold py-2 rounded-lg w-full text-center">
+                                        <Link href={route('vendor.menupage')} className="btn bg-red-600 text-white text-xs md:text-sm font-semibold py-2 rounded-lg w-full text-center">
                                             Batalkan
                                         </Link>
                                     </div>

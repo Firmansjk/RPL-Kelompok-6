@@ -95,63 +95,6 @@ export default function MenuPage(){
                                 <div className="flex flex-1 flex-col md:flex-row lg:flex-row mx-4 mr-5 md:mr-3 lg:mr-3">
                                     <div className="rounded shadow bg-white mx-2 w-full">
                                         <div className="overflow-x-auto">
-                                        <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-                                                <thead className="text-xs text-[#F77E21] uppercase bg-white">
-                                                    <tr className="border-b-2 border-black">
-                                                        <th scope="col" className="px-6 py-3">
-                                                            No.
-                                                        </th>
-                                                        <th scope="col" className="px-6 py-3">
-                                                            Paket Menu
-                                                        </th>
-                                                        <th scope="col" className="px-6 py-3">
-                                                            Gambar Menu
-                                                        </th>
-                                                        <th scope="col" className="px-6 py-3">
-                                                            Daftar Menu
-                                                        </th>
-                                                        <th scope="col" className="px-6 py-3">
-                                                            Harga Menu
-                                                        </th>
-                                                        <th scope="col" className="px-6 py-3 w-[8em] md:w-[15em] lg:w-[15em]">
-                                                            Aksi
-                                                        </th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody className="text-black">
-                                                    {results.map((result, index) =>     
-                                                    <tr key={result.id} className="bg-white border-b">
-                                                        <th scope="row" className="px-6 py-4 font-medium whitespace-nowrap border-r-2">
-                                                            {index + 1}
-                                                        </th>
-                                                        <td className="px-6 py-4 font-bold border-r-2">
-                                                            {result.packet_name}
-                                                        </td>
-                                                        <td className="px-6 py-4 border-r-2">
-                                                            
-                                                            <img className="inline-block h-16 w-24 rounded-lg" src={appUrl + '/' + result.packet_picture} alt={result.packet_name} />
-                                                            
-                                                        </td>
-                                         
-                                                        <td className="px-6 py-4 border-r-2">
-                                                            <p>{result.packet_desc}</p>
-                                                        </td>
-                                                        <td className="px-6 py-4 border-r-2">
-                                                            <p><span>Rp.</span>{result.packet_price}</p>
-                                                        </td>
-                                                        <td className="px-6 py-4 flex flex-col md:flex-row lg:flex-row gap-2 content-center">
-                                                            <ButtonHapusPK packetId={result.id}/>
-                                                            <Link
-                                                            href={route('vendor.edit.packet', { id: result.id })}
-                                                            className="text-black bg-[#22D7FF] hover:bg-cyan-300 focus:ring-2 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-xs px-4 py-2"
-                                                            >Edit
-                                                            </Link>
-
-                                                        </td>
-                                                    </tr>
-                                                )}
-                                                </tbody>
-                                            </table> 
                                             <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                                                 <thead className="text-xs text-[#F77E21] uppercase bg-white">
                                                     <tr className="border-b-2 border-black">

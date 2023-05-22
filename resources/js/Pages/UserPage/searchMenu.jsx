@@ -1,15 +1,28 @@
-import { useState} from "react";
-import Header from "../../components/userpage/header";
+import React, { useState} from "react";
+import Header from "../../Components/userpage/Header";
 import ButtonShowMorePM from "../../components/userpage/ForPaketMenu/buttonShowMorePM";
 import {usePage} from '@inertiajs/react';
+import { Inertia } from '@inertiajs/inertia';
 
-export default function SearchMenuPage({users, packets}){
+export default function SearchMenuPage(){
     const [toggleState, setToggleState] = useState(1);
     const { appUrl } = usePage().props;
 
     const toggleTab  = (index) =>{
         setToggleState(index)
     }
+
+    const { packets, products, searchQuery } = usePage().props;
+
+    // const [searchTerm, setSearchTerm] = useState('');
+    const [query, setQuery] = useState(searchQuery || '');
+    // const [results, setResults] = useState({ packets: [], products: [] });
+
+    const submitSearch = (e) => {
+        e.preventDefault();
+        Inertia.get(route('user.searchmenu', { query }));
+      };
+
 
     return(
         <>
@@ -38,68 +51,55 @@ export default function SearchMenuPage({users, packets}){
                                 <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
                                     <svg aria-hidden="true" className="w-5 h-5 text-[#F77E21]" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
                                 </div>
-                                <input type="search" id="default-search" className="block w-full p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-white focus:ring-[#F77E21] focus:border-[#F77E21]" placeholder="Cari Menu" required/>
-                                <button type="submit" className="text-white absolute right-2.5 bottom-2.5 bg-[#F77E21] font-medium rounded-lg text-sm px-4 py-2">Cari</button>
+                                <form onSubmit={submitSearch}>
+                                    <input 
+                                        type="search" 
+                                        id="default-search" 
+                                        value={query}
+                                        onChange={(e) => setQuery(e.target.value)}
+                                        className="block w-full p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-white focus:ring-[#F77E21] focus:border-[#F77E21]" 
+                                        placeholder="Cari Menu" />
+                                    <button    
+                                        type="submit"
+                                        className="text-white absolute right-2.5 bottom-2.5 bg-[#F77E21] font-medium rounded-lg text-sm px-4 py-2">
+                                            Cari
+                                    </button>
+                                </form>
                             </div>
                         </div>
 
                         <div>
                             <div className="mt-10 w-full grid grid-flow-row gap-x-8 gap-y-12 sm:grid-cols-2 md:grid-cols-2 xl:grid-cols-3">
-                                <div className="flex flex-col justify-center items-start rounded-lg bg-white shadow-xl">
+                                {packets.map((packet) => (
+                                <div key={packet.id} className="flex flex-col justify-center items-start rounded-lg bg-white shadow-xl">
                                     <img
                                     className="rounded-t-lg w-full h-40 object-cover"
-                                    src="https://tecdn.b-cdn.net/img/new/standard/nature/186.jpg"
+                                    src={packet.packet_picture ? appUrl + '/' + packet.packet_picture : "https://tecdn.b-cdn.net/img/new/standard/nature/186.jpg"}
                                     alt="" />
                                     <div className="px-6 pt-6 pb-0">
                                         <div className="flex flex-col md:flex-row justify-between items-center gap-3">
                                             <div>
                                                 <p
                                                 className="mb-2 text-md md:text-left font-bold leading-tight text-neutral-800">
-                                                PAKET SUPER MENU 1
+                                                {packet.packet_name}
                                                 </p>
                                                 <p
                                                 className="mb-3 text-sm md:text-left font-semibold leading-tight text-neutral-800">
-                                                Toko Katering Anu
+                                                {packet.user.name}
                                                 </p>
                                             </div>
                                         </div>
                                     </div>
                                     <div className="w-full flex flex-col-reverse lg:flex-row justify-between items-center">
-                                        {/* <ButtonShowMorePM/> */}
+                                        <ButtonShowMorePM PacketData={packet}/>
                                         <p
                                         className="mr-0 mt-3 lg:mt-0 lg:mr-6 text-sm md:text-right font-semibold leading-tight text-[#F77E21]">
-                                        <span>Rp.</span>10000<span>/pax</span>
+                                        <span>Rp.</span>{packet.packet_price}<span>/pax</span>
                                         </p>
                                     </div>
                                 </div>
-
-                                <div className="flex flex-col justify-center items-start rounded-lg bg-white shadow-xl">
-                                    <img
-                                    className="rounded-t-lg w-full h-40 object-cover"
-                                    src="https://tecdn.b-cdn.net/img/new/standard/nature/186.jpg"
-                                    alt="" />
-                                    <div className="px-6 pt-6 pb-0">
-                                        <div className="flex flex-col md:flex-row justify-between items-center gap-3">
-                                            <div>
-                                                <p
-                                                className="mb-2 text-md md:text-left font-bold leading-tight text-neutral-800">
-                                                PAKET SUPER MENU 1
-                                                </p>
-                                                <p
-                                                className="mb-3 text-sm md:text-left font-semibold leading-tight text-neutral-800">
-                                                Toko Katering Anu
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="w-full flex flex-col-reverse lg:flex-row justify-between items-center">
-                                        {/* <ButtonShowMorePM PacketData={packet}/> */}
-                                        <p
-                                        className="mr-0 mt-3 lg:mt-0 lg:mr-6 text-sm md:text-right font-semibold leading-tight text-[#F77E21]">
-                                        <span>Rp.</span>10000<span>/pax</span>
-                                        </p>
-                                    </div>
-                                </div>
+                                ))}
+                                
                             </div>
                         </div>
                     </div>
@@ -114,92 +114,50 @@ export default function SearchMenuPage({users, packets}){
                                 <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
                                     <svg aria-hidden="true" className="w-5 h-5 text-[#F77E21]" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
                                 </div>
-                                <input type="search" id="default-search" className="block w-full p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-white focus:ring-[#F77E21] focus:border-[#F77E21]" placeholder="Cari Menu" required/>
-                                <button type="submit" className="text-white absolute right-2.5 bottom-2.5 bg-[#F77E21] font-medium rounded-lg text-sm px-4 py-2">Cari</button>
+                                <form onSubmit={submitSearch}>
+                                    <input 
+                                        type="search" 
+                                        id="default-search" 
+                                        className="block w-full p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-white focus:ring-[#F77E21] focus:border-[#F77E21]" 
+                                        placeholder="Cari Menu" 
+                                        value={query}
+                                        onChange={(e) => setQuery(e.target.value)}/>
+                                    <button 
+                                        type="submit" 
+                                        className="text-white absolute right-2.5 bottom-2.5 bg-[#F77E21] font-medium rounded-lg text-sm px-4 py-2">Cari</button>
+                                </form>
                             </div>
                         </div>
 
                         <div className="mt-10 w-full grid grid-flow-row gap-x-8 gap-y-12 sm:grid-cols-2 md:grid-cols-2 xl:grid-cols-3">
+                            {products.map((product) => (
                             <div className="flex flex-col justify-center items-start rounded-lg bg-white shadow-xl">
                                 <img
                                 className="rounded-t-lg w-full h-40 object-cover"
-                                src="https://tecdn.b-cdn.net/img/new/standard/nature/186.jpg"
+                                src={product.product_picture ? appUrl + '/' + product.product_picture : "https://tecdn.b-cdn.net/img/new/standard/nature/186.jpg"}
                                 alt="" />
                                 <div className="px-6 pt-6 pb-0">
                                     <div className="flex flex-col md:flex-row justify-between items-center gap-3">
                                         <div>
                                             <p
                                             className="mb-2 text-md md:text-left font-bold leading-tight text-neutral-800">
-                                            NASI GORENG
+                                            {product.product_name}
                                             </p>
                                             <p
                                             className="mb-3 text-sm md:text-left font-semibold leading-tight text-neutral-800">
-                                            Toko Katering Anu
+                                            {product.user.name}
                                             </p>
                                         </div>
                                     </div>
                                     <div className="w-full flex mb-5">
                                         <p
                                         className="mr-0 mt-3 lg:mt-0 lg:mr-6 text-sm md:text-right font-semibold leading-tight text-[#F77E21]">
-                                        <span>Rp.</span>10000
+                                        <span>Rp.</span>{product.product_price}
                                         </p>
                                     </div>
                                 </div>
                             </div>
-
-                            <div className="flex flex-col justify-center items-start rounded-lg bg-white shadow-xl">
-                                <img
-                                className="rounded-t-lg w-full h-40 object-cover"
-                                src="https://tecdn.b-cdn.net/img/new/standard/nature/186.jpg"
-                                alt="" />
-                                <div className="px-6 pt-6 pb-0">
-                                    <div className="flex flex-col md:flex-row justify-between items-center gap-3">
-                                        <div>
-                                            <p
-                                            className="mb-2 text-md md:text-left font-bold leading-tight text-neutral-800">
-                                            NASI GORENG
-                                            </p>
-                                            <p
-                                            className="mb-3 text-sm md:text-left font-semibold leading-tight text-neutral-800">
-                                            Toko Katering Anu
-                                            </p>
-                                        </div>
-                                    </div>
-                                    <div className="w-full flex mb-5">
-                                        <p
-                                        className="mr-0 mt-3 lg:mt-0 lg:mr-6 text-sm md:text-right font-semibold leading-tight text-[#F77E21]">
-                                        <span>Rp.</span>10000
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div className="flex flex-col justify-center items-start rounded-lg bg-white shadow-xl">
-                                <img
-                                className="rounded-t-lg w-full h-40 object-cover"
-                                src="https://tecdn.b-cdn.net/img/new/standard/nature/186.jpg"
-                                alt="" />
-                                <div className="px-6 pt-6 pb-0">
-                                    <div className="flex flex-col md:flex-row justify-between items-center gap-3">
-                                        <div>
-                                            <p
-                                            className="mb-2 text-md md:text-left font-bold leading-tight text-neutral-800">
-                                            NASI GORENG
-                                            </p>
-                                            <p
-                                            className="mb-3 text-sm md:text-left font-semibold leading-tight text-neutral-800">
-                                            Toko Katering Anu
-                                            </p>
-                                        </div>
-                                    </div>
-                                    <div className="w-full flex mb-5">
-                                        <p
-                                        className="mr-0 mt-3 lg:mt-0 lg:mr-6 text-sm md:text-right font-semibold leading-tight text-[#F77E21]">
-                                        <span>Rp.</span>10000
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
+                            ))}
                         </div>
                     </div>
                 </div>
