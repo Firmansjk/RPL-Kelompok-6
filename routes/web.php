@@ -117,8 +117,8 @@ route::middleware(['auth','role:vendor'])->group(function() {
     Route::get('/vendor/profilepage', [VendorController::class, 'VendorProfile'])->
         name('vendor.profilepage');
 
-    Route::post('/vendor/tambahpaket', [VendorController::class, 'AddPackets'])->
-        name('vendor.tambahpaket');
+    Route::get('/vendor/menupage', [VendorController::class, 'VendorMenu'])->
+        name('vendor.menupage');
 
     Route::post('/vendor/logout', [VendorController::class, 'VendorDestroy'])->
         name('vendor.logout');
@@ -151,7 +151,7 @@ route::middleware(['auth','role:vendor'])->group(function() {
     });
 
     Route::controller(PacketController::class)->group(function(){
-        Route::get('/vendor/menupage', 'VendorAllPacket')->name('vendor.all.packet');
+
         Route::post('/vendor/add/packet', 'VendorAddPacket')->name('vendor.add.packet');
         Route::get('/vendor/editPacket/{id}' , 'VendorEditPacket')->name('vendor.edit.packet');
         Route::delete('/vendor/hapus/{id}' , 'VendorPacketDelete')->name('vendor.delete.packet');
@@ -175,6 +175,8 @@ route::middleware(['auth','role:user'])->group(function() {
         name('user.photo.upload');
     Route::delete('user/delete-profile', [UserController::class, 'UserDeleteProfile'])->
         name('user.deleteProfile');
+    Route::get('/profiltoko/{userId}', [UserController::class, 'ShowProfile'])->
+        name('user.profiltoko');
 
     // Route::get('/vendor/menupage', [VendorController::class, 'VendorMenu'])->
     //     name('vendor.menupage');

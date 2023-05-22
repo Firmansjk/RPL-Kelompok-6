@@ -7,7 +7,7 @@ import LogoOrange from "../image/logo tring.png";
 const SideBar = () => {
   const menus = [
     { name: "Profile", link: route('vendor.profilepage'), icon: AiOutlineUser },
-    { name: "Menu", link:route('vendor.all.packet'), icon: HiMenu}
+    { name: "Menu", link:route('vendor.menupage'), icon: HiMenu}
   ];
   const [open, setOpen] = useState(true);
   return (

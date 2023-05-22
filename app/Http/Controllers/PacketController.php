@@ -19,15 +19,6 @@ class PacketController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function VendorAllPacket()
-    {
-        $id = Auth::user()->id;
-        $packets = Packet::where('vendor_id', $id)->latest()->get();
-        $products = Product::where('vendor_id', $id)->latest()->get();
-        //tambahan
-        $results = [];
-        return Inertia::render('MenuPage', compact('packets', 'products', 'results'));
-    }
 
     public function VendorAddPacket(Request $request)
     {
@@ -93,7 +84,8 @@ class PacketController extends Controller
     
         return Redirect::route('vendor.all.packet');
 
-}// End Method 
+    }// End Method 
+
 
     public function VendorPacketDelete($id){
 

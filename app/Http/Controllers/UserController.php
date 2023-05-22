@@ -18,7 +18,6 @@ class UserController extends Controller
         // Mengambil data user yang memiliki role "vendor"
         $users = User::where('role', 'vendor')->get();
         $packets = Packet::with('user')->get();
-        $packets = Packet::with('user')->get();
         // $packets = User::where('role', 'vendor')->get();
 
         return Inertia::render('UserPage/HomePage', compact('users', 'packets'));
@@ -49,18 +48,23 @@ class UserController extends Controller
             })
             ->get();
 
-        return Inertia::render('UserPage/SearchCatering', compact('results', 'user'));
+        return Inertia::render('UserPage/SearchCatering', compact('results', 'user', 'searchQuery'));
     }
 
     public function SearchMenu(Request $request)
     {
         $user = Auth::user();
-        $searchQuery = $request->input('query');
+        $searchQuery = $request->query('query'); // Mengambil query pencarian dari permintaan
 
-       
- 
+        $packets = Packet::where('packet_name', 'like', "%$searchQuery%")
+            ->with('user')
+            ->get();
+
+        $products = Product::where('product_name', 'like', "%{$searchQuery}%")
+            ->with('user')
+            ->get();
         
-        return Inertia::render('UserPage/SearchMenu', compact('user'));
+        return Inertia::render('UserPage/SearchMenu', compact('user', 'packets', 'products', 'searchQuery'));
     }
 
     public function UserLogin()
@@ -130,6 +134,20 @@ class UserController extends Controller
             $data->save();
         }
         return redirect()->back();
+    }
+
+    public function ShowProfile(Request $request, $userId)
+    {
+        // Mengambil data pengguna
+        $user = Auth::user();
+        $users = User::find($userId);
+
+        // Mengambil packet dan product yang terhubung dengan vendor_id pengguna
+        $packets = Packet::where('vendor_id', $users->id)->get();
+        $products = Product::where('vendor_id', $users->id)->get();
+
+        // Menampilkan halaman profil dengan data yang diperlukan
+        return Inertia::render('UserPage/ProfileCatering', compact('user', 'packets', 'products', 'users'));
     }
 
 
