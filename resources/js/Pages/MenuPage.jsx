@@ -8,6 +8,7 @@ import ButtonEditMenu from "../components/ForMenuKatering/buttonEditMenu";
 import ButtonTambahMenu from "../components/ForMenuKatering/buttonTambahMenu";
 import ButtonTambahPaket from "../components/ForMenuKatering/buttonTambahPaket";
 import { Link, useForm, usePage } from '@inertiajs/react';
+import { Inertia } from '@inertiajs/inertia';
 
 export default function MenuPage(){
     
@@ -22,16 +23,18 @@ export default function MenuPage(){
     const toggleTab  = (index1) =>{
             setToggleState(index1)
         }
-    const { packets = [], products = [], appUrl } = usePage().props;
-        // const { products = [] } = usePage().props;
-    // const Index = () => {
-    //     const { posts } = usePage().props;
-    //     const { data } = posts;
-//     const [productList, setProductList] = useState([]);
+    const { packets, products, appUrl, searchQuery } = usePage().props;
 
-//   useEffect(() => {
-//     setProductList(products);
-//   }, [products]);
+    
+    // const [searchTerm, setSearchTerm] = useState('');
+    const [query, setQuery] = useState(searchQuery || '');
+    // const [results, setResults] = useState({ packets: [], products: [] });
+
+    const submitSearch = (e) => {
+        e.preventDefault();
+        Inertia.get(route('vendor.menupage', { query }));
+      };
+
     console.log(appUrl);
     return(
         <>
@@ -63,8 +66,20 @@ export default function MenuPage(){
                                         <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
                                             <svg aria-hidden="true" className="w-5 h-5 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
                                         </div>
-                                        <input type="search" id="default-search" className="block w-full p-3 pl-10 text-sm text-black border border-[#F77E21] rounded-lg bg-white" placeholder="Cari Menu"/>
-                                        <button type="submit" className="text-white absolute right-2.5 bottom-2 bg-blue-700 hover:bg-blue-800 focus:ring-2 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-xs px-3 py-2">Search</button>
+                                        <form onSubmit={submitSearch}>
+                                            <input 
+                                                type="search" 
+                                                id="default-search" 
+                                                value={query}
+                                                onChange={(e) => setQuery(e.target.value)}
+                                                className="block w-full p-3 pl-10 text-sm text-black border border-[#F77E21] rounded-lg bg-white" 
+                                                placeholder="Cari Menu"/>
+                                            <button 
+                                                type="submit" 
+                                                className="text-white absolute right-2.5 bottom-2 bg-blue-700 hover:bg-blue-800 focus:ring-2 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-xs px-3 py-2">
+                                                    Search
+                                            </button>
+                                        </form>
                                     </div>
                                     <div className="pl-0 mt-6 md:pl-6 md:mt-0 lg:pl-6 lg:mt-0 flex flex-row gap-3">
                                         <ButtonTambahPaket type ="submit" className="text-black bg-green-400 hover:bg-green-300 focus:ring-2 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-xs px-4 py-4" >Tambah</ButtonTambahPaket>
@@ -99,7 +114,7 @@ export default function MenuPage(){
                                                     </tr>
                                                 </thead>
                                                 <tbody className="text-black">
-                                                    {packets.map((packet, index) =>     
+                                                    {packets.map((packet, index) =>  (   
                                                     <tr key={packet.id} className="bg-white border-b">
                                                         <th scope="row" className="px-6 py-4 font-medium whitespace-nowrap border-r-2">
                                                             {index + 1}
@@ -129,7 +144,7 @@ export default function MenuPage(){
 
                                                         </td>
                                                     </tr>
-                                                )}
+                                                ))}
                                                 </tbody>
                                             </table> 
                                                                            
@@ -148,8 +163,20 @@ export default function MenuPage(){
                                         <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
                                             <svg aria-hidden="true" className="w-5 h-5 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
                                         </div>
-                                        <input type="search" id="default-search" className="block w-full p-3 pl-10 text-sm text-black border border-[#F77E21] rounded-lg bg-white" placeholder="Cari Menu"/>
-                                        <button type="submit" className="text-white absolute right-2.5 bottom-2 bg-blue-700 hover:bg-blue-800 focus:ring-2 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-xs px-3 py-2">Search</button>
+                                        <form onSubmit={submitSearch}>
+                                            <input 
+                                                type="search" 
+                                                id="default-search" 
+                                                value={query}
+                                                onChange={(e) => setQuery(e.target.value)}
+                                                className="block w-full p-3 pl-10 text-sm text-black border border-[#F77E21] rounded-lg bg-white" 
+                                                placeholder="Cari Menu"/>
+                                            <button 
+                                                type="submit" 
+                                                className="text-white absolute right-2.5 bottom-2 bg-blue-700 hover:bg-blue-800 focus:ring-2 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-xs px-3 py-2"
+                                                >Search
+                                            </button>
+                                        </form>
                                     </div>
                                     <div className="pl-0 mt-6 md:pl-6 md:mt-0 lg:pl-6 lg:mt-0 flex flex-row gap-3">
                                         <ButtonTambahMenu type ="submit" className="text-black bg-green-400 hover:bg-green-300 focus:ring-2 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-xs px-4 py-4">Tambah</ButtonTambahMenu>
@@ -181,7 +208,7 @@ export default function MenuPage(){
                                                     </tr>
                                                 </thead>
                                                 <tbody className="text-black">
-                                                {products.map((product, index) =>
+                                                {products.map((product, index) => (
                                                     <tr key={index} className="bg-white border-b">
                                                         <td scope="row" className="px-6 py-4 font-medium whitespace-nowrap border-r-2">
                                                         {index + 1}
@@ -201,7 +228,7 @@ export default function MenuPage(){
                                                                 Edit</Link>
                                                         </td>
                                                     </tr>
-                                                    )}
+                                                    ))}
                                                 </tbody>
                                             </table>                                
                                         </div>

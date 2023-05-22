@@ -10,6 +10,9 @@ use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules\Password;
 use Illuminate\Support\Facades\Storage;
+use App\Models\Packet;
+use App\Models\Product;
+use Image;
 
 class VendorController extends Controller
 {
@@ -25,6 +28,21 @@ class VendorController extends Controller
         $user = Auth::user();
 
         return Inertia::render('ProfilePage', compact('user'));
+    }
+
+    public function VendorMenu(Request $request)
+    {
+        $user = Auth::user();
+        $searchQuery = $request->query('query'); // Mengambil query pencarian dari permintaan
+
+        $packets = Packet::where('packet_name', 'like', "%$searchQuery%")
+                        ->orWhere('packet_desc', 'like', "%$searchQuery%")
+            ->get();
+
+        $products = Product::where('product_name', 'like', "%{$searchQuery}%")
+            ->get();
+        
+        return Inertia::render('MenuPage', compact('user', 'packets', 'products', 'searchQuery'));
     }
 
     
