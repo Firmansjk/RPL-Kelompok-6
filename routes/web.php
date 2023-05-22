@@ -23,6 +23,7 @@ use App\Http\Controllers\UserController;
 |
 */
 
+
 // Route::get('/', function () {
 //     return Inertia::render('Welcome', [
 //         // 'canLogin' => Route::has('login'),
@@ -32,6 +33,40 @@ use App\Http\Controllers\UserController;
 //     ]);
 // });
 
+//User Routes
+Route::get('/', function () {
+    return Inertia::render('UserPage/homePage');
+})->name('homepage');
+
+Route::get('/profilecatering', function () {
+    return Inertia::render('UserPage/profileCatering');
+})->name('profilecatering');
+
+Route::get('/searchcatering', function () {
+    return Inertia::render('UserPage/searchCatering');
+})->name('searchcatering');
+
+Route::get('/searchmenu', function () {
+    return Inertia::render('UserPage/searchMenu');
+})->name('searchmenu');
+
+Route::get('/loginpageuser', function () {
+    return Inertia::render('UserPage/loginpage');
+})->name('loginpageuser');
+
+Route::get('/registerpageuser', function () {
+    return Inertia::render('UserPage/registerpage');
+})->name('registerpageuser');
+
+Route::get('/forgetpassword', function () {
+    return Inertia::render('UserPage/lupaPass');
+})->name('forgetpassword');
+
+Route::get('/userprofilesettings', function () {
+    return Inertia::render('UserPage/settingProfile');
+})->name('userprofilesettings');
+
+//Laravel Breeze
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
@@ -41,7 +76,6 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
-
 
 // Route::get('/', function () {
 //     return Inertia::render('userpage/HomePage');
@@ -103,6 +137,9 @@ route::middleware(['auth','role:vendor'])->group(function() {
 
     Route::delete('vendor/delete-profile', [VendorController::class, 'VendorDeleteProfile'])->
         name('vendor.deleteProfile');
+        
+        //test search
+    Route::post('/vendor/search', [PacketController::class, 'searchVendor'])->name('vendor.search');
 
 
     Route::controller(ProductController::class)->group(function(){

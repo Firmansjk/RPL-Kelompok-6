@@ -101,5 +101,104 @@ class PacketController extends Controller
         return redirect()->back()->with($notification);
 
     }// End Method 
+
+
+    public function searchVendor(Request $request)
+    {
+        $query = $request->input('query');
+
+        $id = Auth::user()->id;
+        $packets = Packet::where('vendor_id', $id)->latest()->get();
+        $products = Product::where('vendor_id', $id)->latest()->get();
+        //tambahan
+        $results = Packet::where('packet_name', 'like', '%' . $query . '%')
+        ->orWhere('packet_desc', 'like', '%' . $query . '%')
+        ->get();
+        return Inertia::render('MenuPage', compact('packets', 'products', 'results'));
+
+        // $results = Packet::where('packet_name', 'like', '%' . $query . '%')
+        //     ->orWhere('packet_desc', 'like', '%' . $query . '%')
+        //     ->get();
+        
+        // $response['data'] = $results;
+        // return response()->json($results);
+        // return response()->json($results);
+            // Return the Inertia response with the data and view
+        // return Inertia::render('MenuPage', compact('packets', 'products', 'results'));
+            // Return the Inertia response with the data and view
+        // return Inertia::render('MenuPage', compact('results'));
+    }
+
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        Packets::create(
+            $request->validated()
+        );
+
+        return Redirect::route('posts.index');
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Models\packets  $packets
+     * @return \Illuminate\Http\Response
+     */
+    public function show(packets $packets)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  \App\Models\packets  $packets
+     * @return \Illuminate\Http\Response
+     */
+    public function edit(packets $packets)
+    {
+        return Inertia::render('Packets/Edit', [
+            'post' => [
+                'id' => $post->id,
+                'product_name' => $post->product_name,
+                'product_desc' => $post->product_desc
+            ]
+        ]);
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Models\packets  $packets
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, packets $packets)
+    {
+        $post->update($request->validated());
+
+        return Redirect::route('posts.index');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Models\packets  $packets
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(packets $packets)
+    {
+        $post->delete();
+
+        return Redirect::route('posts.index');
+    }
+
     
 }
