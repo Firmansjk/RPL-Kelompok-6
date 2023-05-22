@@ -1,29 +1,35 @@
-import { Link } from '@inertiajs/react'
-import Header from '../../Components/UserComponents/header'
-import img from '../../image/UserImage/homepage.png'
-import ButtonShowMorePM from "../../Components/UserComponents/ForPaketMenu/buttonShowMorePM"
-import logo from "../../image/UserImage/logo tring.png"
-import logowhite from "../../image/UserImage/logo tring white.png"
+import { Link } from '@inertiajs/react';
+import HeaderBefore from '@/Components/userpage/HeaderBefore';
+import img from "../../image/homepage.png";
+import ButtonShowMorePM from '@/Components/userpage/ForPaketMenu/buttonShowMorePM';
+import logo from "../../image/logo tring.png"
+import logowhite from "../../image/logo tring white.png"
+import React from 'react';
+import {usePage} from '@inertiajs/react';
 
-export default function HomePage(){
+export default function HomePage({users, packets}){
+    const limitedUsers = users.slice(0, 3);
+    const limitedPackets = packets.slice(0, 3);
+    const { appUrl } = usePage().props;
+    // const limitedPackets = packets.slice(0, 3);
     return(
         <>
         <div className="min-h-screen flex flex-col">
-            <Header/>
+            <HeaderBefore/>
             <main className="flex flex-col">
                 <div className="flex flex-col items-center md:block">
                     <div className="absolute w-full h-screen object-cover bg-black/50"></div>
                     <div className="absolute w-full h-screen flex flex-col justify-center items-start px-10 lg:px-48">
                         <p className="mb-2 text-sm md:text-lg font-bold leading-tight text-white">Butuh Catering untuk Acara?</p>
 
-                        <form class="relative w-full">
-                            <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
+                        <form className="relative w-full">
+                            <label for="default-search" className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
                             <div>
-                                <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                                    <svg aria-hidden="true" class="w-5 h-5 text-[#F77E21]" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                                <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                                    <svg aria-hidden="true" className="w-5 h-5 text-[#F77E21]" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
                                 </div>
-                                <input type="search" id="default-search" class="block w-full p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-white focus:ring-[#F77E21] focus:border-[#F77E21]" placeholder="Cari Katering" required/>
-                                <button type="submit" class="text-white absolute right-2.5 bottom-2.5 bg-[#F77E21] font-medium rounded-lg text-sm px-4 py-2">Cari</button>
+                                <input type="search" id="default-search" className="block w-full p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-white focus:ring-[#F77E21] focus:border-[#F77E21]" placeholder="Cari Katering" required/>
+                                <button type="submit" className="text-white absolute right-2.5 bottom-2.5 bg-[#F77E21] font-medium rounded-lg text-sm px-4 py-2">Cari</button>
                             </div>
                         </form>
                     </div>
@@ -33,157 +39,69 @@ export default function HomePage(){
                     <div className="w-full min-h-screen flex flex-col justify-start items-center xl:justify-center px-4 py-14 lg:px-48">
                         <p className="mb-2 text-2xl md:text-4xl font-bold leading-tight text-[#F77E21]">LIST KATERING</p>
                         <div className="mt-10 grid w-10/12 grid-flow-row gap-x-8 gap-y-12 sm:w-11/12 sm:grid-cols-2 md:w-full md:grid-cols-2 xl:grid-cols-3">
-                            <div class="flex flex-col justify-center items-start rounded-lg bg-white shadow-lg">
+                        {limitedUsers.map(user => (
+                            <div key={user.id} className="flex flex-col justify-center items-start rounded-lg bg-white shadow-lg">
                                 <img
-                                class="rounded-t-lg w-full h-48 object-cover"
-                                src="https://tecdn.b-cdn.net/img/new/standard/nature/186.jpg"
+                                className="rounded-t-lg w-full h-48 object-cover"
+                                src={user.photo ? `/upload/vendor_profile/${user.photo}` : "https://tecdn.b-cdn.net/img/new/standard/nature/186.jpg"}
+                                
                                 alt="" />
-                                <div class="px-6 pt-6 pb-0">
-                                    <div className="flex flex-col justify-between items-start gap-3">
+                                <div className="px-6 pt-6 pb-0">
+                                    <div  className="flex flex-col justify-between items-start gap-3">
                                         <div>
                                             <h5
-                                            class="mb-2 text-md text-left font-bold leading-tight text-neutral-800">
-                                            TOKO KATERING
+                                            className="mb-2 text-md text-left font-bold leading-tight text-neutral-800">
+                                            {user.name}
                                             </h5>
-                                            <p class="mb-4 text-xs text-black">
-                                            Jl. Pajjaiangan | 0812xxxxxxxx
+                                            <p className="mb-4 text-xs text-black">
+                                            {user.address} | {user.phone}
                                             </p>
                                         </div>
                                     </div>
                                 </div>
-                                <Link href={route('profilecatering')}>
+                                <Link to='/profile'>
                                     <button
                                     type="button"
-                                    class="ml-6 my-5 inline-block rounded bg-[#F77E21] px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)]">
+                                    className="ml-6 my-5 inline-block rounded bg-[#F77E21] px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)]">
                                     KUNJUNGI TOKO
                                     </button>
                                 </Link>
+                                
                             </div>
-                            <div class="flex flex-col justify-center items-start rounded-lg bg-white shadow-lg">
-                                <img
-                                class="rounded-t-lg w-full h-48 object-cover"
-                                src="https://tecdn.b-cdn.net/img/new/standard/nature/186.jpg"
-                                alt="" />
-                                <div class="px-6 pt-6 pb-0">
-                                    <div className="flex flex-col justify-between items-start gap-3">
-                                        <div>
-                                            <h5
-                                            class="mb-2 text-md text-left font-bold leading-tight text-neutral-800">
-                                            TOKO KATERING
-                                            </h5>
-                                            <p class="mb-4 text-xs text-black">
-                                            Jl. Pajjaiangan | 0812xxxxxxxx
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <Link href={route('profilecatering')}>
-                                    <button
-                                    type="button"
-                                    class="ml-6 my-5 inline-block rounded bg-[#F77E21] px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)]">
-                                    KUNJUNGI TOKO
-                                    </button>
-                                </Link>
-                            </div>
-                            <div class="flex flex-col justify-center items-start rounded-lg bg-white shadow-lg">
-                                <img
-                                class="rounded-t-lg w-full h-48 object-cover"
-                                src="https://tecdn.b-cdn.net/img/new/standard/nature/186.jpg"
-                                alt="" />
-                                <div class="px-6 pt-6 pb-0">
-                                    <div className="flex flex-col justify-between items-start gap-3">
-                                        <div>
-                                            <h5
-                                            class="mb-2 text-md text-left font-bold leading-tight text-neutral-800">
-                                            TOKO KATERING
-                                            </h5>
-                                            <p class="mb-4 text-xs text-black">
-                                            Jl. Pajjaiangan | 0812xxxxxxxx
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <Link href={route('profilecatering')}>
-                                    <button
-                                    type="button"
-                                    class="ml-6 my-5 inline-block rounded bg-[#F77E21] px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)]">
-                                    KUNJUNGI TOKO
-                                    </button>
-                                </Link>
-                            </div>
+                        ))}
+                            
                         </div>
+                        
                     </div>
-
+                    
 
                     <div className="w-full min-h-screen flex flex-col bg-[#F77E21] justify-start items-center xl:justify-center px-4 py-14 lg:px-48">
                         <p className="mb-2 text-2xl md:text-4xl font-bold leading-tight text-white self-start">DAFTAR MENU</p>
                         <p className="mb-2 text-2xl md:text-2xl font-medium leading-tight text-white self-start">Daftar menu dari beberapa catering yang ada</p>
                         <div className="mt-10 grid w-10/12 grid-flow-row gap-x-8 gap-y-12 sm:w-11/12 sm:grid-cols-2 md:w-full md:grid-cols-2 xl:grid-cols-3">
-                            <div className="flex flex-col justify-center items-start rounded-lg bg-white shadow-xl">
+                            {limitedPackets.map(packet => (
+                            <div key={packet.id} className="flex flex-col justify-center items-start rounded-lg bg-white shadow-xl">
                                 <img
                                 className="rounded-t-lg w-full h-40 object-cover"
-                                src="https://tecdn.b-cdn.net/img/new/standard/nature/186.jpg"
+                                src={packet.packet_picture ? appUrl + '/' + packet.packet_picture : "https://tecdn.b-cdn.net/img/new/standard/nature/186.jpg"}
                                 alt="" />
                                 <div class="px-6 pt-6 pb-0">
                                     <div className="flex flex-col md:flex-row justify-between items-center gap-3">
                                         <div>
                                             <p
                                             className="mb-2 text-md md:text-left font-bold leading-tight text-neutral-800">
-                                            PAKET SUPER MENU 1
+                                            {packet.packet_name}
                                             </p>
                                             <p
                                             className="mb-1 text-sm md:text-left font-semibold leading-tight text-neutral-800">
-                                            Toko Katering Anu
+                                            {packet.user.name}
                                             </p>
                                         </div>
                                     </div>
                                 </div>
-                                <ButtonShowMorePM/>
+                                <ButtonShowMorePM PacketData={packet}/>
                             </div>
-
-                            <div className="flex flex-col justify-center items-start rounded-lg bg-white shadow-xl">
-                                <img
-                                className="rounded-t-lg w-full h-40 object-cover"
-                                src="https://tecdn.b-cdn.net/img/new/standard/nature/186.jpg"
-                                alt="" />
-                                <div class="px-6 pt-6 pb-0">
-                                    <div className="flex flex-col md:flex-row justify-between items-center gap-3">
-                                        <div>
-                                            <p
-                                            className="mb-2 text-md md:text-left font-bold leading-tight text-neutral-800">
-                                            PAKET SUPER MENU 1
-                                            </p>
-                                            <p
-                                            className="mb-1 text-sm md:text-left font-semibold leading-tight text-neutral-800">
-                                            Toko Katering Anu
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <ButtonShowMorePM/>
-                            </div>
-                            
-                            <div className="flex flex-col justify-center items-start rounded-lg bg-white shadow-xl">
-                                <img
-                                className="rounded-t-lg w-full h-40 object-cover"
-                                src="https://tecdn.b-cdn.net/img/new/standard/nature/186.jpg"
-                                alt="" />
-                                <div class="px-6 pt-6 pb-0">
-                                    <div className="flex flex-col md:flex-row justify-between items-center gap-3">
-                                        <div>
-                                            <p
-                                            className="mb-2 text-md md:text-left font-bold leading-tight text-neutral-800">
-                                            PAKET SUPER MENU 1
-                                            </p>
-                                            <p
-                                            className="mb-1 text-sm md:text-left font-semibold leading-tight text-neutral-800">
-                                            Toko Katering Anu
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <ButtonShowMorePM/>
-                            </div>
+                            ))}
                         </div>
                     </div>
 
@@ -198,7 +116,7 @@ export default function HomePage(){
                         <hr className="mt-14 w-full border border-[#F77E21] xl:mt-[4em]"/>
                         <div className="flex flex-col mt-14 md:mt-16 gap-5 items-center">
                             <p className="mb-2 text-2xl md:text-4xl font-bold leading-tight text-center md:text-left text-[#F77E21]">Tertarik bergabung menjadi bagian dari kami?</p>
-                            <Link href={route('registerpage')}>
+                            <Link href= {route('vendor.register')}>
                                     <button
                                     type="button"
                                     class="my-5 inline-block rounded bg-[#F77E21] px-6 pb-2 pt-2.5 text-xs md:text-lg font-semibold uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)]">

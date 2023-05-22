@@ -1,9 +1,11 @@
 import { useState} from "react";
-import Header from "../../Components/UserComponents/header";
-import ButtonShowMorePM from "../../Components/UserComponents/ForPaketMenu/buttonShowMorePM";
+import Header from "../../components/userpage/header";
+import ButtonShowMorePM from "../../components/userpage/ForPaketMenu/buttonShowMorePM";
+import {usePage} from '@inertiajs/react';
 
-export default function SearchMenuPage(){
+export default function SearchMenuPage({users, packets}){
     const [toggleState, setToggleState] = useState(1);
+    const { appUrl } = usePage().props;
 
     const toggleTab  = (index) =>{
         setToggleState(index)
@@ -63,7 +65,7 @@ export default function SearchMenuPage(){
                                         </div>
                                     </div>
                                     <div className="w-full flex flex-col-reverse lg:flex-row justify-between items-center">
-                                        <ButtonShowMorePM/>
+                                        {/* <ButtonShowMorePM/> */}
                                         <p
                                         className="mr-0 mt-3 lg:mt-0 lg:mr-6 text-sm md:text-right font-semibold leading-tight text-[#F77E21]">
                                         <span>Rp.</span>10000<span>/pax</span>
@@ -91,7 +93,7 @@ export default function SearchMenuPage(){
                                         </div>
                                     </div>
                                     <div className="w-full flex flex-col-reverse lg:flex-row justify-between items-center">
-                                        <ButtonShowMorePM/>
+                                        {/* <ButtonShowMorePM PacketData={packet}/> */}
                                         <p
                                         className="mr-0 mt-3 lg:mt-0 lg:mr-6 text-sm md:text-right font-semibold leading-tight text-[#F77E21]">
                                         <span>Rp.</span>10000<span>/pax</span>

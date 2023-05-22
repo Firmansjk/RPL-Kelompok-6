@@ -1,7 +1,7 @@
-import { Link } from "@inertiajs/react";
-import ButtonShowMorePM from "../../Components/UserComponents/ForPaketMenu/buttonShowMorePM";
-import Header from "../../Components/UserComponents/header";
-import img from "../../image/UserImage/image.png"
+import { Link } from "react-router-dom";
+import ButtonShowMorePM from "../../components/userpage/ForPaketMenu/buttonShowMorePM";
+import Header from "../../Components/userpage/Header";
+import img from "../../image/image.png"
 
 export default function ProfileCateringPage(){
     return(
