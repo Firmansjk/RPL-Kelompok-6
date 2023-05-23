@@ -18,23 +18,27 @@ function RegisterPageUser(){
             </Link>
           </div>
           <div className="w-full lg:w-1/2 py-16 px-12 flex flex-col justify-center">
-            <h2  className="text-3xl mb-5 text-center text-[#F77E21] font-extrabold">Register Akun</h2>
+            <h2 className="text-3xl mb-5 text-center text-[#F77E21] font-extrabold">Register Akun</h2>
             <form action="#">
               <div>
                   <label htmlFor="username" className="block mb-2 text-sm font-bold text-[#F77E21]">Username</label>
-                  <input type="username" name="username" id="username" className="mb-4 bg-white border border-[#F77E21] text-black sm:text-sm rounded-lg block w-full p-2.5 placeholder-gray-400" placeholder="Enter Username" required=""/>
+                  <input type="username" name="username" id="username" className="mb-4 bg-white border border-[#F77E21] text-black sm:text-sm rounded-lg block w-full px-2.5 py-1.5 placeholder-gray-400" placeholder="Enter Username" required=""/>
               </div>
               <div>
                 <label htmlFor="email" className="block mb-2 text-sm font-bold text-[#F77E21]">E-mail</label>
-                <input type="email" name="email" id="email" className="mb-4 bg-white border border-[#F77E21] text-black sm:text-sm rounded-lg block w-full p-2.5 placeholder-gray-400" placeholder="email@something.com" required=""/>
+                <input type="email" name="email" id="email" className="mb-4 bg-white border border-[#F77E21] text-black sm:text-sm rounded-lg block w-full px-2.5 py-1.5 placeholder-gray-400" placeholder="email@something.com" required=""/>
+              </div>
+              <div>
+                  <label htmlFor="number" className="block mb-2 text-sm font-bold text-[#F77E21]">No. Telepon</label>
+                  <input type="number" name="number" id="number" className="mb-4 bg-white border border-[#F77E21] text-black sm:text-sm rounded-lg block w-full px-2.5 py-1.5 placeholder-gray-400" placeholder="0812xxxxx" required=""/>
               </div>
               <div>
                   <label htmlFor="password" className="block mb-2 text-sm font-bold text-[#F77E21]">Password</label>
-                  <input type="password" name="password" id="password" placeholder="••••••••" className="mb-4 bg-white border border-[#F77E21] text-black sm:text-sm rounded-lg block w-full p-2.5 placeholder-gray-400" required=""/>
+                  <input type="password" name="password" id="password" placeholder="••••••••" className="mb-4 bg-white border border-[#F77E21] text-black sm:text-sm rounded-lg block w-full px-2.5 py-1.5 placeholder-gray-400" required=""/>
               </div>
               <div>
                   <label htmlFor="password" className="block mb-2 text-sm font-bold text-[#F77E21]">Konfirmasi Password</label>
-                  <input type="password" name="password" id="password" placeholder="••••••••" className="bg-white border border-[#F77E21] text-black sm:text-sm rounded-lg block w-full p-2.5 placeholder-gray-400" required=""/>
+                  <input type="password" name="password" id="password" placeholder="••••••••" className="bg-white border border-[#F77E21] text-black sm:text-sm rounded-lg block w-full px-2.5 py-1.5 placeholder-gray-400" required=""/>
               </div>
               <div className="mt-6 flex justify-center">
                 <Link to="/loginpage">

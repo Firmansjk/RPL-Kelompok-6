@@ -64,7 +64,7 @@ export default function ProfileCateringPage(){
                             TOKO KATERING
                         </h5>
                         <p className="mb-4 text-[0.7em] text-center md:text-left text-black">
-                            Explicabo nemo, natus facilis sapiente veritatis soluta. Nemo eaque nesciunt reiciendis. Dolores fugiat laborum adipisci voluptatem eaque, magni alias vitae qui mollitia, quod quibusdam cumque quisquam maxime veritatis facilis nostrum. Vel, nihil! Iste voluptatibus quod excepturi, illo perspiciatis soluta tempora aspernatur, et obcaecati eligendi laboriosam aperiam iure expedita. Perferendis, est vitae.
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur est dicta voluptate at id modi aperiam odio dolores? Aliquam dolore cupiditate assumenda blanditiis illum temporibus, ipsum nulla sapiente cum culpa magnam a, amet officia repellat? Error officiis pariatur neque suscipit optio ipsum! Dolore mollitia voluptatibus ipsam, repellendus nam esse quo!
                         </p>
                         <p className="text-md font-bold text-black text-center block md:hidden">
                             Alamat : <span className="font-normal">Jl.Pajjaiang</span><br/>
@@ -74,11 +74,16 @@ export default function ProfileCateringPage(){
                             Alamat : <span className="font-normal">Jl.Pajjaiang</span> &nbsp;&nbsp; | &nbsp;&nbsp; No.Telepon : <span className="font-normal">0812xxxxxxxxx</span>
                         </p>
                     </div>
-                    <Link to="/hubungipenjual" class="relative w-44 top-[2em] lg:top-[2em] lg:left-12 lg:w-[20em] xl:top-[5.25em] text-center mb-2 rounded bg-[#F77E21] px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)]">
+                    {/* Mobile button */}
+                    <Link to="/hubungipenjual" class="relative w-44 top-[2em] md:hidden lg:top-[2em] lg:left-12 lg:w-[20em] xl:top-[5.25em] text-center mb-2 rounded bg-[#F77E21] px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)]">
+                    Hubungi Penjual
+                    </Link>
+                    {/* Desktop button */}
+                    <Link to="/hubungipenjual" class="relative w-44 top-[2em] hidden md:block md:left-[15.25em] lg:top-[2em] lg:left-[22em] lg:w-[20em] xl:top-[2em] text-center mb-2 rounded bg-[#F77E21] px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)]">
                     Hubungi Penjual
                     </Link>
                 </div>
-                <hr className="mt-14 border border-[#F77E21] xl:mt-[6em]"/>
+                <hr className="mt-14 border border-[#F77E21] xl:mt-[4.25em]"/>
 
                 {/* Bagian Paket Menu */}
                 <div className="mt-[2.5em] md:mt-9 flex flex-col justify-center content-center items-center md:block">
@@ -126,10 +131,10 @@ export default function ProfileCateringPage(){
                 </div>
 
                 {/* Bagian Menu Tambahan */}
-                <div className="mt-[2.5em] md:mt-10 flex flex-col justify-center content-center items-center md:block">
+                <div className="mt-[2.5em] md:mt-10 flex flex-col justify-center md:block">
                     <p className="mb-8 text-2xl text-center md:text-left font-bold leading-tight text-neutral-800">LIST PILIHAN MENU TAMBAHAN :</p>
                     <Carousel responsive={responsive} swipeable={true} showDots={true} className="pb-8 z-0">
-                        <div className="flex flex-col justify-center items-start rounded-lg bg-white shadow-md mx-4">
+                        <div className="flex flex-col justify-center items-start rounded-lg bg-white shadow-md mx-5">
                             <img
                             className="rounded-t-lg w-full h-40 object-cover"
                             src="https://tecdn.b-cdn.net/img/new/standard/nature/186.jpg"
@@ -155,8 +160,7 @@ export default function ProfileCateringPage(){
                                 </div>
                             </div>
                         </div>
-
-                        <div className="flex flex-col justify-center items-start rounded-lg bg-white shadow-md mx-4">
+                        <div className="flex flex-col justify-center items-start rounded-lg bg-white shadow-md mx-5">
                             <img
                             className="rounded-t-lg w-full h-40 object-cover"
                             src="https://tecdn.b-cdn.net/img/new/standard/nature/186.jpg"
@@ -182,8 +186,7 @@ export default function ProfileCateringPage(){
                                 </div>
                             </div>
                         </div>
-
-                        <div className="flex flex-col justify-center items-start rounded-lg bg-white shadow-md mx-4">
+                        <div className="flex flex-col justify-center items-start rounded-lg bg-white shadow-md mx-5">
                             <img
                             className="rounded-t-lg w-full h-40 object-cover"
                             src="https://tecdn.b-cdn.net/img/new/standard/nature/186.jpg"
@@ -209,8 +212,7 @@ export default function ProfileCateringPage(){
                                 </div>
                             </div>
                         </div>
-
-                        <div className="flex flex-col justify-center items-start rounded-lg bg-white shadow-md mx-4">
+                        <div className="flex flex-col justify-center items-start rounded-lg bg-white shadow-md mx-5">
                             <img
                             className="rounded-t-lg w-full h-40 object-cover"
                             src="https://tecdn.b-cdn.net/img/new/standard/nature/186.jpg"
@@ -236,8 +238,7 @@ export default function ProfileCateringPage(){
                                 </div>
                             </div>
                         </div>
-
-                        <div className="flex flex-col justify-center items-start rounded-lg bg-white shadow-md mx-4">
+                        <div className="flex flex-col justify-center items-start rounded-lg bg-white shadow-md mx-5">
                             <img
                             className="rounded-t-lg w-full h-40 object-cover"
                             src="https://tecdn.b-cdn.net/img/new/standard/nature/186.jpg"

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { createContext, useReducer } from 'react';
 import { BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 import LoginPage from '../src/pages/vendorpage/loginpage';
 import RegisterPage from '../src/pages/vendorpage/registerpage';
@@ -18,9 +18,33 @@ import LupaPassPageUser from '../src/pages/userpage/lupaPass';
 import HubungiPenjual from '../src/pages/userpage/hubungipenjual';
 import PageEditPaket from './components/vendorpage/ForPaketMenu/pageEditPaket';
 import PageEditMenu from './components/vendorpage/ForMenuKatering/pageEditMenu';
+import Header from './components/userpage/header';
+import {reducer, initialState} from './reducer/UserReducer';
 
 
-function App() {
+export const UserContext = createContext();
+const Routing = () => {
+  return (
+    <Routes>
+      <Route path='/loginpage' element={<LoginPageUser />} />
+      <Route path='/register' element={<RegisterPageUser />} />
+      <Route path='/forgetpassword' element={<LupaPassPageUser />} />
+      <Route path='/resetpassword' element={<ResetPassPageUser />} />
+
+      <Route exact path='/' element={<HomePage />}/>
+      <Route path='/searchCatering' element={<SearchCateringPage />} />
+      <Route path='/hubungipenjual' element={<HubungiPenjual />} />
+      <Route path='/searchMenu' element={<SearchMenuPage/>} />
+      <Route path='/profile' element={<ProfileCateringPage/>}/>
+      <Route path='/userprofilesettings' element={<SettingProfilePage/>}/>
+    </Routes>
+  )
+}
+
+
+const App = () => {
+  const [state, dispatch] = useReducer(reducer, initialState);
+
   return (
       <Router>
         <Routes>
@@ -34,20 +58,12 @@ function App() {
             <Route path='/menucatering' element={<MenuPage/>}/>
             <Route path='/editpkmenu' element={<PageEditPaket/>}/>
             <Route path='/editmenu' element={<PageEditMenu/>}/>
-
-            {/* ROUTES FOR USER PAGE */}
-            <Route path='/loginpage' element={<LoginPageUser />} />
-            <Route path='/register' element={<RegisterPageUser />} />
-            <Route path='/forgetpassword' element={<LupaPassPageUser />} />
-            <Route path='/resetpassword' element={<ResetPassPageUser />} />
-
-            <Route exact path='/' element={<HomePage />}/>
-            <Route path='/searchCatering' element={<SearchCateringPage />} />
-            <Route path='/hubungipenjual' element={<HubungiPenjual />} />
-            <Route path='/searchMenu' element={<SearchMenuPage/>} />
-            <Route path='/profile' element={<ProfileCateringPage/>}/>
-            <Route path='/userprofilesettings' element={<SettingProfilePage/>}/>
         </Routes>
+        {/* ROUTES FOR USER PAGE */}
+        <UserContext.Provider value={{state, dispatch}}>
+          <Header/>
+          <Routing/>
+        </UserContext.Provider>
       </Router>
   );
 }
