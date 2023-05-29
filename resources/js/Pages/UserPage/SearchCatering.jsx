@@ -4,10 +4,31 @@ import { Link } from '@inertiajs/react';
 import { Inertia } from '@inertiajs/inertia';
 import React, { useState, useEffect, process} from "react"
 import {usePage} from '@inertiajs/react';
+import Pagination from "@/Components/userpage/pagination";
 
 export default function SearchCateringPage(){
     const { results, searchQuery } = usePage().props;
     const [query, setQuery] = useState(searchQuery || '');
+    const [currentpage, setCurrentPage] = useState(1);
+    const [postsPerPage] = useState(6);
+
+    const lastPostIndex = currentpage * postsPerPage;
+    const firstPostIndex = lastPostIndex - postsPerPage;
+    const currentPosts = results.slice(firstPostIndex, lastPostIndex)
+    
+    const previousPage = () => {
+        if (currentpage !== 1){
+            setCurrentPage(currentpage - 1);
+        }
+    }
+    const nextPage = () => {
+        if (currentpage !== Math.ceil(results.length / postsPerPage)) {
+            setCurrentPage(currentpage + 1)
+        }
+        else{
+            setCurrentPage(1)
+        }
+    }
   
     const submitSearch = (e) => {
       e.preventDefault();
@@ -56,8 +77,10 @@ export default function SearchCateringPage(){
                 </div>
 
                 <div className="flex flex-col justify-center content-center items-center md:block">
-                    <div className="mt-10 grid w-10/12 grid-flow-row gap-x-8 gap-y-12 sm:w-11/12 sm:grid-cols-2 md:w-full md:grid-cols-2 xl:grid-cols-3">
-                    {results.map((result) => (
+                <div className="mt-10 grid w-10/12 grid-flow-row gap-x-8 gap-y-12 sm:w-11/12 sm:grid-cols-2 md:w-full md:grid-cols-2 xl:grid-cols-3 mb-8">
+                    {currentPosts && currentPosts.filter((result) => {
+                            return query.toLowerCase() === '' ? result : result.name.toLowerCase().includes(query)
+                        }).map(result => (
                         <div key={result.id} class="flex flex-col justify-center items-center md:rounded-lg bg-white shadow-lg">
                             <img
                             class="rounded-t-lg w-full h-48 object-cover"
@@ -91,6 +114,14 @@ export default function SearchCateringPage(){
                         </div> 
                         ))} 
                     </div>
+                    <Pagination 
+                        totalPosts={results.length}
+                        postsPerPage={postsPerPage}
+                        setCurrentPage={setCurrentPage}
+                        currentPage={currentpage}
+                        previousPage={previousPage}
+                        nextPage={nextPage}
+                    />
                 </div>
             </main>
         </div>

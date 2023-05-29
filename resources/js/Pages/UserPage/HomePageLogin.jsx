@@ -7,12 +7,32 @@ import logowhite from "../../image/logo tring white.png"
 import React from 'react';
 import { Inertia } from '@inertiajs/inertia';
 import {usePage} from '@inertiajs/react';
+import Carousel from "react-multi-carousel"
+import "react-multi-carousel/lib/styles.css"
 
 
 export default function HomePageLogin({users, packets}){
-    const limitedUsers = users.slice(0, 3);
     const limitedPackets = packets.slice(0, 3);
     const { appUrl } = usePage().props;
+    const responsive = {
+        superLargeDesktop: {
+          // the naming can be any, depends on you.
+          breakpoint: { max: 4000, min: 3000 },
+          items: 4
+        },
+        desktop: {
+          breakpoint: { max: 3000, min: 1024 },
+          items: 3
+        },
+        tablet: {
+          breakpoint: { max: 1024, min: 464 },
+          items: 2
+        },
+        mobile: {
+          breakpoint: { max: 464, min: 0 },
+          items: 1
+        }
+    };
     const handleSubmit = (event) => {
         event.preventDefault();
         const searchValue = event.target.elements.search.value;
@@ -48,10 +68,10 @@ export default function HomePageLogin({users, packets}){
                     <img className="w-full h-screen object-cover" src={img} alt="Food Img"/>
                     
 
-                    <div className="w-full min-h-screen flex flex-col justify-start items-center xl:justify-center px-4 py-14 lg:px-48">
-                        <p className="mb-2 text-2xl md:text-4xl font-bold leading-tight text-[#F77E21]">LIST KATERING</p>
-                        <div className="mt-10 grid w-10/12 grid-flow-row gap-x-8 gap-y-12 sm:w-11/12 sm:grid-cols-2 md:w-full md:grid-cols-2 xl:grid-cols-3">
-                        {limitedUsers.map(user => (
+                    <div className="w-full min-h-screen flex flex-col justify-center gap-14 px-4 py-14 lg:px-48">
+                        <p className="mb-2 text-2xl md:text-4xl font-bold leading-tight text-[#F77E21] text-center ">LIST KATERING</p>
+                        <Carousel responsive={responsive} swipeable={true} showDots={true} className="pb-8 z-0">
+                            {users.map(user => (
                             <div key={user.id} className="flex flex-col justify-center items-start rounded-lg bg-white shadow-lg">
                                 <img
                                 className="rounded-t-lg w-full h-48 object-cover"
@@ -79,10 +99,8 @@ export default function HomePageLogin({users, packets}){
                                     KUNJUNGI TOKO
                                 </Link>
                             </div>
-                        ))}
-                            
-                        </div>
-                        
+                            ))}
+                        </Carousel>
                     </div>
                     
 

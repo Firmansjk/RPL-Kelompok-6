@@ -246,10 +246,12 @@ export default function MenuPage(){
                                                     </tr>
                                                 </thead>
                                                 <tbody className="text-black">
-                                                {products.map((product, index) => (
+                                                {currentPosts2 && currentPosts2.filter((product) => {
+                                                        return query.toLowerCase() === '' ? product : product.product_name.toLowerCase().includes(query)
+                                                    }).map((product, index) => (
                                                     <tr key={index} className="bg-white border-b">
                                                         <td scope="row" className="px-6 py-4 font-medium whitespace-nowrap border-r-2">
-                                                        {index + 1}
+                                                        {startIndex + index}
                                                         </td>
                                                         <td className="px-6 py-4 font-medium border-r-2">
                                                             {product.product_name}
@@ -272,6 +274,14 @@ export default function MenuPage(){
                                         </div>
                                     </div>
                                 </div>
+                                <PaginationVendor
+                                    totalPosts={products.length}
+                                    postsPerPage={postsPerPage}
+                                    setCurrentPage={setCurrentPage}
+                                    currentPage={currentpage}
+                                    previousPage={previousPage}
+                                    nextPage={nextPageMenuPilihan}
+                                />
                             </div>
                         </div>
                     </main>

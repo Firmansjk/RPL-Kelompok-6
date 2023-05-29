@@ -3,10 +3,13 @@ import Header from "../../Components/userpage/Header";
 import ButtonShowMorePM from "../../components/userpage/ForPaketMenu/buttonShowMorePM";
 import {usePage} from '@inertiajs/react';
 import { Inertia } from '@inertiajs/inertia';
+import Pagination from "@/Components/userpage/pagination";
 
 export default function SearchMenuPage(){
     const [toggleState, setToggleState] = useState(1);
     const { appUrl } = usePage().props;
+    const [postsPerPage] = useState(6);
+    const [currentpage, setCurrentPage] = useState(1);
 
     const toggleTab  = (index) =>{
         setToggleState(index)
@@ -17,6 +20,38 @@ export default function SearchMenuPage(){
     // const [searchTerm, setSearchTerm] = useState('');
     const [query, setQuery] = useState(searchQuery || '');
     // const [results, setResults] = useState({ packets: [], products: [] });
+
+    // For pagination
+    const lastPostIndex = currentpage * postsPerPage;
+    const firstPostIndex = lastPostIndex - postsPerPage;
+    const currentPosts = packets.slice(firstPostIndex, lastPostIndex)
+    const currentPosts2 = products.slice(firstPostIndex, lastPostIndex)
+
+    const previousPage = () => {
+        if (currentpage !== 1){
+            setCurrentPage(currentpage - 1);
+        }
+        else{
+            setCurrentPage(currentpage)
+        }
+    }
+
+    const nextPagePaketMenu = () => {
+        if (currentpage !== Math.ceil(packets.length / postsPerPage)) {
+            setCurrentPage(currentpage + 1)
+        }
+        else{
+            setCurrentPage(1)
+        }
+    }
+    const nextPageMenuPilihan = () => {
+        if (currentpage !== Math.ceil(products.length / postsPerPage)) {
+            setCurrentPage(currentpage + 1)
+        }
+        else{
+            setCurrentPage(1)
+        }
+    }
 
     const submitSearch = (e) => {
         e.preventDefault();
@@ -69,9 +104,11 @@ export default function SearchMenuPage(){
                             </div>
                         </div>
 
-                        <div>
+                        <div className="flex flex-col gap-12">
                             <div className="mt-10 w-full grid grid-flow-row gap-x-8 gap-y-12 sm:grid-cols-2 md:grid-cols-2 xl:grid-cols-3">
-                                {packets.map((packet) => (
+                            {currentPosts && currentPosts.filter((packet) => {
+                                    return query.toLowerCase() === '' ? packet : packet.packet_name.toLowerCase().includes(query)
+                                }).map(packet => (
                                 <div key={packet.id} className="flex flex-col justify-center items-start rounded-lg bg-white shadow-xl">
                                     <img
                                     className="rounded-t-lg w-full h-40 object-cover"
@@ -102,6 +139,14 @@ export default function SearchMenuPage(){
                                 ))}
                                 
                             </div>
+                            <Pagination 
+                                totalPosts={packets.length}
+                                postsPerPage={postsPerPage}
+                                setCurrentPage={setCurrentPage}
+                                currentPage={currentpage}
+                                previousPage={previousPage}
+                                nextPage={nextPagePaketMenu}
+                            />
                         </div>
                     </div>
 
@@ -131,8 +176,11 @@ export default function SearchMenuPage(){
                             </div>
                         </div>
 
+                        <div className="flex flex-col gap-12">
                         <div className="mt-10 w-full grid grid-flow-row gap-x-8 gap-y-12 sm:grid-cols-2 md:grid-cols-2 xl:grid-cols-3">
-                            {products.map((product) => (
+                            {currentPosts2 && currentPosts2.filter((product) => {
+                                    return query.toLowerCase() === '' ? product : product.product_name.toLowerCase().includes(query)
+                                }).map(product => (
                             <div className="flex flex-col justify-center items-start rounded-lg bg-white shadow-xl">
                                 <img
                                 className="rounded-t-lg w-full h-40 object-cover"
@@ -160,6 +208,15 @@ export default function SearchMenuPage(){
                                 </div>
                             </div>
                             ))}
+                        </div>
+                        <Pagination 
+                                    totalPosts={products.length}
+                                    postsPerPage={postsPerPage}
+                                    setCurrentPage={setCurrentPage}
+                                    currentPage={currentpage}
+                                    previousPage={previousPage}
+                                    nextPage={nextPageMenuPilihan}
+                            />
                         </div>
                     </div>
                 </div>

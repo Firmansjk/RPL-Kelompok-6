@@ -88,10 +88,13 @@ useEffect(() => {
                     Lupa Password?
                   </Link>
               </div>
-              <div className="mt-10 flex justify-center">
+              <div className="mt-10 flex flex-col gap-6 items-center">
                   <button disabled={processing}
                   className="w-20 bg-[#F77E21] py-2 font-semibold rounded-lg text-center text-white transition-all hover:font-bold" type="submit">
                     Login </button>
+                  <Link href={route('homepage')} className='text-[#F77E21] text-sm font-semibold hover:font-bold'>
+                  Kembali ke halaman awal 
+                </Link>
               </div>
             </form>
           </div>
