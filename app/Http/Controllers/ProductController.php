@@ -55,8 +55,9 @@ class ProductController extends Controller
 
     }// End Method 
     public function VendorEditProduct($id){
+        $user = Auth::user();
         $products = Product::findOrFail($id);
-        return Inertia::render('PageEditMenu', compact('products'));
+        return Inertia::render('PageEditMenu', compact('products', 'user'));
     }// End Method
     
     public function VendorUpdateProduct(Request $request){
@@ -88,7 +89,7 @@ class ProductController extends Controller
             'product_price' => $request->product_price,
         ]);
     
-        return Redirect::route('vendor.all.packet');
+        return Redirect::route('vendor.menupage');
     
     }// End Method 
 }

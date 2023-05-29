@@ -33,14 +33,23 @@ class VendorController extends Controller
     public function VendorMenu(Request $request)
     {
         $user = Auth::user();
+        $id = $user->id;
         $searchQuery = $request->query('query'); // Mengambil query pencarian dari permintaan
 
-        $packets = Packet::where('packet_name', 'like', "%$searchQuery%")
-                        ->orWhere('packet_desc', 'like', "%$searchQuery%")
-            ->get();
+        $packets = Packet::where(function($query) use ($searchQuery, $id) {
+            $query->where(function($innerQuery) use ($searchQuery) {
+                    $innerQuery->where('packet_name', 'like', "%$searchQuery%")
+                               ->orWhere('packet_desc', 'like', "%$searchQuery%");
+                })
+                ->where('vendor_id', $id);
+        })
+        ->get();
 
-        $products = Product::where('product_name', 'like', "%{$searchQuery}%")
-            ->get();
+        $products = Product::where(function($query) use ($searchQuery, $id) {
+            $query->where('product_name', 'like', "%$searchQuery%")
+                  ->where('vendor_id', $id);
+        })
+        ->get();
         
         return Inertia::render('MenuPage', compact('user', 'packets', 'products', 'searchQuery'));
     }
@@ -119,12 +128,28 @@ class VendorController extends Controller
 
     public function VendorLogin()
     {
-        return Inertia::render('LoginPage');
+        if (Auth::check()) {
+            // Jika ada akun yang sedang login
+            // Ubah perilaku link atau tampilkan pesan error
+            return redirect()->back()->withErrors('Anda tidak diizinkan mengakses halaman ini saat sudah login.');
+        } else {
+            // Jika tidak ada akun yang sedang login
+            // Redirect ke halaman tujuan
+            return Inertia::render('LoginPage');
+        }
     }
 
     public function VendorRegisterPage()
     {
-        return Inertia::render('RegisterPage');
+        if (Auth::check()) {
+            // Jika ada akun yang sedang login
+            // Ubah perilaku link atau tampilkan pesan error
+            return redirect()->back()->withErrors('Anda tidak diizinkan mengakses halaman ini saat sudah login.');
+        } else {
+            // Jika tidak ada akun yang sedang login
+            // Redirect ke halaman tujuan
+            return Inertia::render('RegisterPage');
+        }
     }
 
     public function VendorUpdatePassword(Request $request): RedirectResponse
@@ -167,8 +192,6 @@ class VendorController extends Controller
 
         return Inertia::render('LoginPage')->with('notification', $notification);
     }
-
-    
 
     public function VendorDestroy(Request $request)
     {

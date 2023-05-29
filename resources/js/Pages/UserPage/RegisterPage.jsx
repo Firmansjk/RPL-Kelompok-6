@@ -4,11 +4,12 @@ import sidePict from '../../image/login_page.png';
 import logowhite from '../../image/logo tring white.png';
 
 function RegisterPageUser(){
-  const { data, setData, post} = useForm({
+  const { data, setData, post, reset} = useForm({
     name: '',
     email: '',
     password: '',
-    paccword_confirmation: '',
+    phone: '',
+    password_confirmation: '',
   })
 
   useEffect(() => {
@@ -23,7 +24,7 @@ function RegisterPageUser(){
   const submit = (e) => {
     e.preventDefault();
 
-    post(route('vendor.register'));
+    post(route('user.register'));
   };
     return(
     <>
@@ -40,59 +41,73 @@ function RegisterPageUser(){
             </Link>
           </div>
           <div className="w-full lg:w-1/2 py-16 px-12 flex flex-col justify-center">
-            <h2  className="text-3xl mb-5 text-center text-[#F77E21] font-extrabold">Register Akun</h2>
+            <h2 className="text-3xl mb-5 text-center text-[#F77E21] font-extrabold">Register Akun</h2>
             <form onSubmit={submit}>
               <div>
                   <label htmlFor="name" className="block mb-2 text-sm font-bold text-[#F77E21]">Username</label>
                   <input 
-                  type="name" 
-                  name="name" 
-                  id="name" 
-                  value={data.name}
-                  autoComplete="name"
-          
-                  onChange={handleOnChange} 
-                  className="mb-4 bg-white border border-[#F77E21] text-black sm:text-sm rounded-lg block w-full p-2.5 placeholder-gray-400" placeholder="Enter Username" 
-                  required=""/>
+                    type="name" 
+                    name="name" 
+                    id="name" 
+                    value={data.name}
+                    autoComplete="name"
+                    onChange={handleOnChange}
+                    className="mb-4 bg-white border border-[#F77E21] text-black sm:text-sm rounded-lg block w-full px-2.5 py-1.5 placeholder-gray-400" 
+                    placeholder="Enter Username" 
+                    required=""/>
               </div>
               <div>
                 <label htmlFor="email" className="block mb-2 text-sm font-bold text-[#F77E21]">E-mail</label>
                 <input 
-                type="email" 
-                name="email" 
-                id="email" 
-                value={data.email}
-                autoComplete="username"
-                onChange={handleOnChange}
-                className="mb-4 bg-white border border-[#F77E21] text-black sm:text-sm rounded-lg block w-full p-2.5 placeholder-gray-400" placeholder="email@something.com" 
-                required=""/>
+                  type="email" 
+                  name="email" 
+                  id="email" 
+                  value={data.email}
+                  autoComplete="username"
+                  onChange={handleOnChange}
+                  className="mb-4 bg-white border border-[#F77E21] text-black sm:text-sm rounded-lg block w-full px-2.5 py-1.5 placeholder-gray-400" 
+                  placeholder="email@something.com" 
+                  required=""/>
+              </div>
+              <div>
+                  <label htmlFor="phone" className="block mb-2 text-sm font-bold text-[#F77E21]">No. Telepon</label>
+                  <input 
+                    type="number" 
+                    name="phone" 
+                    id="phone" 
+                    value={data.phone}
+                    onChange={handleOnChange}
+                    className="mb-4 bg-white border border-[#F77E21] text-black sm:text-sm rounded-lg block w-full px-2.5 py-1.5 placeholder-gray-400" 
+                    placeholder="0812xxxxx" 
+                    required=""/>
               </div>
               <div>
                   <label htmlFor="password" className="block mb-2 text-sm font-bold text-[#F77E21]">Password</label>
                   <input 
-                  type="password" 
-                  name="password" 
-                  id="password" 
-                  value={data.password}
-                  onChange={handleOnChange}
-                  placeholder="••••••••" className="mb-4 bg-white border border-[#F77E21] text-black sm:text-sm rounded-lg block w-full p-2.5 placeholder-gray-400" required=""/>
+                    type="password" 
+                    name="password" 
+                    id="password" 
+                    placeholder="••••••••" 
+                    value={data.password}
+                    onChange={handleOnChange}
+                    className="mb-4 bg-white border border-[#F77E21] text-black sm:text-sm rounded-lg block w-full px-2.5 py-1.5 placeholder-gray-400" 
+                    required=""/>
               </div>
               <div>
                   <label htmlFor="password_confirmation" className="block mb-2 text-sm font-bold text-[#F77E21]">Konfirmasi Password</label>
                   <input 
-                  type="password" 
-                  name="password_confirmation" 
-                  id="password_confirmation" 
-                  value={data.password_confirmation}
-                  autoComplete="new-password"
-                  onChange={handleOnChange}
-                  placeholder="••••••••" className="bg-white border border-[#F77E21] text-black sm:text-sm rounded-lg block w-full p-2.5 placeholder-gray-400" required=""/>
+                    type="password" 
+                    name="password_confirmation" 
+                    id="password_confirmation" 
+                    placeholder="••••••••" 
+                    value={data.password_confirmation}
+                    autoComplete="new-password"
+                    onChange={handleOnChange}
+                    className="bg-white border border-[#F77E21] text-black sm:text-sm rounded-lg block w-full px-2.5 py-1.5 placeholder-gray-400" 
+                    required=""/>
               </div>
-              
               <div className="mt-6 flex justify-center">
-                <Link to="/loginpage">
-                  <button className="w-28 bg-[#F77E21] py-2 font-semibold rounded-lg text-center text-white transition-all hover:font-bold ">Register</button>
-                </Link>
+                  <button type='submit' className="w-28 bg-[#F77E21] py-2 font-semibold rounded-lg text-center text-white transition-all hover:font-bold ">Register</button>
               </div>
             </form>
           </div>

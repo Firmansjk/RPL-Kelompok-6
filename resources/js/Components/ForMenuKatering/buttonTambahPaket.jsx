@@ -75,13 +75,14 @@ export default function ButtonTambahPaket() {
 
                     <div className="mb-6">
                         <label htmlFor="packet_desc" className="block mb-2 text-md font-bold text-[#F77E21] text-start">DAFTAR MENU</label>
-                        <input 
+                        <textarea 
                         type="text" 
                         id="packet_desc" 
                         name="packet_desc"  
-                        className="bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg block w-full p-2.5" placeholder="Isi Menu Katering" 
+                        className="bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-lg block w-full p-2.5" 
+                        placeholder="Isi Menu Katering" 
                         value={newPacket.packet_desc}
-                        onChange={handleInputChange}/>
+                        onChange={handleInputChange}></textarea>
                     </div>
 
                     <div className="mb-6">

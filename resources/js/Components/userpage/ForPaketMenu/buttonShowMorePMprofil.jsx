@@ -33,7 +33,9 @@ export default function ButtonShowMorePMprofil({ PacketData }){
                         Paket terdiri dari :
                         </p>
                         <p className="mb-2 text-[0.75em] text-black flex flex-col gap-1">
-                        {PacketData.packet_desc}
+                        {PacketData.packet_desc.split('\n').map((line, index) => (
+                            <p key={index}>{line}</p>
+                        ))}
                         </p>
                         <p className="mr-0 mt-5 mb-2 text-lg font-bold leading-tight text-[#F77E21]">
                             <span>Rp.</span>{PacketData.packet_price}

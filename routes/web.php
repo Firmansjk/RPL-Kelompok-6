@@ -6,7 +6,6 @@ use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\VendorController;
-use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\PacketController;
 use App\Http\Controllers\UserController;
@@ -49,8 +48,10 @@ Route::middleware('auth')->group(function () {
 
 Route::get('/', [UserController::class, 'index'])->
     name('homepage');
-Route::get('/register', [UserController::class, 'UserRegisterPage'])->
+Route::post('/register', [UserController::class, 'UserRegister'])->
     name('user.register');
+Route::get('/register', [UserController::class, 'UserRegisterPage'])->
+    name('user.registerpage');
 Route::get('/login', [UserController::class, 'UserLogin'])->
     name('user.login');
 
@@ -140,6 +141,8 @@ route::middleware(['auth','role:user'])->group(function() {
         name('user.deleteProfile');
     Route::get('/profiltoko/{userId}', [UserController::class, 'ShowProfile'])->
         name('user.profiltoko');
+    Route::get('/hubungipenjual/{userId}', [UserController::class, 'HubungiPenjual'])->
+        name('user.hubungipenjual');
 
     // Route::get('/vendor/menupage', [VendorController::class, 'VendorMenu'])->
     //     name('vendor.menupage');

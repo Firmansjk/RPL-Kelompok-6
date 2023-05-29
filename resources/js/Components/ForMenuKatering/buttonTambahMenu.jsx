@@ -46,7 +46,8 @@ export default function ButtonTambahMenu() {
                 <form onSubmit={handleSubmit} encType="multipart/form-data">
                     <div className="mb-6">
                         <label htmlFor="product_name" className="block mb-2 text-md font-bold text-[#F77E21] text-start">NAMA MENU</label>
-                        <input type="text" 
+                        <input 
+                        type="text" 
                         id="product_name" 
                         name="product_name" 
                         value={newProduct.product_name} 

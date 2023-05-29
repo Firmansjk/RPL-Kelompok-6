@@ -15,6 +15,11 @@ class UserController extends Controller
 {
     public function index()
     {
+            // Cek apakah pengguna sudah masuk atau belum
+    if (Auth::check()) {
+        // Pengguna belum masuk, arahkan kembali
+        return redirect()->back();
+    }
         // Mengambil data user yang memiliki role "vendor"
         $users = User::where('role', 'vendor')->get();
         $packets = Packet::with('user')->get();
@@ -76,6 +81,30 @@ class UserController extends Controller
     {
         return Inertia::render('UserPage/RegisterPage');
     }
+
+    public function UserRegister(Request $request)
+    {
+        $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'password' => ['required', 'confirmed'],
+        ]);
+
+        $user = User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'phone' => $request->phone,
+            'password' => Hash::make($request->password),
+        ]);
+
+        $notification = [
+            'message' => 'Vendor Registered Successfully',
+            'alert-type' => 'success'
+        ];
+
+        return Inertia::render('UserPage/LoginPageUser')->with('notification', $notification);
+    }
+
     public function UserProfile(){
 
         $user = Auth::user();
@@ -150,6 +179,13 @@ class UserController extends Controller
         return Inertia::render('UserPage/ProfileCatering', compact('user', 'packets', 'products', 'users'));
     }
 
+    public function HubungiPenjual(Request $request, $userId)
+    {
+        $users = User::find($userId);
+        $user = Auth::user();
+
+        return Inertia::render('UserPage/HubungiPenjual', compact('user', 'users'));
+    }
 
     public function UserDestroy(Request $request)
     {

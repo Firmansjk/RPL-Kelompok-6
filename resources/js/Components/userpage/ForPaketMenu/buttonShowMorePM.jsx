@@ -37,14 +37,16 @@ export default function ButtonShowMorePM({ PacketData }){
                         Paket terdiri dari :
                         </p>
                         <p className="mb-2 text-[0.75em] text-black flex flex-col gap-1">
-                        {PacketData.packet_desc}
+                        {PacketData.packet_desc.split('\n').map((line, index) => (
+                            <p key={index}>{line}</p>
+                        ))}
                         </p>
                         <p className="mr-0 mt-5 mb-2 text-lg font-bold leading-tight text-[#F77E21]">
                             <span>Rp.</span>{PacketData.packet_price}
                         </p>
                     </div>
                 </div>
-                <Link to="/hubungipenjual" class="self-center w-[60%] text-center mb-2 rounded bg-[#F77E21] px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)]">
+                <Link href={`/hubungipenjual/${PacketData.user.id}`} class="self-center w-[60%] text-center mb-2 rounded bg-[#F77E21] px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)]">
                     Hubungi Penjual
                 </Link>
             </ModalShowMorePM>

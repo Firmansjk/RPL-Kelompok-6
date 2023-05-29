@@ -13,8 +13,8 @@ export default function ProfileCateringPage({ users, packets, products }){
             <main className="px-2 md:px-[10%] lg:px-44 mb-10 mt-12 lg:mt-16">
 
                 <div className="mt-5 flex flex-col items-center md:block">
-                    <img className="w-full h-40 lg:h-72 rounded-2xl object-cover" src={img} alt="Food Img"/>
-                    <img src={img} alt="Food Img" className="absolute left-[50%] translate-x-[-50%] top-[12em] md:left-24 md:translate-x-[0] lg:top-[22em] lg:left-52 w-28 h-28 md:w-40 md:h-40 lg:w-52 lg:h-52 border border-white border-8 rounded-full object-cover"/>
+                    <img className="w-full h-40 lg:h-72 rounded-2xl object-cover" src={users.sampul ? `/upload/vendor_sampul/${users.sampul}` : img} alt="Food Img"/>
+                    <img src={users.photo ? `/upload/vendor_profile/${users.photo}` : img} alt="Profile Picture" className="absolute left-[50%] translate-x-[-50%] top-[12em] md:left-24 md:translate-x-[0] lg:top-[22em] lg:left-52 w-28 h-28 md:w-40 md:h-40 lg:w-52 lg:h-52 border border-white border-8 rounded-full object-cover"/>
                     <div className="overflow-hidden relative left-0 md:w-[70%] md:left-[11.5em] lg:left-[16.5em] lg:w-[60%] xl:w-[72%] mt-20 md:mt-4">
                         <h5
                             className="mb-2 text-2xl text-center md:text-left font-bold leading-tight text-neutral-800">
@@ -31,7 +31,7 @@ export default function ProfileCateringPage({ users, packets, products }){
                             Alamat : <span className="font-normal">{users.address}</span> &nbsp;&nbsp; | &nbsp;&nbsp; No.Telepon : <span className="font-normal">{users.phone}</span>
                         </p>
                     </div>
-                    <Link to="/hubungipenjual" class="relative w-44 top-[2em] lg:top-[2em] lg:left-12 lg:w-[20em] xl:top-[5.25em] text-center mb-2 rounded bg-[#F77E21] px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)]">
+                    <Link href={`/hubungipenjual/${users.phone}`} class="relative w-44 top-[2em] lg:top-[2em] lg:left-12 lg:w-[20em] xl:top-[5.25em] text-center mb-2 rounded bg-[#F77E21] px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)]">
                     Hubungi Penjual
                     </Link>
                 </div>

@@ -5,6 +5,7 @@ import ButtonShowMorePM from '@/Components/userpage/ForPaketMenu/buttonShowMoreP
 import logo from "../../image/logo tring.png"
 import logowhite from "../../image/logo tring white.png"
 import React from 'react';
+import { Inertia } from '@inertiajs/inertia';
 import {usePage} from '@inertiajs/react';
 
 
@@ -12,6 +13,11 @@ export default function HomePageLogin({users, packets}){
     const limitedUsers = users.slice(0, 3);
     const limitedPackets = packets.slice(0, 3);
     const { appUrl } = usePage().props;
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        const searchValue = event.target.elements.search.value;
+        Inertia.visit(`/search-catering?query=${searchValue}`);
+    };
     // const handleVisitStore = (userId) => {
     //     Inertia.visit(`/profiltoko/${userId}`);
     //   };
@@ -26,14 +32,16 @@ export default function HomePageLogin({users, packets}){
                     <div className="absolute w-full h-screen flex flex-col justify-center items-start px-10 lg:px-48">
                         <p className="mb-2 text-sm md:text-lg font-bold leading-tight text-white">Butuh Catering untuk Acara?</p>
 
-                        <form className="relative w-full">
+                        <form onSubmit={handleSubmit} className="relative w-full">
                             <label for="default-search" className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
                             <div>
                                 <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
                                     <svg aria-hidden="true" className="w-5 h-5 text-[#F77E21]" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
                                 </div>
-                                <input type="search" id="default-search" className="block w-full p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-white focus:ring-[#F77E21] focus:border-[#F77E21]" placeholder="Cari Katering" required/>
-                                <button type="submit" className="text-white absolute right-2.5 bottom-2.5 bg-[#F77E21] font-medium rounded-lg text-sm px-4 py-2">Cari</button>
+                                
+                                    <input name="search" type="search" id="default-search" className="block w-full p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-white focus:ring-[#F77E21] focus:border-[#F77E21]" placeholder="Cari Katering" required/>
+                                    <button type="submit" className="text-white absolute right-2.5 bottom-2.5 bg-[#F77E21] font-medium rounded-lg text-sm px-4 py-2">Cari</button>
+                              
                             </div>
                         </form>
                     </div>

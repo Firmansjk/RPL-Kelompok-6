@@ -55,7 +55,7 @@ function Header(){
         <header className="bg-[#F77E21] flex fixed w-full md:hidden justify-between py-1 z-10">
             <div className="flex flex-row md:hidden gap-3 items-center justify-start p-1 ml-3 mt-2">
                 <HiMenuAlt1 onClick={() => toggleTab(!toggleState)} size={26} className={toggleState === true ? "cursor-pointer text-white mb-2 border rounded-lg border-2" : "cursor-pointer text-white mb-2"}/>
-                <img src={user.photo ? `/upload/vendor_profile/${user.photo}` : profileImg} className="w-24" alt="logo"/>
+                <img src={user.photo ? `/upload/vendor_profile/${user.photo}` : profileImg} className="inline-block h-6 w-6 md:w-10 md:h-10 lg:w-8 lg:h-8 rounded-full" alt="logo"/>
             </div>
             <div className={toggleState === true ? "absolute w-full z-10 top-[4em] transition-all shadow-2xl" : "absolute w-full z-10 top-[-18em] transition-all shadow-2xl"}>
                     <ul className="font-medium flex flex-col py-1 px-4 mt-4 rounded-lg bg-[#F77E21]">

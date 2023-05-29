@@ -36,7 +36,7 @@ const submit = (e) => {
             <div>
               <p className="text-white font-bold text-[1.5em]">Belum Punya Akun?</p>
             </div>
-            <Link href={route('user.register')} className="bg-white mt-10 mb-6 px-6 py-2 rounded-lg text-[#F77E21] font-semibold transition-all hover:bg-[#e4e1e1]">
+            <Link href={route('user.registerpage')} className="bg-white mt-10 mb-6 px-6 py-2 rounded-lg text-[#F77E21] font-semibold transition-all hover:bg-[#e4e1e1]">
               <button type="button">Buat Akun Baru</button>
             </Link>
           </div>

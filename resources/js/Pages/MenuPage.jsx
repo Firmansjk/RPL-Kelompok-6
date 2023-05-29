@@ -9,11 +9,15 @@ import ButtonTambahMenu from "../components/ForMenuKatering/buttonTambahMenu";
 import ButtonTambahPaket from "../components/ForMenuKatering/buttonTambahPaket";
 import { Link, useForm, usePage } from '@inertiajs/react';
 import { Inertia } from '@inertiajs/inertia';
+import PaginationVendor from "@/Components/paginationvendor";
 
 export default function MenuPage(){
-    
+    const { packets, products, appUrl, searchQuery } = usePage().props;
     const {} = useForm();
     const [toggleState, setToggleState] = useState(1);
+    const [currentpage, setCurrentPage] = useState(1);
+    const [postsPerPage] = useState(5);
+    const [query, setQuery] = useState(searchQuery || '');
 
     const handleEdit = (productId) => {
         // Arahkan pengguna ke halaman Edit menggunakan Inertia.js
@@ -23,11 +27,36 @@ export default function MenuPage(){
     const toggleTab  = (index1) =>{
             setToggleState(index1)
         }
-    const { packets, products, appUrl, searchQuery } = usePage().props;
 
-    
+    const lastPostIndex = currentpage * postsPerPage;
+    const firstPostIndex = lastPostIndex - postsPerPage;
+    const currentPosts = packets.slice(firstPostIndex, lastPostIndex)
+    const currentPosts2 = products.slice(firstPostIndex, lastPostIndex)
+    const startIndex = (currentpage - 1) * postsPerPage + 1;
+
+    const previousPage = () => {
+        if (currentpage !== 1){
+            setCurrentPage(currentpage - 1);
+        }
+    }
+    const nextPagePaketMenu = () => {
+        if (currentpage !== Math.ceil(packets.length / postsPerPage)) {
+            setCurrentPage(currentpage + 1)
+        }
+        else{
+            setCurrentPage(1)
+        }
+    }
+    const nextPageMenuPilihan = () => {
+        if (currentpage !== Math.ceil(products.length / postsPerPage)) {
+            setCurrentPage(currentpage + 1)
+        }
+        else{
+            setCurrentPage(1)
+        }
+    }
     // const [searchTerm, setSearchTerm] = useState('');
-    const [query, setQuery] = useState(searchQuery || '');
+    
     // const [results, setResults] = useState({ packets: [], products: [] });
 
     const submitSearch = (e) => {
@@ -114,25 +143,26 @@ export default function MenuPage(){
                                                     </tr>
                                                 </thead>
                                                 <tbody className="text-black">
-                                                    {packets.map((packet, index) =>  (   
+                                                {currentPosts && currentPosts.filter((packet) => {
+                                                        return query.toLowerCase() === '' ? packet : packet.packet_name.toLowerCase().includes(query)
+                                                    }).map((packet, index) => ( 
                                                     <tr key={packet.id} className="bg-white border-b">
                                                         <th scope="row" className="px-6 py-4 font-medium whitespace-nowrap border-r-2">
-                                                            {index + 1}
+                                                            {startIndex + index}
                                                         </th>
                                                         <td className="px-6 py-4 font-bold border-r-2">
                                                             {packet.packet_name}
                                                         </td>
                                                         <td className="px-6 py-4 border-r-2">
-                                                            
                                                             <img className="inline-block h-16 w-24 rounded-lg" src={appUrl + '/' + packet.packet_picture} alt={packet.packet_name} />
-                                                            
-                                                                       </td>
-                                         
-                                                        <td className="px-6 py-4 border-r-2">
-                                                            <p>{packet.packet_desc}</p>
                                                         </td>
                                                         <td className="px-6 py-4 border-r-2">
-                                                            <p><span>Rp.</span>{packet.packet_price}</p>
+                                                            {packet.packet_desc.split('\n').map((line, index) => (
+                                                                <p key={index}>{line}</p>
+                                                            ))}
+                                                        </td>
+                                                        <td className="px-6 py-4 border-r-2">
+                                                            <p><span>Rp.</span>{packet.packet_price}<span>/pax</span></p>
                                                         </td>
                                                         <td className="px-6 py-4 flex flex-col md:flex-row lg:flex-row gap-2 content-center">
                                                             <ButtonHapusPK packetId={packet.id}/>
@@ -151,6 +181,14 @@ export default function MenuPage(){
                                         </div>
                                     </div>
                                 </div>
+                                <PaginationVendor
+                                    totalPosts={packets.length}
+                                    postsPerPage={postsPerPage}
+                                    setCurrentPage={setCurrentPage}
+                                    currentPage={currentpage}
+                                    previousPage={previousPage}
+                                    nextPage={nextPagePaketMenu}
+                                />
                             </div>
 
                             <div className={toggleState === 2 ? "block" : "hidden"}>
