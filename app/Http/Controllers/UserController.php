@@ -16,10 +16,10 @@ class UserController extends Controller
     public function index()
     {
             // Cek apakah pengguna sudah masuk atau belum
-    if (Auth::check()) {
-        // Pengguna belum masuk, arahkan kembali
-        return redirect()->back();
-    }
+        if (Auth::check()) {
+            // Pengguna belum masuk, arahkan kembali
+            return redirect()->back();
+        }
         // Mengambil data user yang memiliki role "vendor"
         $users = User::where('role', 'vendor')->get();
         $packets = Packet::with('user')->get();
@@ -57,28 +57,52 @@ class UserController extends Controller
     }
 
     public function SearchMenu(Request $request)
-    {
-        $user = Auth::user();
-        $searchQuery = $request->query('query'); // Mengambil query pencarian dari permintaan
+{
+    $user = Auth::user();
+    $sorting = $request->query('sorting');
+    $searchQuery = $request->query('query');
 
-        $packets = Packet::where('packet_name', 'like', "%$searchQuery%")
-            ->with('user')
-            ->get();
+    $packets = Packet::where('packet_name', 'like', "%$searchQuery%")
+        ->with('user');
 
-        $products = Product::where('product_name', 'like', "%{$searchQuery}%")
-            ->with('user')
-            ->get();
-        
-        return Inertia::render('UserPage/SearchMenu', compact('user', 'packets', 'products', 'searchQuery'));
+    if ($sorting === 'highToLow') {
+        $packets = $packets->orderByDesc('packet_price');
+    } elseif ($sorting === 'lowToHigh') {
+        $packets = $packets->orderBy('packet_price');
     }
+
+    $packets = $packets->get();
+
+    $products = Product::where('product_name', 'like', "%{$searchQuery}%")
+        ->with('user');
+
+    if ($sorting === 'highToLow') {
+        $products = $products->orderByDesc('product_price');
+    } elseif ($sorting === 'lowToHigh') {
+        $products = $products->orderBy('product_price');
+    }
+    
+    $products = $products->get();
+    
+    return Inertia::render('UserPage/SearchMenu', compact('user', 'packets', 'products', 'searchQuery'));
+}
 
     public function UserLogin()
     {
+        if (Auth::check()) {
+            // Pengguna belum masuk, arahkan kembali
+            return redirect()->back();
+        }
+
         return Inertia::render('UserPage/LoginPageUser');
     }
 
     public function UserRegisterPage()
     {
+        if (Auth::check()) {
+            // Pengguna belum masuk, arahkan kembali
+            return redirect()->back();
+        }
         return Inertia::render('UserPage/RegisterPage');
     }
 

@@ -6,7 +6,7 @@ export default function PaginationVendor({totalPosts, postsPerPage, setCurrentPa
     }
 
     return(
-        <div className="ml-6">
+        <div className="ml-6 mt-8">
             <button 
             onClick={previousPage}
             className="rounded-lg mr-3 px-3 py-2 leading-tight text-white font-semibold bg-[#F77E21] border"

@@ -129,27 +129,25 @@ class VendorController extends Controller
     public function VendorLogin()
     {
         if (Auth::check()) {
-            // Jika ada akun yang sedang login
-            // Ubah perilaku link atau tampilkan pesan error
-            return redirect()->back()->withErrors('Anda tidak diizinkan mengakses halaman ini saat sudah login.');
-        } else {
+            // Pengguna belum masuk, arahkan kembali
+            return redirect()->back();
+        }
             // Jika tidak ada akun yang sedang login
             // Redirect ke halaman tujuan
             return Inertia::render('LoginPage');
-        }
+        
     }
 
     public function VendorRegisterPage()
     {
         if (Auth::check()) {
-            // Jika ada akun yang sedang login
-            // Ubah perilaku link atau tampilkan pesan error
-            return redirect()->back()->withErrors('Anda tidak diizinkan mengakses halaman ini saat sudah login.');
-        } else {
+            // Pengguna belum masuk, arahkan kembali
+            return redirect()->back();
+        }
             // Jika tidak ada akun yang sedang login
             // Redirect ke halaman tujuan
             return Inertia::render('RegisterPage');
-        }
+
     }
 
     public function VendorUpdatePassword(Request $request): RedirectResponse

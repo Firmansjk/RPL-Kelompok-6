@@ -10,7 +10,6 @@ import Carousel from "react-multi-carousel"
 import "react-multi-carousel/lib/styles.css"
 
 export default function HomePage({users, packets}){
-    const limitedUsers = users.slice(0, 3);
     const limitedPackets = packets.slice(0, 3);
     const { appUrl } = usePage().props;
     // const limitedPackets = packets.slice(0, 3);
@@ -60,7 +59,7 @@ export default function HomePage({users, packets}){
                     <div className="w-full min-h-screen flex flex-col justify-center gap-14 px-4 py-14 lg:px-48">
                         <p className="mb-2 text-2xl md:text-4xl font-bold leading-tight text-[#F77E21] text-center ">LIST KATERING</p>
                         <Carousel responsive={responsive} swipeable={true} showDots={true} className="pb-8 z-0">
-                        {limitedUsers.map(user => (
+                        {users.map(user => (
                             <div key={user.id} className="flex flex-col justify-center items-start rounded-lg bg-white shadow-lg mx-4">
                                 <img
                                 className="rounded-t-lg w-full h-48 object-cover"

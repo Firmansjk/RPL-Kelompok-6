@@ -1,31 +1,23 @@
-import React, { useState} from "react";
+import React, { useState, useMemo} from "react";
 import Header from "../../Components/userpage/Header";
 import ButtonShowMorePM from "../../components/userpage/ForPaketMenu/buttonShowMorePM";
 import {usePage} from '@inertiajs/react';
 import { Inertia } from '@inertiajs/inertia';
 import Pagination from "@/Components/userpage/pagination";
 
-export default function SearchMenuPage(){
+export default function SearchMenuPage({appUrl, packets, products, searchQuery}){
     const [toggleState, setToggleState] = useState(1);
-    const { appUrl } = usePage().props;
-    const [postsPerPage] = useState(6);
+    const [query, setQuery] = useState('');
+    const [open, setOpen] = useState(false);
     const [currentpage, setCurrentPage] = useState(1);
+    const postsPerPage = 6;
+    const [sorting, setSorting] = useState('');
 
-    const toggleTab  = (index) =>{
-        setToggleState(index)
-    }
-
-    const { packets, products, searchQuery } = usePage().props;
-
-    // const [searchTerm, setSearchTerm] = useState('');
-    const [query, setQuery] = useState(searchQuery || '');
-    // const [results, setResults] = useState({ packets: [], products: [] });
-
-    // For pagination
-    const lastPostIndex = currentpage * postsPerPage;
-    const firstPostIndex = lastPostIndex - postsPerPage;
-    const currentPosts = packets.slice(firstPostIndex, lastPostIndex)
-    const currentPosts2 = products.slice(firstPostIndex, lastPostIndex)
+    // Pagination
+    const indexOfLastPost = currentpage * postsPerPage;
+    const indexOfFirstPost = indexOfLastPost - postsPerPage;
+    const currentPosts = useMemo(() => packets.slice(indexOfFirstPost, indexOfLastPost), [packets, currentpage]);
+    const currentPosts2 = useMemo(() => products.slice(indexOfFirstPost, indexOfLastPost), [products, currentpage]);
 
     const previousPage = () => {
         if (currentpage !== 1){
@@ -58,6 +50,20 @@ export default function SearchMenuPage(){
         Inertia.get(route('user.searchmenu', { query }));
       };
 
+    const openList  = (index) =>{
+        setOpen(index)
+    }
+    
+      const handleSorting = (sortingType) => {
+        setCurrentPage(1);
+        setSorting(sortingType);
+    
+        Inertia.get(route('user.searchmenu', { query: searchQuery, sorting: sortingType }));
+      };
+
+      const toggleTab  = (index) =>{
+        setToggleState(index)
+    }
 
     return(
         <>
@@ -104,11 +110,32 @@ export default function SearchMenuPage(){
                             </div>
                         </div>
 
+                        {/* <!-- Dropdown menu --> */}
+
+                        <div className="mt-8">
+                            <button onClick={() => openList(!open)} id="dropdownDefaultButton" data-dropdown-toggle="dropdown" className="text-white bg-[#F77E21] focus:ring-1 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2.5 text-center inline-flex items-center mb-2" type="button">Filter Harga
+                            <svg className="w-4 h-4 ml-2" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                            </button>
+                            <div id="dropdown" action="#" className={open === true ? "z-10 bg-white divide-y divide-gray-100 rounded-lg shadow w-52 flex flex-col" : "hidden"}>
+                            <button onClick={() => handleSorting('highToLow')} className="block px-4 py-2 hover:bg-gray-100 text-sm">
+                                Harga Tinggi ke Rendah
+                            </button>
+                            <button onClick={() => handleSorting('lowToHigh')} className="block px-4 py-2 hover:bg-gray-100 text-sm">
+                                Harga Rendah ke Tinggi
+                            </button>
+                            </div>
+                        </div>
+
+                        {/* List Of Menu */}
+
                         <div className="flex flex-col gap-12">
                             <div className="mt-10 w-full grid grid-flow-row gap-x-8 gap-y-12 sm:grid-cols-2 md:grid-cols-2 xl:grid-cols-3">
-                            {currentPosts && currentPosts.filter((packet) => {
+                            {currentPosts
+                                .filter((packet) => {
                                     return query.toLowerCase() === '' ? packet : packet.packet_name.toLowerCase().includes(query)
-                                }).map(packet => (
+                                })
+                                .map((packet) => (
                                 <div key={packet.id} className="flex flex-col justify-center items-start rounded-lg bg-white shadow-xl">
                                     <img
                                     className="rounded-t-lg w-full h-40 object-cover"
@@ -176,11 +203,30 @@ export default function SearchMenuPage(){
                             </div>
                         </div>
 
+                        {/* <!-- Dropdown menu --> */}
+
+                        <div className="mt-8">
+                            <button onClick={() => openList(!open)} id="dropdownDefaultButton" data-dropdown-toggle="dropdown" className="text-white bg-[#F77E21] focus:ring-1 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2.5 text-center inline-flex items-center mb-2" type="button">Filter Harga
+                            <svg className="w-4 h-4 ml-2" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                            </button>
+                            <div id="dropdown" action="#" className={open === true ? "z-10 bg-white divide-y divide-gray-100 rounded-lg shadow w-52 flex flex-col" : "hidden"}>
+                            <button onClick={() => handleSorting('highToLow')} className="block px-4 py-2 hover:bg-gray-100 text-sm">
+                                Harga Tinggi ke Rendah
+                            </button>
+                            <button onClick={() => handleSorting('lowToHigh')} className="block px-4 py-2 hover:bg-gray-100 text-sm">
+                                Harga Rendah ke Tinggi
+                            </button>
+                            </div>
+                        </div>
+
                         <div className="flex flex-col gap-12">
                         <div className="mt-10 w-full grid grid-flow-row gap-x-8 gap-y-12 sm:grid-cols-2 md:grid-cols-2 xl:grid-cols-3">
-                            {currentPosts2 && currentPosts2.filter((product) => {
+                        {currentPosts2
+                                .filter((product) => {
                                     return query.toLowerCase() === '' ? product : product.product_name.toLowerCase().includes(query)
-                                }).map(product => (
+                                })
+                                .map((product) => (
                             <div className="flex flex-col justify-center items-start rounded-lg bg-white shadow-xl">
                                 <img
                                 className="rounded-t-lg w-full h-40 object-cover"
