@@ -56,7 +56,7 @@ export default function SearchCateringPage(){
                                 src="https://tecdn.b-cdn.net/img/new/standard/nature/186.jpg"
                                 alt="" />
                                 <div class="px-6 pt-6 pb-0">
-                                    <div className="flex flex-col lg:flex-row justify-between items-center gap-3">
+                                    <div className="flex flex-col lg:flex-row justify-between items-center gap-3 md:gap-5">
                                         <div>
                                             <h5
                                             class="mb-2 text-md text-center lg:text-left font-bold leading-tight text-neutral-800">
@@ -66,9 +66,9 @@ export default function SearchCateringPage(){
                                             <span>{catering.address}</span> | <span>{catering.numbertelp}</span>
                                             </p>
                                         </div>
-                                        <div className="flex flex-row items-center gap-3 mb-4">
+                                        <div className="flex flex-row md:flex-col items-center gap-3 mb-4">
                                             <img className="w-8" src={forkspoon} alt="forkspoon"></img>
-                                            <p class="text-md font-bold text-[#F77E21]">
+                                            <p class="text-md text-center font-bold text-[#F77E21]">
                                             {catering.totalmenu} <span>Menu</span>
                                             </p>
                                         </div>
