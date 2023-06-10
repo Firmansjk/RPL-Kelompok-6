@@ -21,6 +21,9 @@ import LoginPageAdmin from './pages/adminpage/loginpage';
 import ListPageAdmin from './pages/adminpage/listpage';
 import ProfilePageAdmin from './pages/adminpage/profile';
 import EditCateringPage from './components/adminpage/ForEditCatering/editcateringpage';
+import ListUser from './pages/adminpage/listuserpage';
+import EditUser from './components/adminpage/ForEditUser/edituserpage';
+import VerificationUser from '../src/pages/verification';
 
 
 const App = () => {
@@ -52,14 +55,18 @@ const App = () => {
           <Route path='/searchMenu' element={<SearchMenuPage/>} />
           <Route path='/profile' element={<ProfileCateringPage/>}/>
           <Route path='/userprofilesettings' element={<SettingProfilePage/>}/>
+
+          <Route path='/verificationpage' element={<VerificationUser/>}/>
         </Routes>
 
         {/* ROUTES FOR ADMIN PAGE */}
         <Routes>
           <Route path='/loginadminpage' element={<LoginPageAdmin />} />
           <Route path='/listadminpage' element={<ListPageAdmin/>}/>
+          <Route path='/listuserpage' element={<ListUser/>}/>
           <Route path='/profileadmin' element={<ProfilePageAdmin/>}/>
           <Route path='/editcateringpage' element={<EditCateringPage/>}/>
+          <Route path='/edituser' element={<EditUser/>}/>
         </Routes>
       </Router>
   );

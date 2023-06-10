@@ -7,7 +7,8 @@ import LogoOrange from "../../image/logo tring.png"
 const SideBarAdmin = () => {
   const menus = [
     { name: "Profile", link:"/profileadmin", icon: AiOutlineUser },
-    { name: "List Katering", link:"/listadminpage", icon: HiMenu}
+    { name: "List Katering", link:"/listadminpage", icon: HiMenu},
+    { name: "List User", link:"/listuserpage", icon: HiMenu}
   ];
   const [open, setOpen] = useState(true);
   return (
