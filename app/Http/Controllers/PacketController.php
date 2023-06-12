@@ -7,17 +7,17 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
-use Image;
 use Inertia\Inertia;
 use App\Models\Product;
 use Illuminate\Support\Facades\Redirect;
+use Intervention\Image\Facades\Image;
 
 class PacketController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
 
     public function VendorAddPacket(Request $request)
@@ -78,12 +78,12 @@ class PacketController extends Controller
 
             'packet_name' => $request->packet_name,
             'packet_price' => $request->packet_price,
-            'packet_desc' => $request->packet_desc, 
+            'packet_desc' => $request->packet_desc,
         ]);
-    
+
         return Redirect::route('vendor.menupage');
 
-    }// End Method 
+    }// End Method
 
 
     public function VendorPacketDelete($id){
@@ -99,6 +99,6 @@ class PacketController extends Controller
 
         return redirect()->back()->with($notification);
 
-    }// End Method 
-    
+    }// End Method
+
 }

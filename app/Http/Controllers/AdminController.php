@@ -10,12 +10,13 @@ use Illuminate\Validation\Rules\Password;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Redirect;
-use Image;
+use Illuminate\Http\RedirectResponse;
+use Intervention\Image\Facades\Image;
 
 
 class AdminController extends Controller
 {
-    public function AdminDashboard(){      
+    public function AdminDashboard(){
         return Inertia::render('DashboardAdmin');
     }
 
@@ -28,7 +29,7 @@ class AdminController extends Controller
             // Jika tidak ada akun yang sedang login
             // Redirect ke halaman tujuan
             return Inertia::render('AdminPage/LoginPage');
-        
+
     }
 
     public function AdminProfile(){
@@ -53,7 +54,7 @@ class AdminController extends Controller
         ->where('role', 'user')
         ->latest()
         ->get();
-        
+
         return Inertia::render('AdminPage/ListUserPage', compact('user', 'users', 'searchQuery'));
     }
 
@@ -69,7 +70,7 @@ class AdminController extends Controller
         ->where('role', 'vendor')
         ->latest()
         ->get();
-        
+
         return Inertia::render('AdminPage/ListVendorPage', compact('user', 'users', 'searchQuery'));
     }
 
@@ -91,27 +92,27 @@ class AdminController extends Controller
 
         $user->update([
             'name' => $request->name,
-            'email' => $request->email, 
+            'email' => $request->email,
         ]);
 
         if ($request->hasFile('photo')) {
             $file = $request->file('photo');
             $filename = time().$file->getClientOriginalName();
             $file->move(public_path('upload/vendor_profile'), $filename);
-    
+
             // Menghapus foto lama jika ada
             if (!empty($user->photo)) {
                 @unlink(public_path('upload/admin_profile/'.$user->photo));
             }
-    
+
             $user->photo = $filename;
         }
-    
+
         $user->save();
-    
+
         return Redirect::route('admin.listvendor');
 
-    }// End Method 
+    }// End Method
 
     public function UpdateUser(Request $request){
         $user_id = $request->id;
@@ -120,15 +121,15 @@ class AdminController extends Controller
         $user->update([
             'name' => $request->name,
             'username' => $request->username,
-            'email' => $request->email, 
+            'email' => $request->email,
             'address' => $request->address,
             'phone' => $request->phone,
         ]);
-    
+
         return Redirect::route('admin.listuser');
 
-    }// End Method 
-    
+    }// End Method
+
     public function UserDelete($id){
 
         $user = User::findOrFail($id);
@@ -137,17 +138,17 @@ class AdminController extends Controller
         if (!empty($user->photo)) {
             @unlink(public_path('upload/user_profile/'.$user->photo));
         }
-    
+
         $user->delete();
-    
+
         $notification = array(
             'message' => 'User deleted successfully',
             'alert-type' => 'success'
         );
-    
+
         return redirect()->back()->with($notification);
 
-    }// End Method 
+    }// End Method
 
     public function VendorDelete($id){
 
@@ -162,34 +163,34 @@ class AdminController extends Controller
         if (!empty($user->sampul)) {
             @unlink(public_path('upload/vendor_sampul/'.$user->photo));
         }
-    
+
         $user->delete();
-    
+
         $notification = array(
             'message' => 'User deleted successfully',
             'alert-type' => 'success'
         );
-    
+
         return redirect()->back()->with($notification);
 
-    }// End Method 
-    
+    }// End Method
+
     public function AdminUpdate(Request $request)
     {
 
         $user = Auth::user();
-        
+
         $user->name = $request->name;
         $user->email = $request->email;
         $user->username = $request->username;
-      
+
         $user->save();
-        
+
         return redirect()->back()->with('success', 'Profile updated successfully!');
     }
 
     public function AdminProfilePicture(Request $request)
-    {  
+    {
         $id = Auth::user()->id;
         $data = User::find($id);
 
@@ -200,7 +201,7 @@ class AdminController extends Controller
             $file->move(public_path('upload/admin_profile'), $filename);
             $data['photo'] = $filename;
         }
-    
+
         $data->save();
         return redirect()->back();
     }

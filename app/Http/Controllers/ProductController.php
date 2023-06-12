@@ -7,7 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Product;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
-use Image;
+use Intervention\Image\Facades\Image;
 use Inertia\Inertia;
 use Illuminate\Support\Facades\Redirect;
 
@@ -47,13 +47,13 @@ class ProductController extends Controller
 
         return redirect()->back()->with($notification);
 
-    }// End Method 
+    }// End Method
     public function VendorEditProduct($id){
         $user = Auth::user();
         $products = Product::findOrFail($id);
         return Inertia::render('VendorPage/PageEditMenu', compact('products', 'user'));
     }// End Method
-    
+
     public function VendorUpdateProduct(Request $request){
         // dd($request);
         $product_id = $request->id;
@@ -78,14 +78,14 @@ class ProductController extends Controller
         $product_id = $request->id;
         $product = Product::findOrFail($product_id);
         $product->update([
-    
+
             'product_name' => $request->product_name,
             'product_price' => $request->product_price,
         ]);
-    
+
         return Redirect::route('vendor.menupage');
-    
-    }// End Method 
+
+    }// End Method
 }
 
 

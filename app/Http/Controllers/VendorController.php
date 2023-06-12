@@ -12,7 +12,8 @@ use Illuminate\Validation\Rules\Password;
 use Illuminate\Support\Facades\Storage;
 use App\Models\Packet;
 use App\Models\Product;
-use Image;
+use Illuminate\Http\RedirectResponse;
+use Intervention\Image\Facades\Image;
 
 class VendorController extends Controller
 {
@@ -48,16 +49,16 @@ class VendorController extends Controller
                   ->where('vendor_id', $id);
         })
         ->get();
-        
+
         return Inertia::render('VendorPage/MenuPage', compact('user', 'packets', 'products', 'searchQuery'));
     }
 
-    
+
     public function VendorUpdate(Request $request)
     {
 
         $user = Auth::user();
-        
+
         $user->name = $request->name;
         $user->email = $request->email;
         $user->username = $request->username;
@@ -65,14 +66,14 @@ class VendorController extends Controller
         $user->address = $request->address;
         $user->vendor_info = $request->vendor_info;
 
-      
+
         $user->save();
-        
+
         return redirect()->back()->with('success', 'Profile updated successfully!');
     }
 
     public function VendorProfilePicture(Request $request)
-    {  
+    {
         $id = Auth::user()->id;
         $data = User::find($id);
 
@@ -83,13 +84,13 @@ class VendorController extends Controller
             $file->move(public_path('upload/vendor_profile'), $filename);
             $data['photo'] = $filename;
         }
-    
+
         $data->save();
         return redirect()->back();
     }
 
     public function VendorSampulPicture(Request $request)
-    {  
+    {
         $id = Auth::user()->id;
         $data = User::find($id);
 
@@ -100,7 +101,7 @@ class VendorController extends Controller
             $file->move(public_path('upload/vendor_sampul'), $filename);
             $data['sampul'] = $filename;
         }
-    
+
         $data->save();
         return redirect()->back();
     }
@@ -133,7 +134,7 @@ class VendorController extends Controller
             // Jika tidak ada akun yang sedang login
             // Redirect ke halaman tujuan
             return Inertia::render('VendorPage/LoginPage');
-        
+
     }
 
     public function VendorRegisterPage()

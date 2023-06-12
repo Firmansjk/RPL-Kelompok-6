@@ -46,25 +46,27 @@ Route::middleware('auth')->group(function () {
 //     return Inertia::render('userpage/HomePage');
 // })->name('homepage');
 
-Route::get('/', [UserController::class, 'index'])->
+Route::middleware('guest')->group(function () {
+    Route::get('/', [UserController::class, 'index'])->
     name('homepage');
-Route::post('/register', [UserController::class, 'UserRegister'])->
+    Route::post('/register', [UserController::class, 'UserRegister'])->
     name('user.register');
-Route::get('/register', [UserController::class, 'UserRegisterPage'])->
+    Route::get('/register', [UserController::class, 'UserRegisterPage'])->
     name('user.registerpage');
-Route::get('/login', [UserController::class, 'UserLogin'])->
+    Route::get('/login', [UserController::class, 'UserLogin'])->
     name('user.login');
 
 
-Route::post('/vendor/register', [VendorController::class, 'VendorRegister'])->
+    Route::post('/vendor/register', [VendorController::class, 'VendorRegister'])->
     name('vendor.register');
-Route::get('/vendor/login', [VendorController::class, 'VendorLogin'])->
+    Route::get('/vendor/login', [VendorController::class, 'VendorLogin'])->
     name('vendor.login');
-Route::get('/vendor/register', [VendorController::class, 'VendorRegisterPage'])->
-    name('vendor.registerpage');;
+    Route::get('/vendor/register', [VendorController::class, 'VendorRegisterPage'])->
+    name('vendor.registerpage');
 
-Route::get('/admin/login', [AdminController::class, 'AdminLogin'])->
+    Route::get('/admin/login', [AdminController::class, 'AdminLogin'])->
     name('admin.login');
+});
 
 Route::get('/loginpage', function () {
     return Inertia::render('LoginPage');
@@ -102,13 +104,13 @@ route::middleware(['auth','role:vendor', 'verified'])->group(function() {
 
     Route::patch('/vendor/profilepage', [VendorController::class, 'VendorUpdate'])->
         name('vendor.profile.change');
-        
+
     Route::post('/vendor/picture/update', [VendorController::class, 'VendorProfilePicture'])->
         name('vendor.photo.upload');
 
     Route::post('/vendor/sampul/update', [VendorController::class, 'VendorSampulPicture'])->
         name('vendor.sampul.upload');
-        
+
     Route::post('/vendor/changepassword', [VendorController::class, 'VendorChangePassword'])->
         name('vendor.changepassword');
 
@@ -159,13 +161,13 @@ route::middleware(['auth','role:user', 'verified'])->group(function() {
 
     Route::post('/user/logout', [UserController::class, 'UserDestroy'])->
         name('user.logout');
-        
+
     // Route::post('/vendor/profile/update', [VendorController::class, 'VendorProfilePicture'])->
     //     name('image.upload');
 
     // Route::post('/vendor/sampul/update', [VendorController::class, 'VendorSampulPicture'])->
     //     name('image.upload');
-        
+
     // Route::post('/vendor/changepassword', [VendorController::class, 'VendorChangePassword'])->
     //     name('vendor.changepassword');
 });
@@ -189,7 +191,7 @@ route::middleware(['auth','role:admin'])->group(function() {
 
     Route::get('/admin/editVendor/{id}', [AdminController::class, 'EditVendor'])->
         name('admin.edit.vendor');
-        
+
     Route::post('/admin/updateUser', [AdminController::class, 'UpdateUser'])->
         name('admin.update.user');
 
@@ -207,10 +209,10 @@ route::middleware(['auth','role:admin'])->group(function() {
 
     Route::patch('/admin/profilepage', [AdminController::class, 'AdminUpdate'])->
         name('admin.profile.change');
-        
+
     Route::post('/admin/picture/update', [AdminController::class, 'AdminProfilePicture'])->
         name('admin.photo.upload');
-        
+
     // Route::post('/vendor/changepassword', [VendorController::class, 'VendorChangePassword'])->
     //     name('vendor.changepassword');
 
