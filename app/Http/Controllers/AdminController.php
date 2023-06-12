@@ -109,7 +109,7 @@ class AdminController extends Controller
     
         $user->save();
     
-        return Redirect::route('admin.listuser');
+        return Redirect::route('admin.listvendor');
 
     }// End Method 
 

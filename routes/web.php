@@ -74,13 +74,20 @@ Route::get('/lupapass', function () {
     return Inertia::render('lupaPass');
 })->name('lupapass');
 
+Route::get('/verify-email', function () {
+    return Inertia::render('verification');
+})->name('lupapass');
+
+Route::post('/verify-email/logout', [VendorController::class, 'VendorDestroy'])->
+        name('verify-email.logout');
+
 Route::middleware(['auth','role:admin'])->group(function () {
     Route::get('/admin/dashboard', [AdminController::class, 'AdminDashboard'])->name('admin.dashboard');
 });
 
 
 /// Vendor Dashboard
-route::middleware(['auth','role:vendor'])->group(function() {
+route::middleware(['auth','role:vendor', 'verified'])->group(function() {
     Route::get('/vendor/dashboard', [VendorController::class, 'VendorDashboard'])->
         name('vendor.dashboard');
 
