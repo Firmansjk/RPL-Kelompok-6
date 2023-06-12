@@ -1,5 +1,4 @@
 import { Link, usePage } from '@inertiajs/react';
-import ButtonShowMorePM from "../../components/userpage/ForPaketMenu/buttonShowMorePM";
 import Header from "../../Components/userpage/Header";
 import img from "../../image/image.png"
 import { useState } from "react";

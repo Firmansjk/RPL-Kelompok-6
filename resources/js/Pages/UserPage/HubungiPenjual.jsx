@@ -1,5 +1,5 @@
 import { Link, usePage } from '@inertiajs/react';
-import Header from "../../components/userpage/header";
+import Header from '@/Components/userpage/header';
 import img from "../../image/image.png"
 import { Inertia } from '@inertiajs/inertia';
 

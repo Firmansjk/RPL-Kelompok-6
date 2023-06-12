@@ -1,6 +1,6 @@
 import React, { useState, useMemo} from "react";
 import Header from "../../Components/userpage/Header";
-import ButtonShowMorePM from "../../components/userpage/ForPaketMenu/buttonShowMorePM";
+import ButtonShowMorePM from "@/Components/userpage/ForPaketMenu/buttonShowMorePM";
 import {usePage} from '@inertiajs/react';
 import { Inertia } from '@inertiajs/inertia';
 import Pagination from "@/Components/userpage/pagination";

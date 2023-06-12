@@ -1,5 +1,5 @@
-import ButtonPhoto from "../../components/userpage/ForChangePhoto/buttonPhoto";
-import ButtonHapusPhoto from "../../components/userpage/ForChangePhoto/buttonHapusPhoto"
+import ButtonPhoto from "@/Components/userpage/ForChangePhoto/buttonPhoto";
+import ButtonHapusPhoto from "@/Components/userpage/ForChangePhoto/buttonHapusPhoto";
 import Header from "../../Components/userpage/Header";
 import { Link, useForm, usePage } from '@inertiajs/react';
 import profileImg from "../../image/profile.png"
