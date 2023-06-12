@@ -44,6 +44,8 @@ class AuthenticatedSessionController extends Controller
             $url = '/home';
         }
 
+        
+
         return redirect()->intended($url);
     }
 

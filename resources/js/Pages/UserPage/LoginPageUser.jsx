@@ -1,15 +1,15 @@
 import React, {useEffect} from 'react';
+import { Inertia } from '@inertiajs/inertia';
 import { Link, useForm } from '@inertiajs/react';
 import sidePict from '../../image/login_page.png';
 import logowhite from '../../image/logo tring white.png';
 
 
-function LoginPageUser() {
+function LoginPageUser({ csrf_token }) {
   const { data, setData, post, processing, errors, reset } = useForm({
     email: '',
     password: '',
     remember: '',
-    _token: '', // Menyiapkan properti _token untuk menyimpan token CSRF
 });
 
 useEffect(() => {
@@ -25,11 +25,12 @@ const handleOnChange = (event) => {
 const submit = (e) => {
   e.preventDefault();
 
-  // Mengatur token CSRF dari meta tag yang ada di halaman saat ini
-  setData('_token', document.querySelector('meta[name="csrf-token"]').getAttribute('content'));
-
-  // Mengirim permintaan POST dengan token CSRF
-  post(route('login'));
+  Inertia.post(route('login'), {
+    email: data.email,
+    password: data.password,
+    remember: data.remember,
+    _token: csrf_token,
+  });
 };
   return (
     <>
