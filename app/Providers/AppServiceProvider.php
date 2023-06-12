@@ -28,6 +28,6 @@ class AppServiceProvider extends ServiceProvider
         if(config("app.env") === "production" ) {
             URL::forceScheme('https');
         }
-        Inertia::share('appUrl', env('APP_URL'));
+        Inertia::share('appUrl', config("app.url"));
     }
 }
