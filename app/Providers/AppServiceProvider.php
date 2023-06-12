@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Inertia\Inertia;
+use Illuminate\Support\Facades\URL;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -24,8 +25,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        if($this->app->environment('production')) {
-            \URL::forceScheme('https');
+        if(config("app.env") === "production" ) {
+            URL::forceScheme('https');
         }
         Inertia::share('appUrl', env('APP_URL'));
     }
