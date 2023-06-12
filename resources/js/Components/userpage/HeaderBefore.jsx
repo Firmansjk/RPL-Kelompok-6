@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import OrangeLogo from "../../image/logo tring.png"
 import profileImg from "../../image/profile.png"
-import { Link } from '@inertiajs/react';
+import { Head, Link } from '@inertiajs/react';
 
 export default function HeaderBefore(){
     const [navbarOpen, setNavbarOpen] = useState(false);
@@ -29,6 +29,10 @@ export default function HeaderBefore(){
 
     return(
         <>
+        <Head>
+            <meta head-key="description" name="description" content="This is the default description" />
+            <link rel="icon" type="image/png" href="images/logo tring.png" />
+        </Head>
         <nav className="fixed w-full flex flex-wrap items-center justify-between px-2 py-1 lg:py-3 lg:px-40 bg-white shadow-lg mb-3 z-10">
             <div ref={menuRef} className="container mx-auto flex flex-wrap items-center justify-between">
                 <div className="w-full relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start">

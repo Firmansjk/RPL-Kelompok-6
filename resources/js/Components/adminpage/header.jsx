@@ -1,9 +1,10 @@
-import { Link, usePage } from '@inertiajs/react';
+import { Head, Link, usePage } from '@inertiajs/react';
 import profileImg from '../../image/profile.png'
 import logowhite from "../../image/logo tring white.png"
 import {useEffect, useRef, useState} from "react";
 import { HiMenu, HiMenuAlt1 } from "react-icons/hi";
 import { AiOutlineUser } from "react-icons/ai";
+
 
 function HeaderAdmin(){
     const { user } = usePage().props;
@@ -31,6 +32,10 @@ function HeaderAdmin(){
 
     return(
     <>
+        <Head>
+            <meta head-key="description" name="description" content="This is the default description" />
+            <link rel="icon" type="image/png" href="images/logo tring.png" />
+        </Head>
         <header className="bg-[#F77E21] md:flex justify-end py-1 mb-4 hidden">
             <div className="flex">
                 <div ref={menuRef} className="p-1 flex flex-row items-center mr-4">
