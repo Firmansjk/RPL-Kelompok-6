@@ -94,7 +94,10 @@ class UserController extends Controller
             return redirect()->back();
         }
 
-        return Inertia::render('UserPage/LoginPageUser');
+        return Inertia::render('UserPage/LoginPageUser', [
+            'canResetPassword' => Route::has('password.request'),
+            'status' => session('status'),
+        ]);
     }
 
     public function UserRegisterPage()
