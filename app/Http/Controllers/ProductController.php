@@ -14,14 +14,8 @@ use Illuminate\Support\Facades\Redirect;
 class ProductController extends Controller
 {
     public function __construct()
-{
-    $this->middleware('auth');
-}
-    public function VendorAllProduct()
     {
-        $id = Auth::user()->id;
-        $products = Product::where('vendor_id', $id)->latest()->get();
-        return Inertia::render('MenuPage', compact('products'));
+        $this->middleware('auth');
     }
 
     public function VendorAddProduct(Request $request)
@@ -57,7 +51,7 @@ class ProductController extends Controller
     public function VendorEditProduct($id){
         $user = Auth::user();
         $products = Product::findOrFail($id);
-        return Inertia::render('PageEditMenu', compact('products', 'user'));
+        return Inertia::render('VendorPage/PageEditMenu', compact('products', 'user'));
     }// End Method
     
     public function VendorUpdateProduct(Request $request){

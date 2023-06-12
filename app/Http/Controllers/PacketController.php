@@ -50,7 +50,7 @@ class PacketController extends Controller
     public function VendorEditPacket($id){
         $user = Auth::user();
         $packets = Packet::findOrFail($id);
-        return Inertia::render('PageEditPaket', compact('packets', 'user'));
+        return Inertia::render('VendorPage/PageEditPaket', compact('packets', 'user'));
     }// End Method
 
     public function VendorUpdatePacket(Request $request){
@@ -74,8 +74,6 @@ class PacketController extends Controller
             ]);
         }
 
-        $packet_id = $request->id;
-        $packet = Packet::findOrFail($packet_id);
         $packet->update([
 
             'packet_name' => $request->packet_name,

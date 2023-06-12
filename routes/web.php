@@ -63,11 +63,14 @@ Route::get('/vendor/login', [VendorController::class, 'VendorLogin'])->
 Route::get('/vendor/register', [VendorController::class, 'VendorRegisterPage'])->
     name('vendor.registerpage');;
 
+Route::get('/admin/login', [AdminController::class, 'AdminLogin'])->
+    name('admin.login');
+
 Route::get('/loginpage', function () {
     return Inertia::render('LoginPage');
 })->name('loginpage');
 
-Route::get('/lupaspass', function () {
+Route::get('/lupapass', function () {
     return Inertia::render('lupaPass');
 })->name('lupapass');
 
@@ -111,7 +114,7 @@ route::middleware(['auth','role:vendor'])->group(function() {
         Route::post('/vendor/add/product', 'VendorAddProduct')->name('vendor.add.product');
         Route::get('/vendor/editProduct/{id}' , 'VendorEditProduct')->name('vendor.edit.product');
         Route::delete('/vendor/delete/{id}' , 'VendorProductDelete')->name('vendor.delete.product');
-        Route::post('/vendor/updateproduct' , 'VendorUpdateProduct')->name('vendor.update.product');
+        Route::post('/vendor/updateProduct' , 'VendorUpdateProduct')->name('vendor.update.product');
     });
 
     Route::controller(PacketController::class)->group(function(){
@@ -119,12 +122,12 @@ route::middleware(['auth','role:vendor'])->group(function() {
         Route::post('/vendor/add/packet', 'VendorAddPacket')->name('vendor.add.packet');
         Route::get('/vendor/editPacket/{id}' , 'VendorEditPacket')->name('vendor.edit.packet');
         Route::delete('/vendor/hapus/{id}' , 'VendorPacketDelete')->name('vendor.delete.packet');
-        Route::post('/vendor/updatepacket' , 'VendorUpdatePacket')->name('vendor.update.packet');
+        Route::post('/vendor/updatePacket' , 'VendorUpdatePacket')->name('vendor.update.packet');
     });
 
 });
 
-route::middleware(['auth','role:user'])->group(function() {
+route::middleware(['auth','role:user', 'verified'])->group(function() {
     Route::get('/home', [UserController::class, 'Homepage'])->
         name('user.home');
     Route::get('/search-catering', [UserController::class, 'SearchCatering'])->
@@ -160,5 +163,53 @@ route::middleware(['auth','role:user'])->group(function() {
     //     name('vendor.changepassword');
 });
 
+
+route::middleware(['auth','role:admin'])->group(function() {
+    // Route::get('/vendor/dashboard', [VendorController::class, 'VendorDashboard'])->
+    //     name('vendor.dashboard');
+
+    Route::get('/admin/profilepage', [AdminController::class, 'AdminProfile'])->
+        name('admin.profilepage');
+
+    Route::get('/admin/listuser', [AdminController::class, 'ListUser'])->
+        name('admin.listuser');
+
+    Route::get('/admin/listvendor', [AdminController::class, 'ListVendor'])->
+        name('admin.listvendor');
+
+    Route::get('/admin/editUser/{id}', [AdminController::class, 'EditUser'])->
+        name('admin.edit.user');
+
+    Route::get('/admin/editVendor/{id}', [AdminController::class, 'EditVendor'])->
+        name('admin.edit.vendor');
+        
+    Route::post('/admin/updateUser', [AdminController::class, 'UpdateUser'])->
+        name('admin.update.user');
+
+    Route::post('/admin/updateVendor', [AdminController::class, 'UpdateVendor'])->
+        name('admin.update.vendor');
+
+    Route::delete('admin/deleteUser', [AdminController::class, 'UserDelete'])->
+        name('admin.delete.user');
+
+    Route::delete('admin/deleteVendor', [AdminController::class, 'VendorDelete'])->
+        name('admin.delete.vendor');
+
+    Route::post('/admin/logout', [AdminController::class, 'AdminDestroy'])->
+        name('admin.logout');
+
+    Route::patch('/admin/profilepage', [AdminController::class, 'AdminUpdate'])->
+        name('admin.profile.change');
+        
+    Route::post('/admin/picture/update', [AdminController::class, 'AdminProfilePicture'])->
+        name('admin.photo.upload');
+        
+    // Route::post('/vendor/changepassword', [VendorController::class, 'VendorChangePassword'])->
+    //     name('vendor.changepassword');
+
+    Route::delete('vendor/delete-profile', [AdminController::class, 'AdminDeleteProfile'])->
+        name('admin.deleteProfile');
+
+});
 
 require __DIR__.'/auth.php';

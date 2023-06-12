@@ -27,7 +27,7 @@ class VendorController extends Controller
         // $vendorData = Auth::user();
         $user = Auth::user();
 
-        return Inertia::render('ProfilePage', compact('user'));
+        return Inertia::render('VendorPage/ProfilePage', compact('user'));
     }
 
     public function VendorMenu(Request $request)
@@ -37,10 +37,8 @@ class VendorController extends Controller
         $searchQuery = $request->query('query'); // Mengambil query pencarian dari permintaan
 
         $packets = Packet::where(function($query) use ($searchQuery, $id) {
-            $query->where(function($innerQuery) use ($searchQuery) {
-                    $innerQuery->where('packet_name', 'like', "%$searchQuery%")
-                               ->orWhere('packet_desc', 'like', "%$searchQuery%");
-                })
+            $query->where('packet_name', 'like', "%$searchQuery%")
+                ->orWhere('packet_desc', 'like', "%$searchQuery%")
                 ->where('vendor_id', $id);
         })
         ->get();
@@ -51,7 +49,7 @@ class VendorController extends Controller
         })
         ->get();
         
-        return Inertia::render('MenuPage', compact('user', 'packets', 'products', 'searchQuery'));
+        return Inertia::render('VendorPage/MenuPage', compact('user', 'packets', 'products', 'searchQuery'));
     }
 
     
@@ -134,7 +132,7 @@ class VendorController extends Controller
         }
             // Jika tidak ada akun yang sedang login
             // Redirect ke halaman tujuan
-            return Inertia::render('LoginPage');
+            return Inertia::render('VendorPage/LoginPage');
         
     }
 
@@ -146,7 +144,7 @@ class VendorController extends Controller
         }
             // Jika tidak ada akun yang sedang login
             // Redirect ke halaman tujuan
-            return Inertia::render('RegisterPage');
+            return Inertia::render('VendorPage/RegisterPage');
 
     }
 
