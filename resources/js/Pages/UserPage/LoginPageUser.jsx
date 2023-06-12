@@ -9,6 +9,7 @@ function LoginPageUser() {
     email: '',
     password: '',
     remember: '',
+    _token: '', // Menyiapkan properti _token untuk menyimpan token CSRF
 });
 
 useEffect(() => {
@@ -24,6 +25,10 @@ const handleOnChange = (event) => {
 const submit = (e) => {
   e.preventDefault();
 
+  // Mengatur token CSRF dari meta tag yang ada di halaman saat ini
+  setData('_token', document.querySelector('meta[name="csrf-token"]').getAttribute('content'));
+
+  // Mengirim permintaan POST dengan token CSRF
   post(route('login'));
 };
   return (
