@@ -1,5 +1,5 @@
 import { Link } from '@inertiajs/react';
-import Header from '@/Components/userpage/Header';
+import Header from '@/Components/userpage/header';
 import img from "../../image/homepage.png"
 import ButtonShowMorePM from '@/Components/userpage/ForPaketMenu/buttonShowMorePM';
 import logo from "../../image/logo tring.png"
