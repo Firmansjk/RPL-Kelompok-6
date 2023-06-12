@@ -1,5 +1,5 @@
 import React, { useState, useMemo} from "react";
-import Header from "../../Components/userpage/Header";
+import Header from "@/Components/userpage/header";
 import ButtonShowMorePM from "@/Components/userpage/ForPaketMenu/buttonShowMorePM";
 import {usePage} from '@inertiajs/react';
 import { Inertia } from '@inertiajs/inertia';

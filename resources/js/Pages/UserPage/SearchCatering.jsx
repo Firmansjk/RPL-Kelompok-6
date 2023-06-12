@@ -1,4 +1,4 @@
-import Header from "../../Components/userpage/Header";
+import Header from "@/Components/userpage/header";
 import forkspoon from "../../image/food.png";
 import { Link } from '@inertiajs/react';
 import { Inertia } from '@inertiajs/inertia';

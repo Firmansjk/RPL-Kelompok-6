@@ -1,5 +1,5 @@
 import { Link, usePage } from '@inertiajs/react';
-import Header from "../../Components/userpage/Header";
+import Header from '@/Components/userpage/header';
 import img from "../../image/image.png"
 import { useState } from "react";
 import Carousel from "react-multi-carousel";
