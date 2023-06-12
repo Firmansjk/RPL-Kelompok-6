@@ -2,8 +2,8 @@ import React, { useState } from "react"
 import { Inertia } from '@inertiajs/inertia';
 import ButtonHapusUser from "@/Components/adminpage/ForDeleteUser/buttonHapusUser";
 import { Link, useForm, usePage } from '@inertiajs/react';
-import PaginationVendor from "../../components/vendorpage/paginationvendor";
-import SideBarAdmin from "../../components/adminpage/sidebar";
+import PaginationVendor from "@/Components/vendorpage/paginationvendor";
+import SideBarAdmin from "@/Components/adminpage/sidebar";
 import HeaderAdmin from "@/Components/adminpage/header";
 import ButtonAddUser from "../../components/adminpage/ForAddUser/buttonadduser";
 
