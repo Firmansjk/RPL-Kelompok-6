@@ -7,7 +7,7 @@ import logowhite from '../../image/logo tring white.png';
 import InputError from '@/Components/InputError';
 
 
-function LoginPage() {
+function LoginPage({csrf_token}) {
   const { data, setData, post, processing, errors, reset } = useForm({
     email: '',
     password: '',
@@ -27,8 +27,13 @@ function LoginPage() {
 
   const submit = (e) => {
     e.preventDefault();
-
-    post(route('login'));
+  
+    Inertia.post(route('login'), {
+      email: data.email,
+      password: data.password,
+      remember: data.remember,
+      _token: csrf_token,
+    });
   };
   return (
     <>
