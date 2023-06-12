@@ -5,7 +5,7 @@ import { Link, useForm, usePage } from '@inertiajs/react';
 import PaginationVendor from "@/Components/vendorpage/paginationvendor";
 import SideBarAdmin from "@/Components/adminpage/sidebar";
 import HeaderAdmin from "@/Components/adminpage/header";
-import ButtonAddUser from "../../components/adminpage/ForAddUser/buttonadduser";
+import ButtonAddUser from "@/Components/adminpage/ForAddUser/buttonadduser";
 
 export default function ListUser(){
     const { user, users, searchQuery } = usePage().props;

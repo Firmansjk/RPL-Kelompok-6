@@ -1,9 +1,9 @@
 import React, { useState } from "react"
 import { Link, useForm, usePage } from '@inertiajs/react';
-import PaginationVendor from "../../components/vendorpage/paginationvendor";
-import SideBarAdmin from "../../components/adminpage/sidebar";
+import PaginationVendor from "@/Components/vendorpage/paginationvendor";
+import SideBarAdmin from "@/Components/adminpage/sidebar";
 import HeaderAdmin from "@/Components/adminpage/header";
-import ButtonAddCatering from "../../components/adminpage/ForAddCatering/buttonaddCatering";
+import ButtonAddCatering from "@/Components/adminpage/ForAddCatering/buttonaddCatering";
 import ButtonHapusVendor from "@/Components/adminpage/ForDeleteVendor/buttonHapusVendor";
 
 function ListPageAdmin(){
