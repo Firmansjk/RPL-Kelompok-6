@@ -4,7 +4,7 @@ import { Link, useForm } from '@inertiajs/react';
 import logo from '../../image/logo tring.png';
 import InputError from '@/Components/InputError';
 
-function LoginPageAdmin() {
+function LoginPageAdmin({ csrf_token }) {
   const { data, setData, post, processing, errors, reset } = useForm({
     email: '',
     password: '',
@@ -24,8 +24,13 @@ function LoginPageAdmin() {
 
   const submit = (e) => {
     e.preventDefault();
-
-    post(route('login'));
+  
+    Inertia.post(route('login'), {
+      email: data.email,
+      password: data.password,
+      remember: data.remember,
+      _token: csrf_token,
+    });
   };
   return (
     <>

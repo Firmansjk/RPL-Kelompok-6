@@ -2,14 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
+use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use App\Models\Packet;
 use App\Models\Product;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules\Password;
+use Inertia\Response;
 
 class UserController extends Controller
 {
@@ -73,7 +76,7 @@ class UserController extends Controller
 
     $packets = $packets->get();
 
-    $products = Product::where('product_name', 'like', "%{$searchQuery}%")
+    $products = Product::where('product_name', 'like', "%$searchQuery%")
         ->with('user');
 
     if ($sorting === 'highToLow') {
@@ -81,23 +84,26 @@ class UserController extends Controller
     } elseif ($sorting === 'lowToHigh') {
         $products = $products->orderBy('product_price');
     }
-    
+
     $products = $products->get();
-    
+
     return Inertia::render('UserPage/SearchMenu', compact('user', 'packets', 'products', 'searchQuery'));
 }
 
-    public function UserLogin()
+    public function UserLogin(): Response
     {
         if (Auth::check()) {
             // Pengguna belum masuk, arahkan kembali
             return redirect()->back();
         }
 
-        return Inertia::render('UserPage/LoginPageUser');
+        return Inertia::render('UserPage/LoginPageUser', [
+            'canResetPassword' => Route::has('password.request'),
+            'status' => session('status'),
+        ]);
     }
 
-    public function UserRegisterPage()
+    public function UserRegisterPage(): Response
     {
         if (Auth::check()) {
             // Pengguna belum masuk, arahkan kembali
@@ -106,7 +112,7 @@ class UserController extends Controller
         return Inertia::render('UserPage/RegisterPage');
     }
 
-    public function UserRegister(Request $request)
+    public function UserRegister(Request $request): RedirectResponse
     {
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
@@ -140,21 +146,21 @@ class UserController extends Controller
     {
 
         $user = Auth::user();
-        
+
         $user->name = $request->name;
         $user->email = $request->email;
         $user->username = $request->username;
         $user->phone = $request->phone;
         $user->address = $request->address;
 
-      
+
         $user->save();
-        
+
         return redirect()->back()->with('success', 'Profile updated successfully!');
     }
 
     public function UserProfilePicture(Request $request)
-    {  
+    {
         $id = Auth::user()->id;
         $data = User::find($id);
 
@@ -165,7 +171,7 @@ class UserController extends Controller
             $file->move(public_path('upload/user_profile'), $filename);
             $data['photo'] = $filename;
         }
-    
+
         $data->save();
         return redirect()->back();
     }
