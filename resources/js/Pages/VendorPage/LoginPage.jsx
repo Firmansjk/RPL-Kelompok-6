@@ -5,6 +5,7 @@ import '../../App.css';
 import sidePict from '../../image/login_page.png';
 import logowhite from '../../image/logo tring white.png';
 import InputError from '@/Components/InputError';
+import { Inertia } from '@inertiajs/inertia';
 
 
 function LoginPage({csrf_token}) {

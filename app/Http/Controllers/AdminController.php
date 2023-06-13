@@ -21,7 +21,7 @@ class AdminController extends Controller
         return Inertia::render('DashboardAdmin');
     }
 
-    public function AdminLogin(): Response
+    public function AdminLogin()
     {
         if (Auth::check()) {
             // Pengguna belum masuk, arahkan kembali

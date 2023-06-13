@@ -126,7 +126,7 @@ class VendorController extends Controller
         return redirect()->back();
     }
 
-    public function VendorLogin(): Response
+    public function VendorLogin()
     {
         if (Auth::check()) {
             // Pengguna belum masuk, arahkan kembali
@@ -138,7 +138,7 @@ class VendorController extends Controller
 
     }
 
-    public function VendorRegisterPage(): Response
+    public function VendorRegisterPage()
     {
         if (Auth::check()) {
             // Pengguna belum masuk, arahkan kembali
