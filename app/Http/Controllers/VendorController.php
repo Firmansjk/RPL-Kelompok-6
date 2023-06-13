@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Storage;
 use App\Models\Packet;
 use App\Models\Product;
 use Illuminate\Http\RedirectResponse;
+use Inertia\Response;
 use Intervention\Image\Facades\Image;
 
 class VendorController extends Controller
@@ -125,7 +126,7 @@ class VendorController extends Controller
         return redirect()->back();
     }
 
-    public function VendorLogin()
+    public function VendorLogin(): Response
     {
         if (Auth::check()) {
             // Pengguna belum masuk, arahkan kembali
@@ -137,7 +138,7 @@ class VendorController extends Controller
 
     }
 
-    public function VendorRegisterPage()
+    public function VendorRegisterPage(): Response
     {
         if (Auth::check()) {
             // Pengguna belum masuk, arahkan kembali
@@ -167,7 +168,7 @@ class VendorController extends Controller
         return back()->with("status", "Password Changed Succesfully");
     }
 
-    public function VendorRegister(Request $request)
+    public function VendorRegister(Request $request): RedirectResponse
     {
         $request->validate([
             'name' => ['required', 'string', 'max:255'],

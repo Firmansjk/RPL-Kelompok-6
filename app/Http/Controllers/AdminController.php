@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Http\RedirectResponse;
+use Inertia\Response;
 use Intervention\Image\Facades\Image;
 
 
@@ -20,7 +21,7 @@ class AdminController extends Controller
         return Inertia::render('DashboardAdmin');
     }
 
-    public function AdminLogin()
+    public function AdminLogin(): Response
     {
         if (Auth::check()) {
             // Pengguna belum masuk, arahkan kembali

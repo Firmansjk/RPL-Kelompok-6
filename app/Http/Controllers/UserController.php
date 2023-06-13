@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
@@ -10,8 +11,8 @@ use Inertia\Inertia;
 use App\Models\Packet;
 use App\Models\Product;
 use Illuminate\Support\Facades\Hash;
-
 use Illuminate\Validation\Rules\Password;
+use Inertia\Response;
 
 class UserController extends Controller
 {
@@ -89,7 +90,7 @@ class UserController extends Controller
     return Inertia::render('UserPage/SearchMenu', compact('user', 'packets', 'products', 'searchQuery'));
 }
 
-    public function UserLogin()
+    public function UserLogin(): Response
     {
         if (Auth::check()) {
             // Pengguna belum masuk, arahkan kembali
@@ -102,7 +103,7 @@ class UserController extends Controller
         ]);
     }
 
-    public function UserRegisterPage()
+    public function UserRegisterPage(): Response
     {
         if (Auth::check()) {
             // Pengguna belum masuk, arahkan kembali
@@ -111,7 +112,7 @@ class UserController extends Controller
         return Inertia::render('UserPage/RegisterPage');
     }
 
-    public function UserRegister(Request $request)
+    public function UserRegister(Request $request): RedirectResponse
     {
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
