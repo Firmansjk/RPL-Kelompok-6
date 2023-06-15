@@ -226,7 +226,7 @@ class AdminController extends Controller
         return redirect()->back();
     }
 
-    public function VendorUpdatePassword(Request $request): RedirectResponse
+    public function VendorUpdatePassword(Request $request)
     {
         $request->validate([
             'old_password' => 'required',

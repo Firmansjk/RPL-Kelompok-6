@@ -90,7 +90,7 @@ class UserController extends Controller
     return Inertia::render('UserPage/SearchMenu', compact('user', 'packets', 'products', 'searchQuery'));
 }
 
-    public function UserLogin(): Response
+    public function UserLogin()
     {
         if (Auth::check()) {
             // Pengguna belum masuk, arahkan kembali
@@ -111,7 +111,7 @@ class UserController extends Controller
         return Inertia::render('UserPage/RegisterPage');
     }
 
-    public function UserRegister(Request $request): RedirectResponse
+    public function UserRegister(Request $request)
     {
         $request->validate([
             'name' => ['required', 'string', 'max:255'],

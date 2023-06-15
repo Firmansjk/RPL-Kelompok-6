@@ -47,7 +47,7 @@ export default function LupaPassPage({ status }) {
                         <ButtonConfirmPass disabled={processing}/>
                     </div>
                 </form >
-                <Link href={route('loginpage')} className="mt-2 flex flex-col md:flex-row justify-center">
+                <Link href={route('login')} className="mt-2 flex flex-col md:flex-row justify-center">
                     <p className="text-sm md:text-base font-medium hover:font-semibold text-[#F77E21]">Kembali ke Halaman Awal</p>
                 </Link>
             </div>

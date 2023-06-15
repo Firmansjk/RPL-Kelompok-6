@@ -25,11 +25,7 @@ function LoginPageAdmin({ csrf_token }) {
   const submit = (e) => {
     e.preventDefault();
   
-    Inertia.post(route('login'), {
-      email: data.email,
-      password: data.password,
-      remember: data.remember,
-      _token: csrf_token,
+    post(route('login'), {
     });
   };
   return (
@@ -42,7 +38,7 @@ function LoginPageAdmin({ csrf_token }) {
             <h2 className="text-xl md:text-3xl lg:text-3xl mb-10 text-center text-[#F77E21] font-extrabold">Login Admin</h2>
             <form onSubmit={submit}>
               <div>
-                  <label htmlFor="email" className="block mb-3 text-sm font-bold text-[#F77E21]">Username</label>
+                  <label htmlFor="email" className="block mb-3 text-sm font-bold text-[#F77E21]">Email</label>
                   <input 
                     type="email" 
                     name="email" 

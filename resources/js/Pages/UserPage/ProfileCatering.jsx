@@ -75,11 +75,11 @@ export default function ProfileCateringPage({ users, packets, products }){
                         </p>
                     </div>
                     {/* Mobile button */}
-                    <Link href={`/hubungipenjual/${users.phone}`} class="relative w-44 top-[2em] md:hidden lg:top-[2em] lg:left-12 lg:w-[20em] xl:top-[5.25em] text-center mb-2 rounded bg-[#F77E21] px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)]">
+                    <Link href={`/hubungipenjual/${users.id}`} class="relative w-44 top-[2em] md:hidden lg:top-[2em] lg:left-12 lg:w-[20em] xl:top-[5.25em] text-center mb-2 rounded bg-[#F77E21] px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)]">
                     Hubungi Penjual
                     </Link>
                     {/* Desktop button */}
-                    <Link href={`/hubungipenjual/${users.phone}`} class="relative w-44 top-[2em] hidden md:block md:left-[15.25em] lg:top-[2em] lg:left-[22em] lg:w-[20em] xl:top-[2em] text-center mb-2 rounded bg-[#F77E21] px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)]">
+                    <Link href={`/hubungipenjual/${users.id}`} class="relative w-44 top-[2em] hidden md:block md:left-[15.25em] lg:top-[2em] lg:left-[22em] lg:w-[20em] xl:top-[2em] text-center mb-2 rounded bg-[#F77E21] px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)]">
                     Hubungi Penjual
                     </Link>
                 </div>

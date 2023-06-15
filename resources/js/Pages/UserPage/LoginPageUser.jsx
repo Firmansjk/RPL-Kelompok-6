@@ -25,12 +25,7 @@ const handleOnChange = (event) => {
 const submit = (e) => {
   e.preventDefault();
 
-  Inertia.post(route('login'), {
-    email: data.email,
-    password: data.password,
-    remember: data.remember,
-    _token: csrf_token,
-  });
+  post(route('login'));
 };
   return (
     <>
