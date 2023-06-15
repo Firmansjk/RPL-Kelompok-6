@@ -8,7 +8,7 @@ import InputError from '@/Components/InputError';
 import { Inertia } from '@inertiajs/inertia';
 
 
-function LoginPage({csrf_token}) {
+function LoginPage() {
   const { data, setData, post, processing, errors, reset } = useForm({
     email: '',
     password: '',
@@ -29,11 +29,7 @@ function LoginPage({csrf_token}) {
   const submit = (e) => {
     e.preventDefault();
   
-    Inertia.post(route('login'), {
-      email: data.email,
-      password: data.password,
-      remember: data.remember,
-      _token: csrf_token,
+    post(route('login'), {
     });
   };
   return (
