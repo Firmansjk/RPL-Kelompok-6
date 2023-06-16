@@ -28,7 +28,10 @@ class UserController extends Controller
         $packets = Packet::with('user')->get();
         // $packets = User::where('role', 'vendor')->get();
 
-        return Inertia::render('UserPage/HomePage', compact('users', 'packets'));
+        return inertia('UserPage/HomePage', [
+            'users' => $users,
+            'packets' => $packets,
+        ]);
     }
 
     public function Homepage()
@@ -39,7 +42,11 @@ class UserController extends Controller
         $packets = Packet::with('user')->get();
         // $packets = User::where('role', 'vendor')->get();
 
-        return Inertia::render('UserPage/HomePageLogin', compact('users', 'packets', 'user'));
+        return inertia('UserPage/HomePageLogin', [
+            'users' => $users,
+            'packets' => $packets,
+            'user' => $user,
+        ]);
     }
 
     public function SearchCatering(Request $request)
@@ -56,7 +63,11 @@ class UserController extends Controller
             })
             ->get();
 
-        return Inertia::render('UserPage/SearchCatering', compact('results', 'user', 'searchQuery'));
+            return inertia('UserPage/SearchCatering', [
+                'results' => $results,
+                'user' => $user,
+                'searchQuery' => $searchQuery,
+            ]);
     }
 
     public function SearchMenu(Request $request)
@@ -87,7 +98,12 @@ class UserController extends Controller
 
     $products = $products->get();
 
-    return Inertia::render('UserPage/SearchMenu', compact('user', 'packets', 'products', 'searchQuery'));
+    return inertia('UserPage/SearchMenu', [
+        'user' => $user,
+        'packets' => $packets,
+        'products' => $products,
+        'searchQuery' => $searchQuery,
+    ]);
 }
 
     public function UserLogin()
@@ -205,7 +221,12 @@ class UserController extends Controller
         $products = Product::where('vendor_id', $users->id)->get();
 
         // Menampilkan halaman profil dengan data yang diperlukan
-        return Inertia::render('UserPage/ProfileCatering', compact('user', 'packets', 'products', 'users'));
+        return inertia('UserPage/ProfileCatering', [
+            'user' => $user,
+            'packets' => $packets,
+            'products' => $products,
+            'users' => $users,
+        ]);
     }
 
     public function HubungiPenjual(Request $request, $userId)
@@ -213,7 +234,10 @@ class UserController extends Controller
         $users = User::find($userId);
         $user = Auth::user();
 
-        return Inertia::render('UserPage/HubungiPenjual', compact('user', 'users'));
+        return inertia('UserPage/HubungiPenjual', [
+            'user' => $user,
+            'users' => $users,
+        ]);
     }
 
     public function UserDestroy(Request $request)
