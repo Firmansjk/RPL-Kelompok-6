@@ -44,7 +44,7 @@ Route::middleware('auth')->group(function () {
 
 // Route::get('/', function () {
 //     return Inertia::render('userpage/HomePage');
-// })->name('homepage');
+// })->name('homepage')
 
 Route::middleware('guest')->group(function () {
     Route::get('/', [UserController::class, 'index'])->
