@@ -136,7 +136,7 @@ route::middleware(['auth','role:vendor', 'verified'])->group(function() {
 
 });
 
-route::middleware(['auth','role:user', 'verified'])->group(function() {
+route::middleware([])->group(function() {
     Route::get('/home', [UserController::class, 'Homepage'])->
         name('user.home');
     Route::get('/search-catering', [UserController::class, 'SearchCatering'])->

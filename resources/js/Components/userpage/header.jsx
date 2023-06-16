@@ -97,7 +97,7 @@ export default function Header(){
 
                         <li className="p-1 flex flex-row items-center mr-4">
                             <button onClick={() => toggleTab(!toggleState)} className="hidden lg:block p-1 bg-white border border-2 border-gray-300 rounded-xl">
-                                <img className="inline-block h-6 w-6 md:w-8 md:h-8 rounded-full" src={user.photo ? `/upload/user_profile/${user.photo}` : profileImg} alt="Profile Picture"/>
+                                <img className="inline-block h-6 w-6 md:w-8 md:h-8 rounded-full" />
                             </button>
                             <div id="ProfileDropDown" className={toggleState === true ? "rounded block shadow-md bg-white absolute mt-40 right-[11em] z-10 overflow-hidden" : "rounded hidden shadow-md bg-white absolute mt-48 right-5 z-10"}>
                                 <ul className="list-reset group">

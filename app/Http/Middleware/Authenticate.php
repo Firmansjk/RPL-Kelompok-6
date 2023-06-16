@@ -21,9 +21,6 @@ class Authenticate extends Middleware
             } elseif ($request->is('vendor/*')) {
                 // Pengguna tidak terotentikasi saat mengakses rute di dalam grup 'vendor'
                 return route('vendor.login');
-            } else {
-                // Pengguna tidak terotentikasi saat mengakses rute yang tidak tercakup oleh kondisi di atas
-                return route('login');
             }
         }
     }
