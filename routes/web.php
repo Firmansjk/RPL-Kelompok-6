@@ -44,7 +44,7 @@ Route::middleware('auth')->group(function () {
 
 // Route::get('/', function () {
 //     return Inertia::render('userpage/HomePage');
-// })->name('homepage')
+// })->name('homepage');
 
 Route::middleware('guest')->group(function () {
     Route::get('/', [UserController::class, 'index'])->
@@ -55,25 +55,6 @@ Route::middleware('guest')->group(function () {
     name('user.registerpage');
     Route::get('/login', [UserController::class, 'UserLogin'])->
     name('user.login');
-    //dari user no middleware
-    Route::get('/home', [UserController::class, 'Homepage'])->
-    name('user.home');
-    Route::get('/search-catering', [UserController::class, 'SearchCatering'])->
-        name('user.searchcatering');
-    Route::get('/search-menu', [UserController::class, 'SearchMenu'])->
-        name('user.searchmenu');
-    Route::get('/user/profilepage', [UserController::class, 'UserProfile'])->
-        name('user.profilepage');
-    Route::patch('/user/profilepage', [VendorController::class, 'VendorUpdate'])->
-        name('user.profile.change');
-    Route::post('/user/picture/update', [UserController::class, 'UserProfilePicture'])->
-        name('user.photo.upload');
-    Route::delete('user/delete-profile', [UserController::class, 'UserDeleteProfile'])->
-        name('user.deleteProfile');
-    Route::get('/profiltoko/{userId}', [UserController::class, 'ShowProfile'])->
-        name('user.profiltoko');
-    Route::get('/hubungipenjual/{userId}', [UserController::class, 'HubungiPenjual'])->
-        name('user.hubungipenjual');
 
 
     Route::post('/vendor/register', [VendorController::class, 'VendorRegister'])->
@@ -156,24 +137,24 @@ route::middleware(['auth','role:vendor', 'verified'])->group(function() {
 });
 
 route::middleware([])->group(function() {
-    // Route::get('/home', [UserController::class, 'Homepage'])->
-    //     name('user.home');
-    // Route::get('/search-catering', [UserController::class, 'SearchCatering'])->
-    //     name('user.searchcatering');
-    // Route::get('/search-menu', [UserController::class, 'SearchMenu'])->
-    //     name('user.searchmenu');
-    // Route::get('/user/profilepage', [UserController::class, 'UserProfile'])->
-    //     name('user.profilepage');
-    // Route::patch('/user/profilepage', [VendorController::class, 'VendorUpdate'])->
-    //     name('user.profile.change');
-    // Route::post('/user/picture/update', [UserController::class, 'UserProfilePicture'])->
-    //     name('user.photo.upload');
-    // Route::delete('user/delete-profile', [UserController::class, 'UserDeleteProfile'])->
-    //     name('user.deleteProfile');
-    // Route::get('/profiltoko/{userId}', [UserController::class, 'ShowProfile'])->
-    //     name('user.profiltoko');
-    // Route::get('/hubungipenjual/{userId}', [UserController::class, 'HubungiPenjual'])->
-    //     name('user.hubungipenjual');
+    Route::get('/home', [UserController::class, 'Homepage'])->
+        name('user.home');
+    Route::get('/search-catering', [UserController::class, 'SearchCatering'])->
+        name('user.searchcatering');
+    Route::get('/search-menu', [UserController::class, 'SearchMenu'])->
+        name('user.searchmenu');
+    Route::get('/user/profilepage', [UserController::class, 'UserProfile'])->
+        name('user.profilepage');
+    Route::patch('/user/profilepage', [VendorController::class, 'VendorUpdate'])->
+        name('user.profile.change');
+    Route::post('/user/picture/update', [UserController::class, 'UserProfilePicture'])->
+        name('user.photo.upload');
+    Route::delete('user/delete-profile', [UserController::class, 'UserDeleteProfile'])->
+        name('user.deleteProfile');
+    Route::get('/profiltoko/{userId}', [UserController::class, 'ShowProfile'])->
+        name('user.profiltoko');
+    Route::get('/hubungipenjual/{userId}', [UserController::class, 'HubungiPenjual'])->
+        name('user.hubungipenjual');
 
     // Route::get('/vendor/menupage', [VendorController::class, 'VendorMenu'])->
     //     name('vendor.menupage');
