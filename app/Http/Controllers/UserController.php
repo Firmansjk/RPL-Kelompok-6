@@ -18,9 +18,9 @@ class UserController extends Controller
 {
     public function index()
     {
-            // Cek apakah pengguna sudah masuk atau belum
+        // Cek apakah pengguna sudah masuk atau belum
         if (Auth::check()) {
-            // Pengguna belum masuk, arahkan kembali
+        // Pengguna belum masuk, arahkan kembali
             return redirect()->back();
         }
         // Mengambil data user yang memiliki role "vendor"
