@@ -61,21 +61,21 @@ export default function Header(){
                 >
                     <ul className="flex flex-col lg:flex-row list-none lg:ml-auto lg:items-center">
                         <li className="nav-item">
-                            <Link /*href={route('user.home')}*/ href="/home"
+                            <Link href={route('user.home')}
                             className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-[#F77E21] hover:opacity-75"
                             >
                             <i className="fab fa-facebook-square text-lg leading-lg text-white opacity-75"></i><span className="ml-2">Home</span>
                             </Link>
                         </li>
                         <li className="nav-item">
-                            <Link /*href={route('user.searchcatering')}*/ href="/search-catering"
+                            <Link href={route('user.searchcatering')}
                             className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-[#F77E21] hover:opacity-75"
                             >
                             <i className="fab fa-twitter text-lg leading-lg text-white opacity-75"></i><span className="ml-2">Katering</span>
                             </Link>
                         </li>
                         <li className="nav-item">
-                            <Link /*href={route('user.searchmenu')}*/ href="/search-menu"
+                            <Link href={route('user.searchmenu')}
                             className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-[#F77E21] hover:opacity-75"
                             >
                             <i className="fab fa-pinterest text-lg leading-lg text-white opacity-75"></i><span className="ml-2">Menu</span>
