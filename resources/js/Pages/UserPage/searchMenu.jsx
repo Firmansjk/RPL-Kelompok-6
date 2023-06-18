@@ -58,7 +58,8 @@ export default function SearchMenuPage(){
                                         value={query}
                                         onChange={(e) => setQuery(e.target.value)}
                                         className="block w-full p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-white focus:ring-[#F77E21] focus:border-[#F77E21]" 
-                                        placeholder="Cari Menu" />
+                                        placeholder="Cari Menu" 
+                                        required/>
                                     <button    
                                         type="submit"
                                         className="text-white absolute right-2.5 bottom-2.5 bg-[#F77E21] font-medium rounded-lg text-sm px-4 py-2">
@@ -121,7 +122,8 @@ export default function SearchMenuPage(){
                                         className="block w-full p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-white focus:ring-[#F77E21] focus:border-[#F77E21]" 
                                         placeholder="Cari Menu" 
                                         value={query}
-                                        onChange={(e) => setQuery(e.target.value)}/>
+                                        onChange={(e) => setQuery(e.target.value)}
+                                        required/>
                                     <button 
                                         type="submit" 
                                         className="text-white absolute right-2.5 bottom-2.5 bg-[#F77E21] font-medium rounded-lg text-sm px-4 py-2">Cari</button>

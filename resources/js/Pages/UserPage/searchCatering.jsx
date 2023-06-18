@@ -42,6 +42,7 @@ export default function SearchCateringPage(){
                                 id="default-search" 
                                 class="block w-full p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-white focus:ring-[#F77E21] focus:border-[#F77E21]" 
                                 placeholder="Cari Katering" 
+                                required
                                 value={query}
                                 onChange={(e) => setQuery(e.target.value)}
                                 />
